@@ -56,6 +56,16 @@
             ]
           },
           {
+            "group": "Tools",
+            "pages": [
+              "api-reference/endpoint/toolgetbyid",
+              "api-reference/endpoint/toolget",
+              "api-reference/endpoint/toolcreate",
+              "api-reference/endpoint/toolupdate",
+              "api-reference/endpoint/tooldelete"
+            ]
+          },
+          {
             "group": "Tools - MCP",
             "pages": [
               "api-reference/endpoint/mcpgetbyid",
