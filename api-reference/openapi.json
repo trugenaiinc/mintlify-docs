@@ -587,8 +587,8 @@
     },
     "/tool": {
       "get": {
-        "summary": "Get MCP configurations",
-        "description": "Fetches a list of available MCP configurations. Requires `X-API-Key` authentication.",
+        "summary": "Get all Tool configurations",
+        "description": "Fetches all tool configurations available in the system. Requires `X-API-Key` authentication.",
         "security": [
           {
             "apiKeyAuth": []
@@ -596,7 +596,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful MCP response",
+            "description": "A list of tool configurations",
             "content": {
               "application/json": {
                 "schema": {
@@ -607,31 +607,31 @@
                       "id": {
                         "type": "string",
                         "format": "uuid",
-                        "example": "0f7b696c-ecdf-4900-addc-e7cfdbbce1c7"
+                        "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
                       },
                       "name": {
                         "type": "string",
-                        "example": "Brave MCP"
+                        "example": "New Tool 4"
                       },
                       "description": {
                         "type": "string",
-                        "example": "Brave MCP"
+                        "example": "You are a helpful assistant to Tool"
                       },
                       "type": {
                         "type": "string",
-                        "example": "sse"
+                        "example": "tool.api"
                       },
                       "arguments": {
                         "type": "string",
-                        "example": "{\"url\": \"http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse\"}"
+                        "example": "[{\"name\": \"ticker\", \"type\": \"str\", \"description\": \"The ticker of the stock to get the price for\"}]"
                       },
-                      "cache_tools_list": {
-                        "type": "boolean",
-                        "example": true
+                      "request_config": {
+                        "type": "string",
+                        "example": "{\"url\": \"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6\", \"method\": \"GET\", \"headers\": {\"Accept\": \"application/json\", \"User-Agent\": \"Trugen Avatar\"}}"
                       },
                       "event_messages": {
                         "type": "string",
-                        "example": "{\"on_delay\": {\"delay\": 1, \"message\": \"I am still waiting for the information.\"}, \"on_error\": {\"message\": \"Failed to search the web for the information.\"}, \"on_start\": {\"message\": \"\"}, \"on_success\": {\"message\": \"\"}}"
+                        "example": "{\"on_delay\": {\"delay\": 1, \"message\": \"Waiting for stock price data...\"}, \"on_error\": {\"message\": \"Failed to retrieve stock price data\"}, \"on_start\": {\"message\": \"Successfully received data.\"}}"
                       },
                       "is_active": {
                         "type": "boolean",
@@ -640,20 +640,21 @@
                       "created_at": {
                         "type": "string",
                         "format": "date-time",
-                        "example": "2025-09-15T16:56:45.580326Z"
+                        "example": "2025-10-10T16:35:58.776206Z"
                       },
                       "updated_at": {
                         "type": "string",
                         "format": "date-time",
-                        "example": "2025-09-15T16:56:45.580326Z"
+                        "example": "2025-10-10T16:35:58.776206Z"
                       }
                     },
                     "required": [
                       "id",
                       "name",
+                      "description",
                       "type",
                       "arguments",
-                      "cache_tools_list",
+                      "request_config",
                       "event_messages",
                       "is_active",
                       "created_at",
@@ -665,17 +666,17 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid API key"
+            "description": "Unauthorized – invalid or missing API key"
           },
           "500": {
-            "description": "Server error"
+            "description": "Internal server error"
           }
         }
       },
       "post": {
-        "summary": "Create MCP",
-        "description": "Create a new MCP configuration.",
-        "operationId": "createMCP",
+        "summary": "Create a new Tool configuration",
+        "description": "Creates a new tool configuration for use within the Trugen AI system.",
+        "operationId": "createTool",
         "security": [
           {
             "apiKeyAuth": []
@@ -689,29 +690,59 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "New Tool 4"
                   },
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "You are a helpful assistant to Tool"
                   },
                   "type": {
                     "type": "string",
-                    "example": "MCP"
+                    "example": "tool.api"
                   },
                   "arguments": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "properties": {
-                        "url": {
+                        "name": {
                           "type": "string",
-                          "format": "uri"
+                          "example": "ticker"
+                        },
+                        "type": {
+                          "type": "string",
+                          "example": "str"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "The ticker of the stock to get the price for"
                         }
                       }
                     }
                   },
-                  "cache_tools_list": {
-                    "type": "boolean"
+                  "request_config": {
+                    "type": "object",
+                    "properties": {
+                      "method": {
+                        "type": "string",
+                        "example": "GET"
+                      },
+                      "url": {
+                        "type": "string",
+                        "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6"
+                      },
+                      "headers": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "example": {
+                          "User-Agent": "Trugen Avatar",
+                          "Accept": "application/json"
+                        }
+                      }
+                    }
                   },
                   "event_messages": {
                     "type": "object",
@@ -720,7 +751,8 @@
                         "type": "object",
                         "properties": {
                           "message": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Successfully received data."
                           }
                         }
                       },
@@ -728,10 +760,12 @@
                         "type": "object",
                         "properties": {
                           "delay": {
-                            "type": "integer"
+                            "type": "integer",
+                            "example": 1
                           },
                           "message": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Waiting for stock price data..."
                           }
                         }
                       },
@@ -739,34 +773,45 @@
                         "type": "object",
                         "properties": {
                           "message": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "Failed to retrieve stock price data"
                           }
                         }
                       }
                     }
                   },
                   "is_active": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "example": true
                   }
                 },
                 "required": [
                   "name",
                   "description",
                   "type",
-                  "arguments",
+                  "request_config",
                   "is_active"
                 ]
               },
               "example": {
-                "name": "MCP 5",
-                "description": "You are a helpful assistant to MCP",
-                "type": "MCP",
+                "name": "New Tool 4",
+                "description": "You are a helpful assistant to Tool",
+                "type": "tool.api",
                 "arguments": [
                   {
-                    "url": "http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse"
+                    "name": "ticker",
+                    "type": "str",
+                    "description": "The ticker of the stock to get the price for"
                   }
                 ],
-                "cache_tools_list": true,
+                "request_config": {
+                  "method": "GET",
+                  "url": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6",
+                  "headers": {
+                    "User-Agent": "Trugen Avatar",
+                    "Accept": "application/json"
+                  }
+                },
                 "event_messages": {
                   "on_start": {
                     "message": "Successfully received data."
@@ -786,7 +831,7 @@
         },
         "responses": {
           "201": {
-            "description": "MCP created successfully",
+            "description": "Tool configuration created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -794,23 +839,12 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
                     },
-                    "name": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
-                    },
-                    "type": {
-                      "type": "string"
-                    },
-                    "is_active": {
-                      "type": "boolean"
-                    },
-                    "created_at": {
+                    "message": {
                       "type": "string",
-                      "format": "date-time"
+                      "example": "Tools configuration created successfully"
                     }
                   }
                 }
@@ -821,72 +855,94 @@
             "description": "Invalid request body"
           },
           "401": {
-            "description": "Unauthorized - Missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         }
       }
     },
     "/tool/{id}": {
       "delete": {
-        "summary": "Delete MCP",
-        "description": "Deletes an MCP configuration by its ID. Requires `X-API-Key` authentication.",
-        "operationId": "deleteMCP",
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ],
+        "summary": "Delete Tool Configuration",
+        "description": "Deletes a tool configuration by its unique ID.",
+        "operationId": "deleteToolById",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Unique identifier of the MCP configuration",
+            "description": "The UUID of the tool to delete",
             "schema": {
               "type": "string",
               "format": "uuid",
-              "example": "0f7b696c-ecdf-4900-addc-e7cfdbbce1c7"
+              "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
             }
           }
         ],
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
         "responses": {
-          "204": {
-            "description": "MCP deleted successfully (no content returned)"
-          },
-          "400": {
-            "description": "Invalid MCP ID"
+          "200": {
+            "description": "Tool configuration deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Tool configuration deleted successfully"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "message"
+                  ]
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – Missing or invalid API key"
+            "description": "Unauthorized – invalid or missing API key"
           },
           "404": {
-            "description": "MCP not found"
+            "description": "Tool not found"
           },
           "500": {
-            "description": "Server error"
+            "description": "Internal server error"
           }
         }
       },
       "put": {
-        "summary": "Update MCP",
-        "description": "Updates an existing MCP configuration by its ID. Requires `X-API-Key` authentication.",
-        "operationId": "updateMCP",
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ],
+        "summary": "Update Tool Configuration",
+        "description": "Updates an existing tool configuration using its unique ID.",
+        "operationId": "updateToolById",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Unique identifier of the MCP configuration",
+            "description": "The UUID of the tool to update",
             "schema": {
               "type": "string",
               "format": "uuid",
-              "example": "0d585f9a-e992-42d4-bda2-9c25f2bd7eda"
+              "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
             }
+          }
+        ],
+        "security": [
+          {
+            "apiKeyAuth": []
           }
         ],
         "requestBody": {
@@ -897,29 +953,68 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "New Tool 3 update"
                   },
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "You are a helpful assistant to Tool"
                   },
                   "type": {
                     "type": "string",
-                    "example": "MCP"
+                    "example": "tool.api"
                   },
                   "arguments": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "properties": {
-                        "url": {
-                          "type": "string",
-                          "format": "uri"
+                        "name": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "name": "ticker",
+                        "type": "str",
+                        "description": "The ticker of the stock to get the price for"
+                      }
+                    ]
+                  },
+                  "request_config": {
+                    "type": "object",
+                    "properties": {
+                      "method": {
+                        "type": "string",
+                        "example": "GET"
+                      },
+                      "url": {
+                        "type": "string",
+                        "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6"
+                      },
+                      "headers": {
+                        "type": "object",
+                        "properties": {
+                          "User-Agent": {
+                            "type": "string"
+                          },
+                          "Accept": {
+                            "type": "string"
+                          }
+                        },
+                        "example": {
+                          "User-Agent": "Trugen Avatar",
+                          "Accept": "application/json"
                         }
                       }
                     }
-                  },
-                  "cache_tools_list": {
-                    "type": "boolean"
                   },
                   "event_messages": {
                     "type": "object",
@@ -930,6 +1025,9 @@
                           "message": {
                             "type": "string"
                           }
+                        },
+                        "example": {
+                          "message": "Successfully received data."
                         }
                       },
                       "on_delay": {
@@ -941,6 +1039,10 @@
                           "message": {
                             "type": "string"
                           }
+                        },
+                        "example": {
+                          "delay": 1,
+                          "message": "Waiting for stock price data..."
                         }
                       },
                       "on_error": {
@@ -949,12 +1051,16 @@
                           "message": {
                             "type": "string"
                           }
+                        },
+                        "example": {
+                          "message": "Failed to retrieve stock price data"
                         }
                       }
                     }
                   },
                   "is_active": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "example": true
                   }
                 },
                 "required": [
@@ -962,19 +1068,30 @@
                   "description",
                   "type",
                   "arguments",
+                  "request_config",
+                  "event_messages",
                   "is_active"
                 ]
               },
               "example": {
-                "name": "MCP 3 update",
-                "description": "You are a helpful assistant to MCP",
-                "type": "MCP",
+                "name": "New Tool 3 update",
+                "description": "You are a helpful assistant to Tool",
+                "type": "tool.api",
                 "arguments": [
                   {
-                    "url": "http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse"
+                    "name": "ticker",
+                    "type": "str",
+                    "description": "The ticker of the stock to get the price for"
                   }
                 ],
-                "cache_tools_list": true,
+                "request_config": {
+                  "method": "GET",
+                  "url": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6",
+                  "headers": {
+                    "User-Agent": "Trugen Avatar",
+                    "Accept": "application/json"
+                  }
+                },
                 "event_messages": {
                   "on_start": {
                     "message": "Successfully received data."
@@ -994,94 +1111,7 @@
         },
         "responses": {
           "200": {
-            "description": "MCP updated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uuid"
-                    },
-                    "name": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
-                    },
-                    "type": {
-                      "type": "string"
-                    },
-                    "arguments": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "url": {
-                            "type": "string",
-                            "format": "uri"
-                          }
-                        }
-                      }
-                    },
-                    "cache_tools_list": {
-                      "type": "boolean"
-                    },
-                    "event_messages": {
-                      "type": "object"
-                    },
-                    "is_active": {
-                      "type": "boolean"
-                    },
-                    "updated_at": {
-                      "type": "string",
-                      "format": "date-time"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid request body"
-          },
-          "401": {
-            "description": "Unauthorized – Missing or invalid API key"
-          },
-          "404": {
-            "description": "MCP not found"
-          },
-          "500": {
-            "description": "Server error"
-          }
-        }
-      },
-      "get": {
-        "summary": "Get MCP by ID",
-        "description": "Fetch a single MCP configuration by its unique ID. Requires `X-API-Key` authentication.",
-        "operationId": "getMCPById",
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "Unique identifier of the MCP configuration",
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "0d585f9a-e992-42d4-bda2-9c25f2bd7eda"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "MCP object successfully retrieved",
+            "description": "Tool configuration updated successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1090,27 +1120,89 @@
                     "id": {
                       "type": "string",
                       "format": "uuid",
-                      "example": "dcf04568-6bf5-40cf-bd6f-d68e4cb5b216"
+                      "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Tool configuration updated successfully"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "message"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data"
+          },
+          "401": {
+            "description": "Unauthorized – invalid or missing API key"
+          },
+          "404": {
+            "description": "Tool not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get Tool by ID",
+        "description": "Fetches a specific tool configuration using its unique ID. Requires `X-API-Key` authentication.",
+        "operationId": "getToolById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The UUID of the tool configuration",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "0ea1fa09-4681-4068-8437-84ae6907b900"
+            }
+          }
+        ],
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tool configuration details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "0ea1fa09-4681-4068-8437-84ae6907b900"
                     },
                     "name": {
                       "type": "string",
-                      "example": "MCP 5"
+                      "example": "New Tool 2"
                     },
                     "description": {
                       "type": "string",
-                      "example": "You are a helpful assistant to MCP"
+                      "example": "You are a helpful assistant to Tool"
                     },
                     "type": {
                       "type": "string",
-                      "example": "MCP"
+                      "example": "tool.api"
                     },
                     "arguments": {
                       "type": "string",
-                      "example": "[{\"url\": \"http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse\"}]"
+                      "example": "[{\"name\": \"ticker\", \"type\": \"str\", \"description\": \"The ticker of the stock to get the price for\"}]"
                     },
-                    "cache_tools_list": {
-                      "type": "boolean",
-                      "example": true
+                    "request_config": {
+                      "type": "string",
+                      "example": "{\"url\": \"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6\", \"method\": \"GET\", \"headers\": {\"Accept\": \"application/json\", \"User-Agent\": \"Trugen Avatar\"}}"
                     },
                     "event_messages": {
                       "type": "string",
@@ -1123,12 +1215,12 @@
                     "created_at": {
                       "type": "string",
                       "format": "date-time",
-                      "example": "2025-10-02T17:22:10.96453Z"
+                      "example": "2025-08-26T17:28:43.042453Z"
                     },
                     "updated_at": {
                       "type": "string",
                       "format": "date-time",
-                      "example": "2025-10-02T17:22:10.96453Z"
+                      "example": "2025-08-26T17:28:43.042453Z"
                     }
                   },
                   "required": [
@@ -1137,7 +1229,7 @@
                     "description",
                     "type",
                     "arguments",
-                    "cache_tools_list",
+                    "request_config",
                     "event_messages",
                     "is_active",
                     "created_at",
@@ -1148,13 +1240,13 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid API key"
+            "description": "Unauthorized – invalid or missing API key"
           },
           "404": {
-            "description": "MCP not found"
+            "description": "Tool not found"
           },
           "500": {
-            "description": "Server error"
+            "description": "Internal server error"
           }
         }
       }
