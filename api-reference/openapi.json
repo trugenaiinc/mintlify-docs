@@ -1251,6 +1251,249 @@
         }
       }
     },
+    "/provider": {
+      "get": {
+        "summary": "Get Providers",
+        "description": "Retrieve a list of all configured providers.",
+        "operationId": "getProviders",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of provider configurations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "568789ee-d2ed-402a-b3bf-3667370c7a22"
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "example": "GPT-4.1-Mini"
+                      },
+                      "display_picture": {
+                        "type": "string",
+                        "example": "https://openai.com/images/logo.svg"
+                      },
+                      "provider": {
+                        "type": "string",
+                        "example": "openai"
+                      },
+                      "provider_name": {
+                        "type": "string",
+                        "example": "OpenAI"
+                      },
+                      "provider_type": {
+                        "type": "string",
+                        "example": "llm"
+                      },
+                      "model": {
+                        "type": "string",
+                        "example": "gpt-4.1-mini"
+                      },
+                      "meta_data": {
+                        "type": "object",
+                        "example": {}
+                      },
+                      "additional_fields": {
+                        "type": "object",
+                        "example": {}
+                      },
+                      "preview_url": {
+                        "type": "object",
+                        "properties": {
+                          "String": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "Valid": {
+                            "type": "boolean",
+                            "example": false
+                          }
+                        }
+                      },
+                      "is_active": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-23T15:48:43.509017Z"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-23T15:48:43.509017Z"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "display_name",
+                      "provider",
+                      "provider_name",
+                      "provider_type",
+                      "model",
+                      "is_active",
+                      "created_at",
+                      "updated_at"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – invalid or missing API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/public/avatar/{agentId}": {
+      "get": {
+        "summary": "Get Public Avatar Configuration",
+        "description": "Fetch a full public avatar configuration and metadata by agent ID.",
+        "operationId": "getPublicAvatar",
+        "parameters": [
+          {
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "description": "Unique ID of the agent to retrieve",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "example": "f23b3458-f566-40e5-b982-367600673a84"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with full avatar configuration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Avatar not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/avatar": {
+      "get": {
+        "summary": "Get all avatars",
+        "description": "Fetch a list of avatars along with their detailed configuration and metadata.",
+         "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of avatars",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "example": "98ab153f-0e50-4d3a-b2df-f4705a223513"
+                      },
+                      "avatar_key_id": {
+                        "type": "string",
+                        "example": "gabby"
+                      },
+                      "avatar_name": {
+                        "type": "string",
+                        "example": "Lisa"
+                      },
+                      "gender": {
+                        "type": "string",
+                        "example": "male"
+                      },
+                      "display_picture": {
+                        "type": "string",
+                        "example": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/4gHYSUNDX1BST0ZJTEUAAQEA"
+                      },
+                      "status": {
+                        "type": "string",
+                        "example": "Active"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-08-08T18:39:53.836583Z"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-08-08T18:36:27.995652Z"
+                      },
+                      "meta_data": {
+                        "type": "string",
+                        "description": "JSON string containing detailed avatar configuration",
+                        "example": "{\"config\": [{\"type\": \"stt\", \"model\": \"nova-3\", \"language\": \"multi\", \"provider\": \"deepgram\"}, {\"type\": \"llm\", \"model_name\": \"meta-llama/llama-4-maverick-17b-128e-instruct\"}, {\"type\": \"tts\", \"model_name\": \"eleven_turbo_v2_5\", \"voice_id\": \"rFzjTA9NFWPsUdx39OwG\"}]}"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "avatar_key_id",
+                      "avatar_name",
+                      "gender",
+                      "display_picture",
+                      "status",
+                      "created_at",
+                      "updated_at",
+                      "meta_data"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "An error occurred"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/knowledgebase": {
       "post": {
         "summary": "Create Knowledge Base",

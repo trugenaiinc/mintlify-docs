@@ -43,6 +43,19 @@
               "api-reference/introduction"
             ]
           },
+           {
+            "group": "Providers",
+            "pages": [
+              "api-reference/endpoint/providerget"
+            ]
+          },
+           {
+            "group": "Avatars",
+            "pages": [
+              "api-reference/endpoint/avatarbyagentget",
+              "api-reference/endpoint/avatarget"
+            ]
+          },
           {
             "group": "Knowledge Base",
             "pages": [
