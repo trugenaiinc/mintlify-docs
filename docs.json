@@ -52,7 +52,6 @@
            {
             "group": "Avatars",
             "pages": [
-              "api-reference/endpoint/avatarbyagentget",
               "api-reference/endpoint/avatarget"
             ]
           },

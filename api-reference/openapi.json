@@ -1399,7 +1399,7 @@
         }
       }
     },
-    "/avatar": {
+    "/public/avatar/": {
       "get": {
         "summary": "Get all avatars",
         "description": "Fetch a list of avatars along with their detailed configuration and metadata.",
@@ -1452,11 +1452,6 @@
                         "type": "string",
                         "format": "date-time",
                         "example": "2025-08-08T18:36:27.995652Z"
-                      },
-                      "meta_data": {
-                        "type": "string",
-                        "description": "JSON string containing detailed avatar configuration",
-                        "example": "{\"config\": [{\"type\": \"stt\", \"model\": \"nova-3\", \"language\": \"multi\", \"provider\": \"deepgram\"}, {\"type\": \"llm\", \"model_name\": \"meta-llama/llama-4-maverick-17b-128e-instruct\"}, {\"type\": \"tts\", \"model_name\": \"eleven_turbo_v2_5\", \"voice_id\": \"rFzjTA9NFWPsUdx39OwG\"}]}"
                       }
                     },
                     "required": [
@@ -1467,8 +1462,7 @@
                       "display_picture",
                       "status",
                       "created_at",
-                      "updated_at",
-                      "meta_data"
+                      "updated_at"
                     ]
                   }
                 }
