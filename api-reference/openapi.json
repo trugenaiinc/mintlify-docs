@@ -1251,6 +1251,548 @@
         }
       }
     },
+    "/template": {
+      "get": {
+        "summary": "Retrieve all Template configurations",
+        "description": "Fetches a list of all template configurations stored within the Trugen AI system.",
+        "operationId": "getAllTemplates",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of template configurations retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "template_name": {
+                        "type": "string"
+                      },
+                      "template_system_prompt": {
+                        "type": "string"
+                      },
+                      "tools": {
+                        "type": "object",
+                        "description": "Serialized JSON object representing tools configuration.",
+                        "example": {}
+                      },
+                      "tool": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "nullable": true
+                      },
+                      "config": {
+                        "type": "object",
+                        "description": "Configuration settings for the template.",
+                        "properties": {
+                          "systemPrompt": {
+                            "type": "string"
+                          },
+                          "maxCallDuration": {
+                            "type": "integer"
+                          },
+                          "conversationalContext": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "knowledge_base": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "nullable": true
+                      },
+                      "mcp": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "nullable": true
+                      },
+                      "is_active": {
+                        "type": "boolean"
+                      },
+                      "record": {
+                        "type": "boolean"
+                      },
+                      "callback_url": {
+                        "type": "string"
+                      },
+                      "callback_events": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
+                  }
+                },
+                "example": [
+                  {
+                    "callback_events": [
+                      "max_call_duration_timeout",
+                      "max_call_duration_warning"
+                    ],
+                    "callback_url": "",
+                    "config": {
+                      "systemPrompt": "dggg",
+                      "maxCallDuration": 5,
+                      "conversationalContext": "llklkl"
+                    },
+                    "created_at": "2025-10-16T15:09:53.876051Z",
+                    "id": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9",
+                    "is_active": true,
+                    "knowledge_base": null,
+                    "mcp": null,
+                    "record": true,
+                    "template_name": "dg",
+                    "template_system_prompt": "dggg",
+                    "tool": null,
+                    "tools": {},
+                    "updated_at": "2025-10-16T15:09:53.876051Z"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – missing or invalid API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new Template configuration",
+        "description": "Creates a new template configuration for use within the Trugen AI system.",
+        "operationId": "createTemplate",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "template_name": {
+                    "type": "string",
+                    "example": "new "
+                  },
+                  "template_system_prompt": {
+                    "type": "string",
+                    "example": "prompt"
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "systemPrompt": {
+                        "type": "string",
+                        "example": "kjkjkj"
+                      },
+                      "conversationalContext": {
+                        "type": "string",
+                        "example": "kjkjkjkj"
+                      },
+                      "maxCallDuration": {
+                        "type": "integer",
+                        "example": 2
+                      }
+                    }
+                  },
+                  "knowledge_base": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "15b12908-309f-4e0f-bcb0-a4e23d45169a"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "tsrrrs"
+                        }
+                      }
+                    }
+                  },
+                  "is_active": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "record": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "callback_events": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": []
+                  }
+                },
+                "required": [
+                  "template_name",
+                  "template_system_prompt",
+                  "config",
+                  "is_active"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Template configuration created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "d65a4f92-44b1-4fe6-b2ac-a1cb66366ddc"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Template configuration created successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body"
+          },
+          "401": {
+            "description": "Unauthorized – missing or invalid API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/template/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "Unique identifier for the template configuration"
+        }
+      ],
+      "get": {
+        "summary": "Retrieve a Template configuration by ID",
+        "operationId": "getTemplateById",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Template configuration retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "template_name": {
+                      "type": "string"
+                    },
+                    "template_system_prompt": {
+                      "type": "string"
+                    },
+                    "tools": {
+                      "type": "object"
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "systemPrompt": {
+                          "type": "string"
+                        },
+                        "maxCallDuration": {
+                          "type": "integer"
+                        },
+                        "conversationalContext": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "callback_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "callback_url": {
+                      "type": "string"
+                    },
+                    "is_active": {
+                      "type": "boolean"
+                    },
+                    "record": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Template not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing Template configuration",
+        "description": "Updates the details of a specific template configuration identified by its unique ID.",
+        "operationId": "updateTemplate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Unique identifier for the template configuration to update",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "template_name": {
+                    "type": "string",
+                    "example": "new "
+                  },
+                  "template_system_prompt": {
+                    "type": "string",
+                    "example": "prompt"
+                  },
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "systemPrompt": {
+                        "type": "string",
+                        "example": "kjkjkj"
+                      },
+                      "conversationalContext": {
+                        "type": "string",
+                        "example": "kjkjkjkj"
+                      },
+                      "maxCallDuration": {
+                        "type": "integer",
+                        "example": 2
+                      }
+                    }
+                  },
+                  "knowledge_base": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "example": "15b12908-309f-4e0f-bcb0-a4e23d45169a"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "tsrrrs"
+                        }
+                      }
+                    }
+                  },
+                  "is_active": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "record": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "callback_events": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": []
+                  }
+                },
+                "required": [
+                  "template_name",
+                  "template_system_prompt",
+                  "config",
+                  "is_active"
+                ]
+              },
+              "example": {
+                "template_name": "new ",
+                "template_system_prompt": "prompt",
+                "tools": {
+                  "id": "15b12908-309f-4e0f-bcb0-a4e23d45169a",
+                  "name": "tsrrrs"
+                },
+                "config": {
+                  "systemPrompt": "kjkjkj",
+                  "conversationalContext": "kjkjkjkj",
+                  "maxCallDuration": 2
+                },
+                "knowledge_base": [
+                  {
+                    "id": "15b12908-309f-4e0f-bcb0-a4e23d45169a",
+                    "name": "tsrrrs"
+                  }
+                ],
+                "is_active": true,
+                "record": true,
+                "callback_url": "",
+                "callback_events": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Template configuration updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "example": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Template configuration updated successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body"
+          },
+          "401": {
+            "description": "Unauthorized – missing or invalid API key"
+          },
+          "404": {
+            "description": "Template not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete a Template configuration",
+        "operationId": "deleteTemplate",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Template configuration deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9",
+                  "message": "Template configuration deleted successfully"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Template not found"
+          }
+        }
+      }
+    },
     "/provider": {
       "get": {
         "summary": "Get Providers",
@@ -1403,7 +1945,7 @@
       "get": {
         "summary": "Get all avatars",
         "description": "Fetch a list of avatars along with their detailed configuration and metadata.",
-         "security": [
+        "security": [
           {
             "apiKeyAuth": []
           }

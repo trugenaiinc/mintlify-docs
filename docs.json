@@ -43,13 +43,13 @@
               "api-reference/introduction"
             ]
           },
-           {
+          {
             "group": "Providers",
             "pages": [
               "api-reference/endpoint/providerget"
             ]
           },
-           {
+          {
             "group": "Avatars",
             "pages": [
               "api-reference/endpoint/avatarget"
@@ -65,6 +65,16 @@
               "api-reference/endpoint/knowledgebaseupdate",
               "api-reference/endpoint/knowledgebasedelete",
               "api-reference/endpoint/knowledgebasedeletedoc"
+            ]
+          },
+          {
+            "group": "Persona Templates",
+            "pages": [
+              "api-reference/endpoint/templategetbyid",
+              "api-reference/endpoint/templateget",
+              "api-reference/endpoint/templatecreate",
+              "api-reference/endpoint/templateupdate",
+              "api-reference/endpoint/templatedelete"
             ]
           },
           {
