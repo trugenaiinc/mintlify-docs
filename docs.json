@@ -78,6 +78,16 @@
             ]
           },
           {
+            "group": "Video Agents",
+            "pages": [
+              "api-reference/endpoint/agentgetbyid",
+              "api-reference/endpoint/agentget",
+              "api-reference/endpoint/agentcreate",
+              "api-reference/endpoint/agentupdate",
+              "api-reference/endpoint/agentdelete"
+            ]
+          },
+          {
             "group": "Tools",
             "pages": [
               "api-reference/endpoint/toolgetbyid",

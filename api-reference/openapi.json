@@ -1793,6 +1793,273 @@
         }
       }
     },
+     "/agent": {
+      "post": {
+        "summary": "Create an agent configuration",
+        "description": "Creates a new agent configuration with avatars, knowledge bases, tools, and MCPs",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "agent_name": {
+                    "type": "string"
+                  },
+                  "agent_system_prompt": {
+                    "type": "string"
+                  },
+                  "config": {
+                    "type": "object"
+                  },
+                  "tools": {
+                    "type": "object"
+                  },
+                  "knowledge_base": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name"
+                      ]
+                    }
+                  },
+                  "mcp": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "tool": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "record": {
+                    "type": "boolean"
+                  },
+                  "callback_url": {
+                    "type": "string"
+                  },
+                  "callback_events": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "is_public": {
+                    "type": "boolean"
+                  },
+                  "is_active": {
+                    "type": "boolean"
+                  },
+                  "avatars": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "timeout": {
+                          "type": "integer"
+                        },
+                        "avatar_id": {
+                          "type": "string"
+                        },
+                        "avatar_data_source": {
+                          "type": "string"
+                        },
+                        "frame_rate": {
+                          "type": "integer"
+                        },
+                        "silence_padding": {
+                          "type": "number"
+                        },
+                        "is_face_enhancer_enabled": {
+                          "type": "boolean"
+                        },
+                        "persona_name": {
+                          "type": "string"
+                        },
+                        "persona_prompt": {
+                          "type": "string"
+                        },
+                        "conversational_context": {
+                          "type": "string"
+                        },
+                        "interpolation_config": {
+                          "type": "object",
+                          "properties": {
+                            "exp": {
+                              "type": "integer"
+                            },
+                            "enabled": {
+                              "type": "boolean"
+                            }
+                          }
+                        },
+                        "idle_timeout": {
+                          "type": "object",
+                          "properties": {
+                            "timeout": {
+                              "type": "integer"
+                            },
+                            "filler_phrases": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "welcome_message": {
+                          "type": "object",
+                          "properties": {
+                            "messages": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "wait_time": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "warning_exit_message": {
+                          "type": "object",
+                          "properties": {
+                            "messages": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "callout_before": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "exit_message": {
+                          "type": "object",
+                          "properties": {
+                            "messages": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "max_call_duration": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "exit_heads_up_message": {
+                          "type": "object",
+                          "properties": {
+                            "callout_before": {
+                              "type": "integer"
+                            },
+                            "messages": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "is_custom": {
+                          "type": "boolean"
+                        },
+                        "scene_analyzer_prompt": {
+                          "type": "object"
+                        },
+                        "eye_mask_replacement": {
+                          "type": "boolean"
+                        },
+                        "audio_features_type": {
+                          "type": "string"
+                        },
+                        "audio_features_window_length": {
+                          "type": "integer"
+                        },
+                        "scene_context_engine": {
+                          "type": "object"
+                        },
+                        "config": {
+                          "type": "object"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "agent_name",
+                  "agent_system_prompt",
+                  "config",
+                  "avatars"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Agent configuration created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "045302f0-9783-4ff2-846e-3888fb2a7894",
+                  "message": "Agent configuration created successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
     "/provider": {
       "get": {
         "summary": "Get Providers",
