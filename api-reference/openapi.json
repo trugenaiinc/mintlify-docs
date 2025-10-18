@@ -14,7 +14,7 @@
     "/mcp": {
       "get": {
         "summary": "Get MCP configurations",
-        "description": "Fetches a list of available MCP configurations. Requires `X-API-Key` authentication.",
+        "description": "Fetches a list of available MCP configurations. Requires `x-api-key` authentication.",
         "security": [
           {
             "apiKeyAuth": []
@@ -255,7 +255,7 @@
     "/mcp/{id}": {
       "delete": {
         "summary": "Delete MCP",
-        "description": "Deletes an MCP configuration by its ID. Requires `X-API-Key` authentication.",
+        "description": "Deletes an MCP configuration by its ID. Requires `x-api-key` authentication.",
         "operationId": "deleteMCP",
         "security": [
           {
@@ -295,7 +295,7 @@
       },
       "put": {
         "summary": "Update MCP",
-        "description": "Updates an existing MCP configuration by its ID. Requires `X-API-Key` authentication.",
+        "description": "Updates an existing MCP configuration by its ID. Requires `x-api-key` authentication.",
         "operationId": "updateMCP",
         "security": [
           {
@@ -485,7 +485,7 @@
       },
       "get": {
         "summary": "Get MCP by ID",
-        "description": "Fetch a single MCP configuration by its unique ID. Requires `X-API-Key` authentication.",
+        "description": "Fetch a single MCP configuration by its unique ID. Requires `x-api-key` authentication.",
         "operationId": "getMCPById",
         "security": [
           {
@@ -588,7 +588,7 @@
     "/tool": {
       "get": {
         "summary": "Get all Tool configurations",
-        "description": "Fetches all tool configurations available in the system. Requires `X-API-Key` authentication.",
+        "description": "Fetches all tool configurations available in the system. Requires `x-api-key` authentication.",
         "security": [
           {
             "apiKeyAuth": []
@@ -1151,7 +1151,7 @@
       },
       "get": {
         "summary": "Get Tool by ID",
-        "description": "Fetches a specific tool configuration using its unique ID. Requires `X-API-Key` authentication.",
+        "description": "Fetches a specific tool configuration using its unique ID. Requires `x-api-key` authentication.",
         "operationId": "getToolById",
         "parameters": [
           {
@@ -2950,7 +2950,7 @@
     "/knowledgebase": {
       "post": {
         "summary": "Create Knowledge Base",
-        "description": "Uploads a document or raw text to create a new Knowledge Base entry. Requires `X-API-Key` authentication.",
+        "description": "Uploads a document or raw text to create a new Knowledge Base entry. Requires `x-api-key` authentication.",
         "operationId": "createKnowledgeBase",
         "security": [
           {
@@ -3049,7 +3049,7 @@
       },
       "get": {
         "summary": "Get all Knowledge Bases",
-        "description": "Fetches a list of all available knowledge bases with their metadata and associated documents. Requires `X-API-Key` authentication.",
+        "description": "Fetches a list of all available knowledge bases with their metadata and associated documents. Requires `x-api-key` authentication.",
         "security": [
           {
             "apiKeyAuth": []
@@ -3177,7 +3177,7 @@
     "/knowledgebase/{id}": {
       "get": {
         "summary": "Get Knowledge Base by ID",
-        "description": "Retrieves a specific knowledge base and its associated documents using the provided Knowledge Base ID. Requires `X-API-Key` authentication.",
+        "description": "Retrieves a specific knowledge base and its associated documents using the provided Knowledge Base ID. Requires `x-api-key` authentication.",
         "security": [
           {
             "apiKeyAuth": []
@@ -3358,7 +3358,7 @@
       },
       "put": {
         "summary": "Update Knowledge Base Configuration",
-        "description": "Updates the specified Knowledge Base configuration by ID. Requires `X-API-Key` authentication.",
+        "description": "Updates the specified Knowledge Base configuration by ID. Requires `x-api-key` authentication.",
         "operationId": "updateKnowledgeBase",
         "security": [
           {
@@ -3458,7 +3458,7 @@
       },
       "delete": {
         "summary": "Delete Knowledge Base Configuration",
-        "description": "Deletes a Knowledge Base configuration by ID. Requires `X-API-Key` authentication.",
+        "description": "Deletes a Knowledge Base configuration by ID. Requires `x-api-key` authentication.",
         "operationId": "deleteKnowledgeBase",
         "security": [
           {
@@ -3523,7 +3523,7 @@
     "/knowledgebase/{id}/doc": {
       "post": {
         "summary": "Add Content to Existing Knowledge Base",
-        "description": "Uploads additional content or a document to an existing Knowledge Base. Requires `X-API-Key` authentication.",
+        "description": "Uploads additional content or a document to an existing Knowledge Base. Requires `x-api-key` authentication.",
         "operationId": "addKnowledgeBaseDocument",
         "security": [
           {
@@ -3690,7 +3690,7 @@
       "apiKeyAuth": {
         "type": "apiKey",
         "in": "header",
-        "name": "X-API-Key"
+        "name": "x-api-key"
       }
     }
   }
