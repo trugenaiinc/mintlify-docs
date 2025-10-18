@@ -1793,7 +1793,212 @@
         }
       }
     },
-     "/agent": {
+    "/agent": {
+      "get": {
+        "summary": "Retrieve all Agent configurations",
+        "description": "Fetches a list of all agent configurations stored within the Trugen AI system, including associated avatars, knowledge bases, and callback settings.",
+        "operationId": "getAllAgents",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of agent configurations retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid"
+                      },
+                      "agent_name": {
+                        "type": "string"
+                      },
+                      "agent_system_prompt": {
+                        "type": "string"
+                      },
+                      "avatars": {
+                        "type": "array",
+                        "description": "List of avatars linked to this agent configuration.",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "avatar_id": {
+                              "type": "string"
+                            },
+                            "persona_name": {
+                              "type": "string"
+                            },
+                            "persona_prompt": {
+                              "type": "string"
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "llm": {
+                                  "type": "object",
+                                  "properties": {
+                                    "model": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "callback_events": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "callback_url": {
+                        "type": "string"
+                      },
+                      "config": {
+                        "type": "object",
+                        "description": "Agent-specific configuration settings.",
+                        "properties": {
+                          "systemPrompt": {
+                            "type": "string"
+                          },
+                          "maxCallDuration": {
+                            "type": "integer"
+                          },
+                          "conversationalContext": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "knowledge_base": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "index": {
+                              "type": "string"
+                            },
+                            "namespace": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "nullable": true
+                      },
+                      "mcp": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "nullable": true
+                      },
+                      "tools": {
+                        "type": "object",
+                        "description": "Serialized JSON object representing tool configurations.",
+                        "example": {}
+                      },
+                      "tool": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        },
+                        "nullable": true
+                      },
+                      "is_active": {
+                        "type": "boolean"
+                      },
+                      "is_public": {
+                        "type": "boolean"
+                      },
+                      "record": {
+                        "type": "boolean"
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
+                  }
+                },
+                "example": [
+                  {
+                    "id": "045302f0-9783-4ff2-846e-3888fb2a7894",
+                    "agent_name": "dg",
+                    "agent_system_prompt": "prompt",
+                    "avatars": [
+                      {
+                        "avatar_id": "gabby",
+                        "persona_name": "dg",
+                        "persona_prompt": "prompt",
+                        "config": {
+                          "llm": {
+                            "model": "meta-llama/llama-4-maverick-17b-128e-instruct"
+                          }
+                        }
+                      }
+                    ],
+                    "callback_events": [
+                      "participant_left",
+                      "max_call_duration_warning"
+                    ],
+                    "callback_url": "https://webhook.site/agent-events",
+                    "config": {
+                      "systemPrompt": "Agent guidance text",
+                      "maxCallDuration": 10,
+                      "conversationalContext": "Legal AI assistant"
+                    },
+                    "knowledge_base": [
+                      {
+                        "id": "bf5c4aeb-3b24-44b7-bb52-3fc31736b4ba",
+                        "name": "Lease deed",
+                        "description": "Tenant lease deed",
+                        "index": "dg-y611apn.svc.aped-4627-b74a.pinecone.io",
+                        "namespace": "bf5c4aeb-3b24-44b7-bb52-3fc31736b4ba"
+                      }
+                    ],
+                    "mcp": null,
+                    "tools": {},
+                    "tool": null,
+                    "is_active": true,
+                    "is_public": true,
+                    "record": true,
+                    "created_at": "2025-10-17T19:05:25.557061Z",
+                    "updated_at": "2025-10-17T19:05:25.557061Z"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – missing or invalid API key"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
       "post": {
         "summary": "Create an agent configuration",
         "description": "Creates a new agent configuration with avatars, knowledge bases, tools, and MCPs",
