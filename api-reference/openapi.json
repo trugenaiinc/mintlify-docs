@@ -2275,12 +2275,212 @@
             "type": "string",
             "format": "uuid"
           },
-          "description": "Unique identifier for the Agent configuration to delete"
+          "description": "Unique identifier for the Agent configuration"
         }
       ],
+      "put": {
+        "summary": "Update an existing Agent configuration",
+        "description": "Updates an Agent configuration with new avatar, tool, knowledge base, or system settings.",
+        "operationId": "updateAgent",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "agent_name": {
+                    "type": "string"
+                  },
+                  "agent_system_prompt": {
+                    "type": "string"
+                  },
+                  "config": {
+                    "type": "object"
+                  },
+                  "tools": {
+                    "type": "object"
+                  },
+                  "knowledge_base": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "mcp": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "tool": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "record": {
+                    "type": "boolean"
+                  },
+                  "callback_url": {
+                    "type": "string"
+                  },
+                  "callback_events": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "is_public": {
+                    "type": "boolean"
+                  },
+                  "is_active": {
+                    "type": "boolean"
+                  },
+                  "avatars": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "avatar_id": {
+                          "type": "string"
+                        },
+                        "persona_name": {
+                          "type": "string"
+                        },
+                        "persona_prompt": {
+                          "type": "string"
+                        },
+                        "timeout": {
+                          "type": "integer"
+                        },
+                        "is_custom": {
+                          "type": "boolean"
+                        },
+                        "frame_rate": {
+                          "type": "integer"
+                        },
+                        "silence_padding": {
+                          "type": "number"
+                        },
+                        "avatar_data_source": {
+                          "type": "string"
+                        },
+                        "config": {
+                          "type": "object"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "agent_name",
+                  "agent_system_prompt",
+                  "avatars"
+                ]
+              },
+              "example": {
+                "agent_name": "dg",
+                "agent_system_prompt": "prompt",
+                "config": {},
+                "tools": {},
+                "knowledge_base": [
+                  {
+                    "id": "bf5c4aeb-3b24-44b7-bb52-3fc31736b4ba",
+                    "name": "Lease deed"
+                  }
+                ],
+                "mcp": [],
+                "tool": [],
+                "record": true,
+                "callback_url": "",
+                "callback_events": [
+                  "participant_left",
+                  "max_call_duration_warning"
+                ],
+                "is_public": true,
+                "is_active": true,
+                "avatars": [
+                  {
+                    "timeout": 300,
+                    "avatar_id": "gabby",
+                    "avatar_data_source": "avatar-inference-data/",
+                    "frame_rate": 25,
+                    "silence_padding": 0.05,
+                    "persona_name": "dg",
+                    "persona_prompt": "prompt",
+                    "is_custom": false
+                  },
+                  {
+                    "timeout": 300,
+                    "avatar_id": "ali_gfpgan",
+                    "avatar_data_source": "avatar-inference-data/",
+                    "frame_rate": 25,
+                    "silence_padding": 0.05,
+                    "persona_name": "dg",
+                    "persona_prompt": "prompt",
+                    "is_custom": false
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Agent configuration updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "098f083e-64c3-4c84-b3af-1b3e0b2538b3",
+                  "message": "Agent configuration updated successfully"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body"
+          },
+          "401": {
+            "description": "Unauthorized – missing or invalid API key"
+          },
+          "404": {
+            "description": "Agent not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
       "delete": {
-        "summary": "Delete an Agent configuration",
-        "description": "Deletes an existing Agent configuration identified by its unique ID.",
+        "summary": "Delete an Agent configuration by ID",
+        "description": "Deletes a specific Agent configuration permanently.",
         "operationId": "deleteAgent",
         "security": [
           {
