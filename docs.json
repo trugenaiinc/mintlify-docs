@@ -18,7 +18,7 @@
             "pages": [
               "index",
               "quickstart",
-              "development" 
+              "development"
             ]
           },
           {
@@ -44,15 +44,24 @@
             ]
           },
           {
-            "group": "Providers",
+            "group": "Video Agents",
             "pages": [
-              "api-reference/endpoint/providerget"
+              "api-reference/endpoint/agentgetbyid",
+              "api-reference/endpoint/agentget",
+              "api-reference/endpoint/agentcreate",
+              "api-reference/endpoint/agentcreatebytemplate",
+              "api-reference/endpoint/agentupdate",
+              "api-reference/endpoint/agentdelete"
             ]
           },
           {
-            "group": "Avatars",
+            "group": "Persona Templates",
             "pages": [
-              "api-reference/endpoint/avatarget"
+              "api-reference/endpoint/templategetbyid",
+              "api-reference/endpoint/templateget",
+              "api-reference/endpoint/templatecreate",
+              "api-reference/endpoint/templateupdate",
+              "api-reference/endpoint/templatedelete"
             ]
           },
           {
@@ -68,24 +77,15 @@
             ]
           },
           {
-            "group": "Persona Templates",
+            "group": "Providers",
             "pages": [
-              "api-reference/endpoint/templategetbyid",
-              "api-reference/endpoint/templateget",
-              "api-reference/endpoint/templatecreate",
-              "api-reference/endpoint/templateupdate",
-              "api-reference/endpoint/templatedelete"
+              "api-reference/endpoint/providerget"
             ]
           },
           {
-            "group": "Video Agents",
+            "group": "Avatars",
             "pages": [
-              "api-reference/endpoint/agentgetbyid",
-              "api-reference/endpoint/agentget",
-              "api-reference/endpoint/agentcreate",
-              "api-reference/endpoint/agentcreatebytemplate",
-              "api-reference/endpoint/agentupdate",
-              "api-reference/endpoint/agentdelete"
+              "api-reference/endpoint/avatarget"
             ]
           },
           {
