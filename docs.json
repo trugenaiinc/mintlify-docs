@@ -83,6 +83,7 @@
               "api-reference/endpoint/agentgetbyid",
               "api-reference/endpoint/agentget",
               "api-reference/endpoint/agentcreate",
+              "api-reference/endpoint/agentcreatebytemplate",
               "api-reference/endpoint/agentupdate",
               "api-reference/endpoint/agentdelete"
             ]
