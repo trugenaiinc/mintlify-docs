@@ -2278,6 +2278,108 @@
           "description": "Unique identifier for the Agent configuration"
         }
       ],
+      "get": {
+        "summary": "Retrieve an Agent configuration by ID",
+        "operationId": "getAgentById",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent configuration retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "agent_name": {
+                      "type": "string"
+                    },
+                    "agent_system_prompt": {
+                      "type": "string"
+                    },
+                    "avatars": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "knowledge_base": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "nullable": true
+                    },
+                    "tool": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "nullable": true
+                    },
+                    "tools": {
+                      "type": "object"
+                    },
+                    "mcp": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "nullable": true
+                    },
+                    "config": {
+                      "type": "object"
+                    },
+                    "callback_url": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "callback_events": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "is_active": {
+                      "type": "boolean"
+                    },
+                    "is_public": {
+                      "type": "boolean"
+                    },
+                    "record": {
+                      "type": "boolean"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – missing or invalid API key"
+          },
+          "404": {
+            "description": "Agent not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      },
       "put": {
         "summary": "Update an existing Agent configuration",
         "description": "Updates an Agent configuration with new avatar, tool, knowledge base, or system settings.",
