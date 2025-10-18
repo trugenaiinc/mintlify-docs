@@ -2265,6 +2265,64 @@
         }
       }
     },
+    "/agent/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "Unique identifier for the Agent configuration to delete"
+        }
+      ],
+      "delete": {
+        "summary": "Delete an Agent configuration",
+        "description": "Deletes an existing Agent configuration identified by its unique ID.",
+        "operationId": "deleteAgent",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Agent configuration deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "id": "97e9ed09-35a7-4bfa-94ab-705fc1ad725b",
+                  "message": "Agent configuration deleted successfully"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – missing or invalid API key"
+          },
+          "404": {
+            "description": "Agent not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
     "/provider": {
       "get": {
         "summary": "Get Providers",
