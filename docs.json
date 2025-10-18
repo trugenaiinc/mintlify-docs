@@ -90,22 +90,30 @@
           },
           {
             "group": "Tools",
+            "expanded": true,
             "pages": [
-              "api-reference/endpoint/toolgetbyid",
-              "api-reference/endpoint/toolget",
-              "api-reference/endpoint/toolcreate",
-              "api-reference/endpoint/toolupdate",
-              "api-reference/endpoint/tooldelete"
-            ]
-          },
-          {
-            "group": "Tools - MCP",
-            "pages": [
-              "api-reference/endpoint/mcpgetbyid",
-              "api-reference/endpoint/mcpget",
-              "api-reference/endpoint/mcpcreate",
-              "api-reference/endpoint/mcpupdate",
-              "api-reference/endpoint/mcpdelete"
+              {
+                "group": "MCP",
+                "drilldown": false,
+                "pages": [
+                  "api-reference/endpoint/mcpgetbyid",
+                  "api-reference/endpoint/mcpget",
+                  "api-reference/endpoint/mcpcreate",
+                  "api-reference/endpoint/mcpupdate",
+                  "api-reference/endpoint/mcpdelete"
+                ]
+              },
+              {
+                "group": "API Tools",
+                "drilldown": false,
+                "pages": [
+                  "api-reference/endpoint/toolgetbyid",
+                  "api-reference/endpoint/toolget",
+                  "api-reference/endpoint/toolcreate",
+                  "api-reference/endpoint/toolupdate",
+                  "api-reference/endpoint/tooldelete"
+                ]
+              }
             ]
           }
         ]
