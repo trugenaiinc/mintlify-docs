@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Trugen AI API Documentation",
   "colors": {
-    "primary": "#4a16a3",
-    "light": "#7893FF",
-    "dark": "#2300AE"
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
   },
   "favicon": "favicon.svg",
   "navigation": {
@@ -46,10 +46,10 @@
           {
             "group": "Video Agents",
             "pages": [
-              "api-reference/endpoint/agentgetbyid",
-              "api-reference/endpoint/agentget",
               "api-reference/endpoint/agentcreate",
               "api-reference/endpoint/agentcreatebytemplate",
+              "api-reference/endpoint/agentgetbyid",
+              "api-reference/endpoint/agentget",              
               "api-reference/endpoint/agentupdate",
               "api-reference/endpoint/agentdelete"
             ]
@@ -57,9 +57,9 @@
           {
             "group": "Persona Templates",
             "pages": [
+              "api-reference/endpoint/templatecreate",
               "api-reference/endpoint/templategetbyid",
               "api-reference/endpoint/templateget",
-              "api-reference/endpoint/templatecreate",
               "api-reference/endpoint/templateupdate",
               "api-reference/endpoint/templatedelete"
             ]
@@ -67,10 +67,10 @@
           {
             "group": "Knowledge Base",
             "pages": [
-              "api-reference/endpoint/knowledgebasegetbyid",
-              "api-reference/endpoint/knowledgebaseget",
               "api-reference/endpoint/knowledgebasecreate",
               "api-reference/endpoint/knowledgebaseadddoc",
+              "api-reference/endpoint/knowledgebasegetbyid",
+              "api-reference/endpoint/knowledgebaseget",
               "api-reference/endpoint/knowledgebaseupdate",
               "api-reference/endpoint/knowledgebasedelete",
               "api-reference/endpoint/knowledgebasedeletedoc"
@@ -96,9 +96,9 @@
                 "group": "MCP",
                 "drilldown": false,
                 "pages": [
-                  "api-reference/endpoint/mcpgetbyid",
-                  "api-reference/endpoint/mcpget",
                   "api-reference/endpoint/mcpcreate",
+                  "api-reference/endpoint/mcpgetbyid",
+                  "api-reference/endpoint/mcpget",                  
                   "api-reference/endpoint/mcpupdate",
                   "api-reference/endpoint/mcpdelete"
                 ]
@@ -107,9 +107,9 @@
                 "group": "API Tools",
                 "drilldown": false,
                 "pages": [
-                  "api-reference/endpoint/toolgetbyid",
-                  "api-reference/endpoint/toolget",
                   "api-reference/endpoint/toolcreate",
+                  "api-reference/endpoint/toolgetbyid",
+                  "api-reference/endpoint/toolget",               
                   "api-reference/endpoint/toolupdate",
                   "api-reference/endpoint/tooldelete"
                 ]
