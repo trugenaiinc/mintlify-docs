@@ -140,8 +140,8 @@
     }
   },
   "logo": {
-    "light": "/logo/trugen-logo.svg",
-    "dark": "/logo/trugen-logo3.svg"
+    "light": "/logo/light-mode.svg",
+    "dark": "/logo/dark-mode.svg"
   },
   "navbar": {
     "links": [
