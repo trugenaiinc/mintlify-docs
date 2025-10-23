@@ -91,10 +91,40 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid API key"
+            "description": "Unauthorized – invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve mcp configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -244,10 +274,40 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized - Missing or invalid API key"
+            "description": "Unauthorized - Missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           }
         }
       }
@@ -280,16 +340,76 @@
             "description": "MCP deleted successfully (no content returned)"
           },
           "400": {
-            "description": "Invalid MCP ID"
+            "description": "Invalid MCP ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – Missing or invalid API key"
+            "description": "Unauthorized – Missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "MCP not found"
+            "description": "MCP not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "MCP not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve mcp configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -470,16 +590,76 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – Missing or invalid API key"
+            "description": "Unauthorized – Missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "MCP not found"
+            "description": "MCP not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "MCP not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve mcp configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -574,13 +754,58 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid API key"
+            "description": "Unauthorized – invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "MCP not found"
+            "description": "MCP not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "MCP not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve mcp configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -666,10 +891,40 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid or missing API key"
+            "description": "Unauthorized – invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve tool configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -852,13 +1107,58 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve tool configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -913,13 +1213,58 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid or missing API key"
+            "description": "Unauthorized – invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Tool not found"
+            "description": "Tool not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Tool not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve tool configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -1136,16 +1481,76 @@
             }
           },
           "400": {
-            "description": "Invalid input data"
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – invalid or missing API key"
+            "description": "Unauthorized – invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Tool not found"
+            "description": "Tool not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Tool not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve tool configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -1240,13 +1645,58 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid or missing API key"
+            "description": "Unauthorized – invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Tool not found"
+            "description": "Tool not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Tool not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve tool configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -1377,10 +1827,40 @@
             }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to create template configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -1490,13 +1970,58 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve template configuration"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1591,7 +2116,22 @@
             }
           },
           "404": {
-            "description": "Template not found"
+            "description": "Template not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Template not found"
+                }
+              }
+            }
           }
         }
       },
@@ -1737,16 +2277,76 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Template not found"
+            "description": "Template not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Template not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve template configuration"
+                }
+              }
+            }
           }
         },
         "security": [
@@ -1788,7 +2388,22 @@
             }
           },
           "404": {
-            "description": "Template not found"
+            "description": "Template not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Template not found"
+                }
+              }
+            }
           }
         }
       }
@@ -1992,16 +2607,51 @@
             }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve agent configurations"
+                }
+              }
+            }
           }
         }
       },
       "post": {
         "summary": "Create an agent configuration",
         "description": "Creates a new agent configuration with avatars, knowledge bases, tools, and MCPs",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -2257,10 +2907,40 @@
             }
           },
           "400": {
-            "description": "Bad request"
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Error creating agent config"
+                }
+              }
+            }
           }
         }
       }
@@ -2370,13 +3050,58 @@
             }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Agent not found"
+            "description": "Agent not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Agent configuration not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve agent configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -2567,16 +3292,76 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Agent not found"
+            "description": "Agent not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Agent configuration not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to update agent configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -2614,13 +3399,58 @@
             }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
+            "description": "Unauthorized – missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Agent not found"
+            "description": "Agent not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Agent configuration not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to delete agent configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -2696,16 +3526,58 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key"
-          },
-          "404": {
-            "description": "Template not found"
+            "description": "Unauthorized – missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to fetch template/avatar config"
+                }
+              }
+            }
           }
         }
       }
@@ -2812,10 +3684,40 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid or missing API key"
+            "description": "Unauthorized – invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve Provider configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -2850,10 +3752,40 @@
             }
           },
           "404": {
-            "description": "Avatar not found"
+            "description": "Avatar not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Avatar not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve Avatar configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -3037,13 +3969,58 @@
             }
           },
           "400": {
-            "description": "Invalid request or file/text upload error"
+            "description": "Invalid request or file/text upload error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – invalid or missing API key"
+            "description": "Unauthorized – invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Server error"
+            "description": "Server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve knowledge base configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -3166,10 +4143,40 @@
             }
           },
           "401": {
-            "description": "Unauthorized – Invalid or missing API key"
+            "description": "Unauthorized – Invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve knowledge base configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -3343,16 +4350,76 @@
             }
           },
           "400": {
-            "description": "Invalid Knowledge Base ID"
+            "description": "Invalid Knowledge Base ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – Missing or invalid API key"
+            "description": "Unauthorized – Missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Knowledge Base not found"
+            "description": "Knowledge Base not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Knowledge Base not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve knowledge base configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -3443,16 +4510,76 @@
             }
           },
           "400": {
-            "description": "Invalid request body"
+            "description": "Invalid request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – Missing or invalid API key"
+            "description": "Unauthorized – Missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Knowledge Base not found"
+            "description": "Knowledge Base not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Knowledge Base not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve knowledge base configuration"
+                }
+              }
+            }
           }
         }
       },
@@ -3509,13 +4636,58 @@
             }
           },
           "401": {
-            "description": "Unauthorized – Missing or invalid API key"
+            "description": "Unauthorized – Missing or invalid API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Knowledge Base not found"
+            "description": "Knowledge Base not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Knowledge Base not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve knowledge base configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -3553,7 +4725,7 @@
                   "text": {
                     "type": "string",
                     "description": "Text or URL content to be added to the Knowledge Base",
-                    "example": "https://example.com/"
+                    "example": "sample knowledge base text or URL like https://example.com/"
                   },
                   "input": {
                     "type": "string",
@@ -3605,16 +4777,76 @@
             }
           },
           "400": {
-            "description": "Invalid input data"
+            "description": "Invalid input data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Invalid request body"
+                }
+              }
+            }
           },
           "401": {
-            "description": "Unauthorized – Invalid or missing API key"
+            "description": "Unauthorized – Invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Knowledge Base not found"
+            "description": "Knowledge Base not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Knowledge Base not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve knowledge base configuration"
+                }
+              }
+            }
           }
         }
       }
@@ -3673,13 +4905,58 @@
             }
           },
           "401": {
-            "description": "Unauthorized – Invalid or missing API key"
+            "description": "Unauthorized – Invalid or missing API key",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
           },
           "404": {
-            "description": "Document not found"
+            "description": "Document not found",
+             "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Document not found"
+                }
+              }
+            }
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve knowledge base configuration"
+                }
+              }
+            }
           }
         }
       }
