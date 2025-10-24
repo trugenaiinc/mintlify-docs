@@ -2462,7 +2462,7 @@
                         "items": {
                           "type": "object",
                           "properties": {
-                            "avatar_id": {
+                            "avatar_key_id": {
                               "type": "string"
                             },
                             "persona_name": {
@@ -2582,7 +2582,7 @@
                     "agent_system_prompt": "prompt",
                     "avatars": [
                       {
-                        "avatar_id": "gabby",
+                        "avatar_key_id": "gabby",
                         "persona_name": "dg",
                         "persona_prompt": "prompt",
                         "config": {
@@ -2761,7 +2761,7 @@
                         "timeout": {
                           "type": "integer"
                         },
-                        "avatar_id": {
+                        "avatar_key_id": {
                           "type": "string"
                         },
                         "avatar_data_source": {
@@ -3219,7 +3219,7 @@
                     "items": {
                       "type": "object",
                       "properties": {
-                        "avatar_id": {
+                        "avatar_key_id": {
                           "type": "string"
                         },
                         "persona_name": {
@@ -3280,7 +3280,7 @@
                 "avatars": [
                   {
                     "timeout": 300,
-                    "avatar_id": "gabby",
+                    "avatar_key_id": "gabby",
                     "avatar_data_source": "avatar-inference-data/",
                     "frame_rate": 25,
                     "silence_padding": 0.05,
@@ -3290,7 +3290,7 @@
                   },
                   {
                     "timeout": 300,
-                    "avatar_id": "ali_gfpgan",
+                    "avatar_key_id": "ali_gfpgan",
                     "avatar_data_source": "avatar-inference-data/",
                     "frame_rate": 25,
                     "silence_padding": 0.05,
