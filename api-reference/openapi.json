@@ -13,8 +13,8 @@
   "paths": {
     "/mcp": {
       "get": {
-        "summary": "Get MCP configurations",
-        "description": "Fetches a list of available MCP configurations. Requires `x-api-key` authentication.",
+        "summary": "Get MCP details",
+        "description": "Fetches a list of available MCP details. Requires `x-api-key` authentication.",
         "security": [
           {
             "apiKeyAuth": []
@@ -92,7 +92,7 @@
           },
           "401": {
             "description": "Unauthorized – invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -121,7 +121,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve mcp configuration"
+                  "error": "Failed to retrieve mcp details"
                 }
               }
             }
@@ -130,7 +130,7 @@
       },
       "post": {
         "summary": "Create MCP",
-        "description": "Create a new MCP configuration.",
+        "description": "Create a new MCP details.",
         "operationId": "createMCP",
         "security": [
           {
@@ -293,7 +293,7 @@
           },
           "401": {
             "description": "Unauthorized - Missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -315,7 +315,7 @@
     "/mcp/{id}": {
       "delete": {
         "summary": "Delete MCP",
-        "description": "Deletes an MCP configuration by its ID. Requires `x-api-key` authentication.",
+        "description": "Deletes an MCP details by its ID. Requires `x-api-key` authentication.",
         "operationId": "deleteMCP",
         "security": [
           {
@@ -327,7 +327,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Unique identifier of the MCP configuration",
+            "description": "Unique identifier of the MCP details",
             "schema": {
               "type": "string",
               "format": "uuid",
@@ -359,7 +359,7 @@
           },
           "401": {
             "description": "Unauthorized – Missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -377,7 +377,7 @@
           },
           "404": {
             "description": "MCP not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -406,7 +406,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve mcp configuration"
+                  "error": "Failed to retrieve mcp details"
                 }
               }
             }
@@ -415,7 +415,7 @@
       },
       "put": {
         "summary": "Update MCP",
-        "description": "Updates an existing MCP configuration by its ID. Requires `x-api-key` authentication.",
+        "description": "Updates an existing MCP details by its ID. Requires `x-api-key` authentication.",
         "operationId": "updateMCP",
         "security": [
           {
@@ -427,7 +427,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Unique identifier of the MCP configuration",
+            "description": "Unique identifier of the MCP details",
             "schema": {
               "type": "string",
               "format": "uuid",
@@ -609,7 +609,7 @@
           },
           "401": {
             "description": "Unauthorized – Missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -627,7 +627,7 @@
           },
           "404": {
             "description": "MCP not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -656,7 +656,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve mcp configuration"
+                  "error": "Failed to retrieve mcp details"
                 }
               }
             }
@@ -665,7 +665,7 @@
       },
       "get": {
         "summary": "Get MCP by ID",
-        "description": "Fetch a single MCP configuration by its unique ID. Requires `x-api-key` authentication.",
+        "description": "Fetch a single MCP details by its unique ID. Requires `x-api-key` authentication.",
         "operationId": "getMCPById",
         "security": [
           {
@@ -677,7 +677,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Unique identifier of the MCP configuration",
+            "description": "Unique identifier of the MCP details",
             "schema": {
               "type": "string",
               "format": "uuid",
@@ -755,7 +755,7 @@
           },
           "401": {
             "description": "Unauthorized – invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -773,7 +773,7 @@
           },
           "404": {
             "description": "MCP not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -802,7 +802,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve mcp configuration"
+                  "error": "Failed to retrieve mcp details"
                 }
               }
             }
@@ -812,8 +812,8 @@
     },
     "/tool": {
       "get": {
-        "summary": "Get all Tool configurations",
-        "description": "Fetches all tool configurations available in the system. Requires `x-api-key` authentication.",
+        "summary": "Get all Tool details",
+        "description": "Fetches all tool details available in the system. Requires `x-api-key` authentication.",
         "security": [
           {
             "apiKeyAuth": []
@@ -821,7 +821,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of tool configurations",
+            "description": "A list of tool details",
             "content": {
               "application/json": {
                 "schema": {
@@ -892,7 +892,7 @@
           },
           "401": {
             "description": "Unauthorized – invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -921,7 +921,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve tool configuration"
+                  "error": "Failed to retrieve tool details"
                 }
               }
             }
@@ -929,8 +929,8 @@
         }
       },
       "post": {
-        "summary": "Create a new Tool configuration",
-        "description": "Creates a new tool configuration for use within the Trugen AI system.",
+        "summary": "Create a new Tool details",
+        "description": "Creates a new tool details for use within the Trugen AI system.",
         "operationId": "createTool",
         "security": [
           {
@@ -1086,7 +1086,7 @@
         },
         "responses": {
           "201": {
-            "description": "Tool configuration created successfully",
+            "description": "Tool details created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1099,7 +1099,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Tools configuration created successfully"
+                      "example": "Tools created successfully"
                     }
                   }
                 }
@@ -1126,7 +1126,7 @@
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1155,7 +1155,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve tool configuration"
+                  "error": "Failed to retrieve tool details"
                 }
               }
             }
@@ -1165,8 +1165,8 @@
     },
     "/tool/{id}": {
       "delete": {
-        "summary": "Delete Tool Configuration",
-        "description": "Deletes a tool configuration by its unique ID.",
+        "summary": "Delete Tool details",
+        "description": "Deletes a tool details by its unique ID.",
         "operationId": "deleteToolById",
         "parameters": [
           {
@@ -1188,7 +1188,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Tool configuration deleted successfully",
+            "description": "Tool details deleted successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1201,7 +1201,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Tool configuration deleted successfully"
+                      "example": "Tool details deleted successfully"
                     }
                   },
                   "required": [
@@ -1214,7 +1214,7 @@
           },
           "401": {
             "description": "Unauthorized – invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1232,7 +1232,7 @@
           },
           "404": {
             "description": "Tool not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1261,7 +1261,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve tool configuration"
+                  "error": "Failed to retrieve tool details"
                 }
               }
             }
@@ -1269,8 +1269,8 @@
         }
       },
       "put": {
-        "summary": "Update Tool Configuration",
-        "description": "Updates an existing tool configuration using its unique ID.",
+        "summary": "Update Tool details",
+        "description": "Updates an existing tool details using its unique ID.",
         "operationId": "updateToolById",
         "parameters": [
           {
@@ -1456,7 +1456,7 @@
         },
         "responses": {
           "200": {
-            "description": "Tool configuration updated successfully",
+            "description": "Tool details updated successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1469,7 +1469,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Tool configuration updated successfully"
+                      "example": "Tool details updated successfully"
                     }
                   },
                   "required": [
@@ -1500,7 +1500,7 @@
           },
           "401": {
             "description": "Unauthorized – invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1518,7 +1518,7 @@
           },
           "404": {
             "description": "Tool not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1547,7 +1547,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve tool configuration"
+                  "error": "Failed to retrieve tool details"
                 }
               }
             }
@@ -1556,14 +1556,14 @@
       },
       "get": {
         "summary": "Get Tool by ID",
-        "description": "Fetches a specific tool configuration using its unique ID. Requires `x-api-key` authentication.",
+        "description": "Fetches a specific tool details using its unique ID. Requires `x-api-key` authentication.",
         "operationId": "getToolById",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "The UUID of the tool configuration",
+            "description": "The UUID of the tool",
             "schema": {
               "type": "string",
               "format": "uuid",
@@ -1578,7 +1578,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Tool configuration details retrieved successfully",
+            "description": "Tool details retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1646,7 +1646,7 @@
           },
           "401": {
             "description": "Unauthorized – invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1664,7 +1664,7 @@
           },
           "404": {
             "description": "Tool not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1693,7 +1693,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve tool configuration"
+                  "error": "Failed to retrieve tool details"
                 }
               }
             }
@@ -1703,8 +1703,8 @@
     },
     "/template": {
       "get": {
-        "summary": "Retrieve all Template configurations",
-        "description": "Fetches a list of all template configurations stored within the Trugen AI system.",
+        "summary": "Retrieve all Template details",
+        "description": "Fetches a list of all template details stored within the Trugen AI system.",
         "operationId": "getAllTemplates",
         "security": [
           {
@@ -1713,7 +1713,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of template configurations retrieved successfully",
+            "description": "List of template details retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1733,7 +1733,7 @@
                       },
                       "tools": {
                         "type": "object",
-                        "description": "Serialized JSON object representing tools configuration.",
+                        "description": "Serialized JSON object representing tool details.",
                         "example": {}
                       },
                       "tool": {
@@ -1745,7 +1745,7 @@
                       },
                       "config": {
                         "type": "object",
-                        "description": "Configuration settings for the template.",
+                        "description": "settings for the template.",
                         "properties": {
                           "systemPrompt": {
                             "type": "string"
@@ -1828,7 +1828,7 @@
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1857,7 +1857,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to create template configuration"
+                  "error": "Failed to create template details"
                 }
               }
             }
@@ -1865,8 +1865,8 @@
         }
       },
       "post": {
-        "summary": "Create a new Template configuration",
-        "description": "Creates a new template configuration for use within the Trugen AI system.",
+        "summary": "Create a new Template details",
+        "description": "Creates a new template details for use within the Trugen AI system.",
         "operationId": "createTemplate",
         "requestBody": {
           "required": true,
@@ -1949,7 +1949,7 @@
         },
         "responses": {
           "201": {
-            "description": "Template configuration created successfully",
+            "description": "Template created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1962,7 +1962,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Template configuration created successfully"
+                      "example": "Template created successfully"
                     }
                   }
                 }
@@ -1971,7 +1971,7 @@
           },
           "400": {
             "description": "Invalid request body",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1989,7 +1989,7 @@
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2018,7 +2018,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve template configuration"
+                  "error": "Failed to retrieve template details"
                 }
               }
             }
@@ -2041,11 +2041,11 @@
             "type": "string",
             "format": "uuid"
           },
-          "description": "Unique identifier for the template configuration"
+          "description": "Unique identifier for the template"
         }
       ],
       "get": {
-        "summary": "Retrieve a Template configuration by ID",
+        "summary": "Retrieve a Template details by ID",
         "operationId": "getTemplateById",
         "security": [
           {
@@ -2054,7 +2054,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Template configuration retrieved successfully",
+            "description": "Template details retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -2117,7 +2117,7 @@
           },
           "404": {
             "description": "Template not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2136,15 +2136,15 @@
         }
       },
       "put": {
-        "summary": "Update an existing Template configuration",
-        "description": "Updates the details of a specific template configuration identified by its unique ID.",
+        "summary": "Update an existing Template details",
+        "description": "Updates the details of a specific template details identified by its unique ID.",
         "operationId": "updateTemplate",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Unique identifier for the template configuration to update",
+            "description": "Unique identifier for the template to update",
             "schema": {
               "type": "string",
               "format": "uuid",
@@ -2256,7 +2256,7 @@
         },
         "responses": {
           "200": {
-            "description": "Template configuration updated successfully",
+            "description": "Template details updated successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -2269,7 +2269,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Template configuration updated successfully"
+                      "example": "Template details updated successfully"
                     }
                   }
                 }
@@ -2296,7 +2296,7 @@
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2314,7 +2314,7 @@
           },
           "404": {
             "description": "Template not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2343,7 +2343,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve template configuration"
+                  "error": "Failed to retrieve template details"
                 }
               }
             }
@@ -2356,7 +2356,7 @@
         ]
       },
       "delete": {
-        "summary": "Delete a Template configuration",
+        "summary": "Delete a Template details",
         "operationId": "deleteTemplate",
         "security": [
           {
@@ -2365,7 +2365,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Template configuration deleted successfully",
+            "description": "Template details deleted successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -2382,14 +2382,14 @@
                 },
                 "example": {
                   "id": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9",
-                  "message": "Template configuration deleted successfully"
+                  "message": "Template details deleted successfully"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2407,7 +2407,7 @@
           },
           "404": {
             "description": "Template not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2428,8 +2428,8 @@
     },
     "/agent": {
       "get": {
-        "summary": "Retrieve all Agent configurations",
-        "description": "Fetches a list of all agent configurations stored within the Trugen AI system, including associated avatars, knowledge bases, and callback settings.",
+        "summary": "Retrieve all Agent details",
+        "description": "Fetches a list of all agent details stored within the Trugen AI system, including associated avatars, knowledge bases, and callback settings.",
         "operationId": "getAllAgents",
         "security": [
           {
@@ -2438,7 +2438,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List of agent configurations retrieved successfully",
+            "description": "List of agent details retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -2458,7 +2458,7 @@
                       },
                       "avatars": {
                         "type": "array",
-                        "description": "List of avatars linked to this agent configuration.",
+                        "description": "List of avatars linked to this agent.",
                         "items": {
                           "type": "object",
                           "properties": {
@@ -2498,7 +2498,7 @@
                       },
                       "config": {
                         "type": "object",
-                        "description": "Agent-specific configuration settings.",
+                        "description": "Agent-specific settings.",
                         "properties": {
                           "systemPrompt": {
                             "type": "string"
@@ -2545,7 +2545,7 @@
                       },
                       "tools": {
                         "type": "object",
-                        "description": "Serialized JSON object representing tool configurations.",
+                        "description": "Serialized JSON object representing tool details.",
                         "example": {}
                       },
                       "tool": {
@@ -2626,7 +2626,7 @@
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2644,7 +2644,7 @@
           },
           "500": {
             "description": "Internal server error",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2655,16 +2655,18 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve agent configurations"
+                  "error": "Failed to retrieve agent details"
                 }
               }
             }
           }
         }
-      },
+      }
+    },
+    "/agent/api": {
       "post": {
-        "summary": "Create an agent configuration",
-        "description": "Creates a new agent configuration with avatars, knowledge bases, tools, and MCPs",
+        "summary": "Create an agent",
+        "description": "Creates a new agent with avatar IDs, knowledge bases, and additional settings",
         "security": [
           {
             "apiKeyAuth": []
@@ -2677,20 +2679,38 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "agent_name": {
-                    "type": "string"
+                  "avatar_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "List of avatar IDs to include in this agent"
                   },
-                  "agent_system_prompt": {
-                    "type": "string"
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the agent"
+                  },
+                  "system_prompt": {
+                    "type": "string",
+                    "description": "System prompt text defining the agent's persona or behavior"
                   },
                   "config": {
-                    "type": "object"
+                    "type": "object",
+                    "description": "General settings for the agent",
+                    "properties": {
+                      "timeout": {
+                        "type": "integer",
+                        "example": 240
+                      }
+                    }
                   },
-                  "tools": {
-                    "type": "object"
+                  "is_active": {
+                    "type": "boolean",
+                    "description": "Whether the agent is active"
                   },
                   "knowledge_base": {
                     "type": "array",
+                    "description": "List of knowledge bases linked to the agent",
                     "items": {
                       "type": "object",
                       "properties": {
@@ -2707,195 +2727,53 @@
                       ]
                     }
                   },
-                  "mcp": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
-                  "tool": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  },
                   "record": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether to record the agent's interactions"
                   },
                   "callback_url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "URL to send event callbacks to"
                   },
                   "callback_events": {
                     "type": "array",
+                    "description": "List of event names for which callbacks will be sent",
                     "items": {
                       "type": "string"
-                    }
-                  },
-                  "is_public": {
-                    "type": "boolean"
-                  },
-                  "is_active": {
-                    "type": "boolean"
-                  },
-                  "avatars": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "timeout": {
-                          "type": "integer"
-                        },
-                        "avatar_key_id": {
-                          "type": "string"
-                        },
-                        "avatar_data_source": {
-                          "type": "string"
-                        },
-                        "frame_rate": {
-                          "type": "integer"
-                        },
-                        "silence_padding": {
-                          "type": "number"
-                        },
-                        "is_face_enhancer_enabled": {
-                          "type": "boolean"
-                        },
-                        "persona_name": {
-                          "type": "string"
-                        },
-                        "persona_prompt": {
-                          "type": "string"
-                        },
-                        "conversational_context": {
-                          "type": "string"
-                        },
-                        "interpolation_config": {
-                          "type": "object",
-                          "properties": {
-                            "exp": {
-                              "type": "integer"
-                            },
-                            "enabled": {
-                              "type": "boolean"
-                            }
-                          }
-                        },
-                        "idle_timeout": {
-                          "type": "object",
-                          "properties": {
-                            "timeout": {
-                              "type": "integer"
-                            },
-                            "filler_phrases": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        },
-                        "welcome_message": {
-                          "type": "object",
-                          "properties": {
-                            "messages": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "wait_time": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "warning_exit_message": {
-                          "type": "object",
-                          "properties": {
-                            "messages": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "callout_before": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "exit_message": {
-                          "type": "object",
-                          "properties": {
-                            "messages": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            },
-                            "max_call_duration": {
-                              "type": "integer"
-                            }
-                          }
-                        },
-                        "exit_heads_up_message": {
-                          "type": "object",
-                          "properties": {
-                            "callout_before": {
-                              "type": "integer"
-                            },
-                            "messages": {
-                              "type": "array",
-                              "items": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        },
-                        "is_custom": {
-                          "type": "boolean"
-                        },
-                        "scene_analyzer_prompt": {
-                          "type": "object"
-                        },
-                        "eye_mask_replacement": {
-                          "type": "boolean"
-                        },
-                        "audio_features_type": {
-                          "type": "string"
-                        },
-                        "audio_features_window_length": {
-                          "type": "integer"
-                        },
-                        "scene_context_engine": {
-                          "type": "object"
-                        },
-                        "config": {
-                          "type": "object"
-                        }
-                      }
                     }
                   }
                 },
                 "required": [
-                  "agent_name",
-                  "agent_system_prompt",
-                  "config",
-                  "avatars"
+                  "avatar_ids",
+                  "name",
+                  "system_prompt",
+                  "config"
+                ]
+              },
+              "example": {
+                "avatar_ids": [
+                  "gabby",
+                  "ali_gfpgan"
+                ],
+                "name": "New Agent",
+                "system_prompt": "You are a helpful assistant",
+                "config": {
+                  "timeout": 240
+                },
+                "is_active": true,
+                "knowledge_base": [
+                  {
+                    "id": "4a0365e4-ced5-42f0-8933-b6880a0ce044",
+                    "name": "new kb 123"
+                  }
+                ],
+                "record": true,
+                "callback_url": "https://play.svix.com/in/e_pBuXcpDaVzRzwn3L5El4xFFlKnD/",
+                "callback_events": [
+                  "participant_left",
+                  "max_call_duration_warning",
+                  "max_call_duration_timeout",
+                  "action_found"
                 ]
               }
             }
@@ -2903,7 +2781,7 @@
         },
         "responses": {
           "200": {
-            "description": "Agent configuration created successfully",
+            "description": "Agent created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -2919,7 +2797,7 @@
                 },
                 "example": {
                   "id": "045302f0-9783-4ff2-846e-3888fb2a7894",
-                  "message": "Agent configuration created successfully"
+                  "message": "Agent created successfully"
                 }
               }
             }
@@ -2944,7 +2822,7 @@
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2973,7 +2851,7 @@
                   }
                 },
                 "example": {
-                  "error": "Error creating agent config"
+                  "error": "Error creating agent"
                 }
               }
             }
@@ -2991,11 +2869,11 @@
             "type": "string",
             "format": "uuid"
           },
-          "description": "Unique identifier for the Agent configuration"
+          "description": "Unique identifier for the Agent"
         }
       ],
       "get": {
-        "summary": "Retrieve an Agent configuration by ID",
+        "summary": "Retrieve an Agent by ID",
         "operationId": "getAgentById",
         "security": [
           {
@@ -3004,7 +2882,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Agent configuration retrieved successfully",
+            "description": "Agent retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -3116,7 +2994,7 @@
                   }
                 },
                 "example": {
-                  "message": "Agent configuration not found"
+                  "message": "Agent details not found"
                 }
               }
             }
@@ -3134,7 +3012,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve agent configuration"
+                  "error": "Failed to retrieve agent"
                 }
               }
             }
@@ -3142,8 +3020,8 @@
         }
       },
       "put": {
-        "summary": "Update an existing Agent configuration",
-        "description": "Updates an Agent configuration with new avatar, tool, knowledge base, or system settings.",
+        "summary": "Update an existing Agent",
+        "description": "Updates an Agent with new avatar, tool, knowledge base, or system settings.",
         "operationId": "updateAgent",
         "security": [
           {
@@ -3305,7 +3183,7 @@
         },
         "responses": {
           "200": {
-            "description": "Agent configuration updated successfully",
+            "description": "Agent updated successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -3322,14 +3200,14 @@
                 },
                 "example": {
                   "id": "098f083e-64c3-4c84-b3af-1b3e0b2538b3",
-                  "message": "Agent configuration updated successfully"
+                  "message": "Agent updated successfully"
                 }
               }
             }
           },
           "400": {
             "description": "Invalid request body",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3347,7 +3225,7 @@
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3365,7 +3243,7 @@
           },
           "404": {
             "description": "Agent not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3376,7 +3254,7 @@
                   }
                 },
                 "example": {
-                  "message": "Agent configuration not found"
+                  "message": "Agent details not found"
                 }
               }
             }
@@ -3394,7 +3272,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to update agent configuration"
+                  "error": "Failed to update agent"
                 }
               }
             }
@@ -3402,8 +3280,8 @@
         }
       },
       "delete": {
-        "summary": "Delete an Agent configuration by ID",
-        "description": "Deletes a specific Agent configuration permanently.",
+        "summary": "Delete an Agent by ID",
+        "description": "Deletes a specific Agent permanently.",
         "operationId": "deleteAgent",
         "security": [
           {
@@ -3412,7 +3290,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Agent configuration deleted successfully",
+            "description": "Agent deleted successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -3429,14 +3307,14 @@
                 },
                 "example": {
                   "id": "97e9ed09-35a7-4bfa-94ab-705fc1ad725b",
-                  "message": "Agent configuration deleted successfully"
+                  "message": "Agent deleted successfully"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3465,7 +3343,7 @@
                   }
                 },
                 "example": {
-                  "message": "Agent configuration not found"
+                  "message": "Agent details not found"
                 }
               }
             }
@@ -3483,7 +3361,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to delete agent configuration"
+                  "error": "Failed to delete agent"
                 }
               }
             }
@@ -3493,7 +3371,7 @@
     },
     "/agent/bytemplate": {
       "post": {
-        "summary": "Create a new Agent configuration from a template",
+        "summary": "Create a new Agent from a template",
         "operationId": "createAgentByTemplate",
         "security": [
           {
@@ -3537,7 +3415,7 @@
         },
         "responses": {
           "200": {
-            "description": "Agent configuration created successfully",
+            "description": "Agent created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -3546,7 +3424,7 @@
                     "id": {
                       "type": "string",
                       "format": "uuid",
-                      "description": "ID of the newly created agent configuration"
+                      "description": "ID of the newly created agent"
                     },
                     "message": {
                       "type": "string",
@@ -3555,7 +3433,7 @@
                   },
                   "example": {
                     "id": "51ed8d70-9379-422f-aed4-f9f2b293ba4a",
-                    "message": "Agent configuration created successfully"
+                    "message": "Agent created successfully"
                   }
                 }
               }
@@ -3563,7 +3441,7 @@
           },
           "400": {
             "description": "Invalid request body",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3581,7 +3459,7 @@
           },
           "401": {
             "description": "Unauthorized – missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3599,7 +3477,7 @@
           },
           "500": {
             "description": "Internal server error",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3610,7 +3488,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to fetch template/avatar config"
+                  "error": "Failed to fetch template/avatar"
                 }
               }
             }
@@ -3630,7 +3508,7 @@
         ],
         "responses": {
           "200": {
-            "description": "A list of provider configurations",
+            "description": "A list of provider details",
             "content": {
               "application/json": {
                 "schema": {
@@ -3721,7 +3599,7 @@
           },
           "401": {
             "description": "Unauthorized – invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3750,7 +3628,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve Provider configuration"
+                  "error": "Failed to retrieve Provider details"
                 }
               }
             }
@@ -3760,8 +3638,8 @@
     },
     "/public/avatar/{agentId}": {
       "get": {
-        "summary": "Get Public Avatar Configuration",
-        "description": "Fetch a full public avatar configuration and metadata by agent ID.",
+        "summary": "Get Public Avatar",
+        "description": "Fetch a full public avatar and metadata by agent ID.",
         "operationId": "getPublicAvatar",
         "parameters": [
           {
@@ -3778,7 +3656,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response with full avatar configuration",
+            "description": "Successful response with full avatar",
             "content": {
               "application/json": {
                 "schema": {
@@ -3789,7 +3667,7 @@
           },
           "404": {
             "description": "Avatar not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -3818,7 +3696,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve Avatar configuration"
+                  "error": "Failed to retrieve Avatar"
                 }
               }
             }
@@ -3829,7 +3707,7 @@
     "/public/avatar/": {
       "get": {
         "summary": "Get all avatars",
-        "description": "Fetch a list of avatars along with their detailed configuration and metadata.",
+        "description": "Fetch a list of avatars along with their detailed and metadata.",
         "security": [
           {
             "apiKeyAuth": []
@@ -4024,7 +3902,7 @@
           },
           "401": {
             "description": "Unauthorized – invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4053,7 +3931,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve knowledge base configuration"
+                  "error": "Failed to retrieve knowledge base"
                 }
               }
             }
@@ -4180,7 +4058,7 @@
           },
           "401": {
             "description": "Unauthorized – Invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4209,7 +4087,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve knowledge base configuration"
+                  "error": "Failed to retrieve knowledge base"
                 }
               }
             }
@@ -4405,7 +4283,7 @@
           },
           "401": {
             "description": "Unauthorized – Missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4423,7 +4301,7 @@
           },
           "404": {
             "description": "Knowledge Base not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4452,7 +4330,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve knowledge base configuration"
+                  "error": "Failed to retrieve knowledge base"
                 }
               }
             }
@@ -4460,8 +4338,8 @@
         }
       },
       "put": {
-        "summary": "Update Knowledge Base Configuration",
-        "description": "Updates the specified Knowledge Base configuration by ID. Requires `x-api-key` authentication.",
+        "summary": "Update Knowledge Base",
+        "description": "Updates the specified Knowledge Base by ID. Requires `x-api-key` authentication.",
         "operationId": "updateKnowledgeBase",
         "security": [
           {
@@ -4530,7 +4408,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Knowledge Base configuration updated successfully"
+                      "example": "Knowledge Base updated successfully"
                     }
                   },
                   "required": [
@@ -4540,7 +4418,7 @@
                 },
                 "example": {
                   "id": "ff152cd9-efb6-4367-a545-b861c9fbd3d0",
-                  "message": "Knowledge Base configuration updated successfully"
+                  "message": "Knowledge Base updated successfully"
                 }
               }
             }
@@ -4565,7 +4443,7 @@
           },
           "401": {
             "description": "Unauthorized – Missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4583,7 +4461,7 @@
           },
           "404": {
             "description": "Knowledge Base not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4612,7 +4490,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve knowledge base configuration"
+                  "error": "Failed to retrieve knowledge base"
                 }
               }
             }
@@ -4620,8 +4498,8 @@
         }
       },
       "delete": {
-        "summary": "Delete Knowledge Base Configuration",
-        "description": "Deletes a Knowledge Base configuration by ID. Requires `x-api-key` authentication.",
+        "summary": "Delete Knowledge Base",
+        "description": "Deletes a Knowledge Base by ID. Requires `x-api-key` authentication.",
         "operationId": "deleteKnowledgeBase",
         "security": [
           {
@@ -4656,7 +4534,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Knowledge base configuration deleted successfully"
+                      "example": "Knowledge base deleted successfully"
                     }
                   },
                   "required": [
@@ -4666,14 +4544,14 @@
                 },
                 "example": {
                   "id": "ff152cd9-efb6-4367-a545-b861c9fbd3d0",
-                  "message": "Knowledge base configuration deleted successfully"
+                  "message": "Knowledge base deleted successfully"
                 }
               }
             }
           },
           "401": {
             "description": "Unauthorized – Missing or invalid API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4691,7 +4569,7 @@
           },
           "404": {
             "description": "Knowledge Base not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4720,7 +4598,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve knowledge base configuration"
+                  "error": "Failed to retrieve knowledge base"
                 }
               }
             }
@@ -4832,7 +4710,7 @@
           },
           "401": {
             "description": "Unauthorized – Invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4850,7 +4728,7 @@
           },
           "404": {
             "description": "Knowledge Base not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4879,7 +4757,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve knowledge base configuration"
+                  "error": "Failed to retrieve knowledge base"
                 }
               }
             }
@@ -4942,7 +4820,7 @@
           },
           "401": {
             "description": "Unauthorized – Invalid or missing API key",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4960,7 +4838,7 @@
           },
           "404": {
             "description": "Document not found",
-             "content": {
+            "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -4989,7 +4867,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve knowledge base configuration"
+                  "error": "Failed to retrieve knowledge base"
                 }
               }
             }
