@@ -2496,6 +2496,9 @@
                       "callback_url": {
                         "type": "string"
                       },
+                      "email": {
+                        "type": "string"
+                      },
                       "config": {
                         "type": "object",
                         "description": "Agent-specific settings.",
@@ -2580,6 +2583,7 @@
                     "id": "045302f0-9783-4ff2-846e-3888fb2a7894",
                     "agent_name": "dg",
                     "agent_system_prompt": "prompt",
+                    "email": "test@test.com",
                     "avatars": [
                       {
                         "avatar_key_id": "ava_ae61c9e28b",
@@ -2690,6 +2694,10 @@
                     "type": "string",
                     "description": "Name of the agent"
                   },
+                  "email": {
+                    "type": "string",
+                    "description": "email of the agent"
+                  },
                   "system_prompt": {
                     "type": "string",
                     "description": "System prompt text defining the agent's persona or behavior"
@@ -2747,7 +2755,8 @@
                   "avatar_ids",
                   "name",
                   "system_prompt",
-                  "config"
+                  "config",
+                  "email"
                 ]
               },
               "example": {
@@ -2757,6 +2766,7 @@
                 ],
                 "name": "New Agent",
                 "system_prompt": "You are a helpful assistant",
+                "email": "test@test.com",
                 "config": {
                   "timeout": 240
                 },
@@ -2891,6 +2901,9 @@
                     "id": {
                       "type": "string",
                       "format": "uuid"
+                    },
+                    "email": {
+                      "type": "string"
                     },
                     "agent_name": {
                       "type": "string"
@@ -3047,6 +3060,9 @@
                   "tools": {
                     "type": "object"
                   },
+                  "email": {
+                    "type": "string"
+                  },
                   "knowledge_base": {
                     "type": "array",
                     "items": {
@@ -3131,7 +3147,8 @@
                 "required": [
                   "agent_name",
                   "agent_system_prompt",
-                  "avatars"
+                  "avatars",
+                  "email"
                 ]
               },
               "example": {
@@ -3139,6 +3156,7 @@
                 "agent_system_prompt": "prompt",
                 "config": {},
                 "tools": {},
+                "email": "test@test.com",
                 "knowledge_base": [
                   {
                     "id": "bf5c4aeb-3b24-44b7-bb52-3fc31736b4ba",
@@ -3396,11 +3414,16 @@
                     "type": "string",
                     "format": "uuid",
                     "description": "ID of the template to use for creating the agent"
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "Email to use for creating the agent"
                   }
                 },
                 "required": [
                   "avatar_ids",
-                  "template_id"
+                  "template_id",
+                  "email"
                 ]
               },
               "example": {
@@ -3408,7 +3431,8 @@
                   "ava_ed3a666dc5",
                   "ava_ae61c9e28b"
                 ],
-                "template_id": "76d9ff1d-b1d5-4dee-9b9a-d4c4d58c9c55"
+                "template_id": "76d9ff1d-b1d5-4dee-9b9a-d4c4d58c9c55",
+                "email": "test@test.com"
               }
             }
           }
