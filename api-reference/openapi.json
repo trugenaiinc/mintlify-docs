@@ -2582,7 +2582,7 @@
                     "agent_system_prompt": "prompt",
                     "avatars": [
                       {
-                        "avatar_key_id": "gabby",
+                        "avatar_key_id": "ava_ae61c9e28b",
                         "persona_name": "dg",
                         "persona_prompt": "prompt",
                         "config": {
@@ -2752,8 +2752,8 @@
               },
               "example": {
                 "avatar_ids": [
-                  "gabby",
-                  "ali_gfpgan"
+                  "ava_ae61c9e28b",
+                  "ava_ed3a666dc5"
                 ],
                 "name": "New Agent",
                 "system_prompt": "You are a helpful assistant",
@@ -3158,7 +3158,7 @@
                 "avatars": [
                   {
                     "timeout": 300,
-                    "avatar_key_id": "gabby",
+                    "avatar_key_id": "ava_ed3a666dc5",
                     "avatar_data_source": "avatar-inference-data/",
                     "frame_rate": 25,
                     "silence_padding": 0.05,
@@ -3168,7 +3168,7 @@
                   },
                   {
                     "timeout": 300,
-                    "avatar_key_id": "ali_gfpgan",
+                    "avatar_key_id": "ava_ae61c9e28b",
                     "avatar_data_source": "avatar-inference-data/",
                     "frame_rate": 25,
                     "silence_padding": 0.05,
@@ -3405,8 +3405,8 @@
               },
               "example": {
                 "avatar_ids": [
-                  "gabby",
-                  "ali_gfpgan"
+                  "ava_ed3a666dc5",
+                  "ava_ae61c9e28b"
                 ],
                 "template_id": "76d9ff1d-b1d5-4dee-9b9a-d4c4d58c9c55"
               }
@@ -3730,7 +3730,7 @@
                       },
                       "avatar_key_id": {
                         "type": "string",
-                        "example": "gabby"
+                        "example": "ava_ed3a666dc5"
                       },
                       "avatar_name": {
                         "type": "string",
