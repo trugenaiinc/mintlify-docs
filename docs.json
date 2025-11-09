@@ -20,17 +20,6 @@
               "quickstart",
               "development"
             ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
-            ]
           }
         ]
       },
@@ -49,7 +38,7 @@
               "api-reference/endpoint/agentcreate",
               "api-reference/endpoint/agentcreatebytemplate",
               "api-reference/endpoint/agentgetbyid",
-              "api-reference/endpoint/agentget",              
+              "api-reference/endpoint/agentget",
               "api-reference/endpoint/agentupdate",
               "api-reference/endpoint/agentdelete"
             ]
@@ -90,26 +79,23 @@
           },
           {
             "group": "Tools",
-            "expanded": true,
             "pages": [
               {
                 "group": "MCP",
-                "drilldown": false,
                 "pages": [
                   "api-reference/endpoint/mcpcreate",
                   "api-reference/endpoint/mcpgetbyid",
-                  "api-reference/endpoint/mcpget",                  
+                  "api-reference/endpoint/mcpget",
                   "api-reference/endpoint/mcpupdate",
                   "api-reference/endpoint/mcpdelete"
                 ]
               },
               {
                 "group": "API Tools",
-                "drilldown": false,
                 "pages": [
                   "api-reference/endpoint/toolcreate",
                   "api-reference/endpoint/toolgetbyid",
-                  "api-reference/endpoint/toolget",               
+                  "api-reference/endpoint/toolget",
                   "api-reference/endpoint/toolupdate",
                   "api-reference/endpoint/tooldelete"
                 ]
@@ -125,16 +111,6 @@
           "anchor": "Documentation",
           "href": "https://trugen.ai/docs",
           "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://trugen.ai/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://trugen.ai/blog",
-          "icon": "newspaper"
         }
       ]
     }
