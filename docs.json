@@ -14,12 +14,26 @@
         "tab": "Documentation",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Introduction",
+            "pages": ["docs/overview", "docs/quickstart"]
+          },
+          {
+            "group": "Agents",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "docs/agents/conversational-video-agents",
+              "docs/agents/pipeline",
+              "docs/agents/templates",
+              "docs/agents/knowledgebase",
+              "docs/agents/callback"
             ]
+          },
+          {
+            "group": "Integrations",
+            "pages": ["docs/integrations/iframe"]
+          },
+          {
+            "group": "Avatars",
+            "pages": ["docs/avatars/overview"]
           }
         ]
       },
@@ -28,9 +42,7 @@
         "groups": [
           {
             "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "pages": ["api-reference/overview"]
           },
           {
             "group": "Video Agents",
@@ -67,15 +79,11 @@
           },
           {
             "group": "Providers",
-            "pages": [
-              "api-reference/endpoint/providerget"
-            ]
+            "pages": ["api-reference/endpoint/providerget"]
           },
           {
             "group": "Avatars",
-            "pages": [
-              "api-reference/endpoint/avatarget"
-            ]
+            "pages": ["api-reference/endpoint/avatarget"]
           },
           {
             "group": "Tools",
