@@ -23,13 +23,13 @@
               "docs/agents/conversational-video-agents",
               "docs/agents/pipeline",
               "docs/agents/templates",
-              "docs/agents/knowledgebase",
+              "docs/agents/knowledge-base",
               "docs/agents/callback"
             ]
           },
           {
             "group": "Integrations",
-            "pages": ["docs/integrations/iframe"]
+            "pages": ["docs/integrations/embed-via-iFrame"]
           },
           {
             "group": "Avatars",
@@ -111,6 +111,11 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "history",
+        "pages": ["docs/changelog"]
       }
     ],
     "global": {

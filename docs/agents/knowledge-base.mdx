@@ -1,0 +1,93 @@
+---
+title: Knowlege Base
+---
+
+Integrate your own documents, or knowledge to deliver grounded, brand-specific conversations.
+
+Agents can dynamically reference multiple resources, ensuring accuracy, consistency, and contextual knowledge. With Knowledge Base integration, every answer is context-aware, brand-true, and rooted in your company’s knowledge-not generic guesses.
+
+We support two modes or interaction with Knowledge Base's while the agent responds,
+  1. Traditional `rag` mode; where each user query is searched against the knowledge base.
+  2. `agentic` mode; here the LLM takes a decision to search each knowledge base depending on the user query.
+
+# Getting Started
+
+Documents and websites are indexed and made available to agents using the Knowledge Base component, simply create a knowledge base, upload your documents and tag it with the agents.
+
+<Note>Knowledge Base creation and management can be performed using the API's or our Developer Platform.</Note>
+
+<Steps>
+  <Step title="Step 1 — Create new Knowledge Base">
+    <CodeGroup>
+    ```bash Create New Knowledge Base
+    curl --request POST \
+      --url https://api.trugen.ai/v1/knowledgebase \
+      --header 'Content-Type: multipart/form-data' \
+      --header 'x-api-key: <api-key>' \
+      --form 'name=Sample Knowledge Base' \
+      --form 'description=A simple test knowledge base' \
+      --form is_active=true \
+      --form input='@example-file' \
+      --form 'text=Sample file text'
+    ```
+    </CodeGroup>
+    <Note>Replace `<api-key>` with your actual API key generated from our [Portal](https://app.trugen.ai).</Note>
+    - Our API supports several different formats and knowledge sources to be indexed and created as knowledge base.
+    Supported Documents format: `.pdf`, `.docx`, `.txt` and `.html`
+    - You can also add raw text input as knowledge.
+    - You can also add a website URL; that can be scrapped and indexed into the knowledge base.
+    <CodeGroup>
+    ```json Sample Knowledge Base Response
+    {
+      "id": "5273e435-3cbb-4a11-9ea9-2c150ba19009",
+      "message": "Knowledge Base created successfully"
+    }
+    ```
+    </CodeGroup>
+  </Step>
+  <Step title="Step 2 — Create/Edit Agent to add Knowledge Base">
+  Use the **Create/Update Agent API** to programmatically attach 1 or more Knowledge Base to your agent.
+
+  <Note>Replace `<api-key>` with your actual API key generated from our [Portal](https://app.trugen.ai).</Note>
+
+<CodeGroup>
+  ```bash Request
+  curl --request POST \
+    --url https://api.trugen.ai/v1/agent/api \
+    --header 'Content-Type: application/json' \
+    --header 'x-api-key: <api-key>' \
+    --data '{
+    "avatar_ids": [
+      "ava_ae61c9e28b",
+      "ava_ed3a666dc5"
+    ],
+    "name": "New Agent",
+    "system_prompt": "You are a helpful assistant",
+    "email": "test@test.com",
+    "config": {
+      "timeout": 240
+    },
+    "is_active": true,
+    "knowledge_base": [
+      {
+        "id": "5273e435-3cbb-4a11-9ea9-2c150ba19009",
+        "name": "Sample Knowledge Base"
+      }
+    ],
+    "record": true,
+  }'
+  ````
+</CodeGroup>
+ - You can attach more than 1 more knowledge base to the agent by simply adding them to the `knowledge_base` array in the request.
+  </Step>
+  <Step title="Step 3 — Start a conversation">
+    Any conversation from this point on with this agent will leverage the Knowledge Base(s) attached.
+  </Step>
+</Steps>
+
+### Know More
+Our API References sections have several endpoints to create and manage Knowledge Base.
+
+<Card title="Knowledge Base - API Reference" icon="book" href="/api-reference/endpoint/knowledgebasecreate">
+Explore full set of supported APIs to create and manage Knowledge Base.
+</Card>
