@@ -8,8 +8,8 @@ Whenever something important happens in a conversation (like the user starting t
 
 You configure webhooks at the **agent level** using:
 
-- `callback_url` — your publicly reachable HTTPS endpoint
-- `callback_events` — a list of event names you want to receive
+- `callback_url` - your publicly reachable HTTPS endpoint
+- `callback_events` - a list of event names you want to receive
 
 Example (Create Agent):
 
@@ -75,11 +75,11 @@ Every webhook request uses the same base format:
 
 ### Fields
 
-* `timestamp` — Unix timestamp (float) when the event was generated.
-* `conversation_id` — Unique identifier for the conversation session.
-* `type` — Event source category (for these events: `"pipeline"`).
-* `event.name` — The specific event type (e.g. `agent.started_speaking`).
-* `event.payload` — Event-specific data payload.
+* `timestamp` - Unix timestamp (float) when the event was generated.
+* `conversation_id` - Unique identifier for the conversation session.
+* `type` - Event source category (for these events: `"pipeline"`).
+* `event.name` - The specific event type (e.g. `agent.started_speaking`).
+* `event.payload` - Event-specific data payload.
 
 ### Handling Webhooks (Example in Node/Express)
 Below are examples of how to receive and handle Trugen webhook events in **Node.js** and **Python**.
@@ -216,7 +216,7 @@ Triggered when a participant leaves the conversation (e.g., the user disconnects
 }
 ```
 
-* `payload.id` — Identifier of the participant who left.
+* `payload.id` - Identifier of the participant who left.
 
 ---
 
@@ -246,7 +246,7 @@ Triggered when the agent starts speaking (TTS + avatar rendering begins).
 }
 ```
 
-* `payload.text` — The text content the agent is about to speak.
+* `payload.text` - The text content the agent is about to speak.
 
 ---
 
@@ -276,13 +276,13 @@ Triggered when the agent finishes speaking its current utterance.
 }
 ```
 
-* `payload.text` — The text that was just spoken.
+* `payload.text` - The text that was just spoken.
 
 ---
 
 ### `agent.interrupted`
 
-Triggered when the agent is interrupted — typically because the user started speaking before the agent finished.
+Triggered when the agent is interrupted - typically because the user started speaking before the agent finished.
 
 **Use cases:**
 
@@ -304,7 +304,7 @@ Triggered when the agent is interrupted — typically because the user started s
 }
 ```
 
-* `payload` — Currently empty for this event (reserved for future metadata).
+* `payload` - Currently empty for this event (reserved for future metadata).
 
 ---
 
@@ -386,7 +386,7 @@ Triggered when a user utterance has been fully captured and committed, usually a
 }
 ```
 
-* `payload.text` — The final, committed text of the utterance.
+* `payload.text` - The final, committed text of the utterance.
 
 ---
 
@@ -417,8 +417,8 @@ Triggered when a conversation reaches the configured **maximum call duration**.
 }
 ```
 
-* `payload.call_duration` — Actual call duration in seconds.
-* `payload.max_call_duration` — Configured maximum duration in seconds.
+* `payload.call_duration` - Actual call duration in seconds.
+* `payload.max_call_duration` - Configured maximum duration in seconds.
 
 ---
 

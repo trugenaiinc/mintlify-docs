@@ -111,19 +111,24 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "Changelog",
-        "icon": "history",
-        "pages": ["docs/changelog"]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
+          "anchor": "Developer Platform",
+          "href": "https://app.trugen.ai",
+          "icon": "Browser"
+        },
+        {
+          "anchor": "Join Our Community",
           "href": "https://trugen.ai/docs",
-          "icon": "book-open-cover"
+          "icon": "discord"
+        },
+        {
+          "anchor": "Changelog",
+          "href": "https://docs.trugen.ai/docs/changelog",
+          "icon": "code-branch"
         }
       ]
     }
