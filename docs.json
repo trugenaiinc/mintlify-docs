@@ -24,7 +24,19 @@
               "docs/agents/pipeline",
               "docs/agents/templates",
               "docs/agents/knowledge-base",
-              "docs/agents/callback"
+              "docs/agents/callback",
+              {
+                "group": "Example Use Cases",
+                "expanded": true,
+                "pages": [
+                  "docs/examples/AI-Interviewer",
+                  "docs/examples/Customer-Support-Agent",
+                  "docs/examples/Healthcare-Intake-Assistant",
+                  "docs/examples/Career-Coach",
+                  "docs/examples/Sales-Agents",
+                  "docs/examples/Nutritionist"
+                ]
+              }
             ]
           },
           {
@@ -38,17 +50,6 @@
           {
             "group": "Providers",
             "pages": ["docs/providers/overview"]
-          },
-          {
-            "group": "Example Use Cases",
-            "pages": [
-              "docs/examples/AI-Interviewer",
-              "docs/examples/Customer-Support-Agent",
-              "docs/examples/Healthcare-Intake-Assistant",
-              "docs/examples/Career-Coach",
-              "docs/examples/Sales-Agents",
-              "docs/examples/Nutritionist"
-            ]
           }
         ]
       },
@@ -112,7 +113,7 @@
         },
         {
           "anchor": "Join Our Community",
-          "href": "https://trugen.ai/docs",
+          "href": "https://discord.gg/BuexeqBJ",
           "icon": "discord"
         },
         {
@@ -133,12 +134,7 @@
         "label": "Support",
         "href": "mailto:support@trugen.ai"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
+    ]
   },
   "footer": {
     "socials": {

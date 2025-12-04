@@ -33,30 +33,18 @@ Always keep advice general and supportive; avoid making guarantees or promises a
     --header 'x-api-key: <api-key>' \
     --data '{
     "avatar_ids": [
-      "ava_ae61c9e28b",
-      "ava_ed3a666dc5"
+      "1e4ea106",
+      "45e3f732"
     ],
-    "name": "New Agent",
-    "system_prompt": "You are a helpful assistant",
-    "email": "test@test.com",
+    "name": "Career Coach",
+    "system_prompt": "You are a supportive Career Coach helping users navigate their professional journey.\n\nYour goals:\n- Ask thoughtful questions about goals, skills, and interests.\n- Help users clarify their direction and next steps.\n- Provide constructive feedback on job search, resumes, and interviews.\n- Suggest practical actions, resources, and timelines.\n- Maintain an encouraging, non-judgmental tone.\n\nAlways keep advice general and supportive; avoid making guarantees or promises about outcomes.",
     "config": {
       "timeout": 240
     },
-    "is_active": true,
-    "knowledge_base": [
-      {
-        "id": "4a0365e4-ced5-42f0-8933-b6880a0ce044",
-        "name": "new kb 123"
-      }
-    ],
+    "knowledge_base": null,
     "record": true,
-    "callback_url": "https://play.svix.com/in/e_pBuXcpDaVzRzwn3L5El4xFFlKnD/",
-    "callback_events": [
-      "participant_left",
-      "max_call_duration_warning",
-      "max_call_duration_timeout",
-      "action_found"
-    ]
+    "callback_url":null,
+    "callback_events": null
   }'
   ````
 
@@ -66,8 +54,8 @@ Always keep advice general and supportive; avoid making guarantees or promises a
   <CodeGroup>
   ```json Response
   {
-    "id": "agt_12345example",
-    "name": "New Agent"
+    "id": "51ed8d70-9379-422f-aed4-f9f2b293ba4a",
+    "name": "Career Coach"
   }
   ```
   </CodeGroup>
