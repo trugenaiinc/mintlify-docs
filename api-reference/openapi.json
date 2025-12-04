@@ -1698,7 +1698,7 @@
     "/template": {
       "get": {
         "summary": "Retrieve all Template details",
-        "description": "Fetches a list of all template details stored within the Trugen AI system.",
+        "description": "Fetches a list of all templates.",
         "operationId": "getAllTemplates",
         "security": [
           {
@@ -1717,103 +1717,68 @@
                     "properties": {
                       "id": {
                         "type": "string",
-                        "format": "uuid"
+                        "format": "uuid",
+                        "description": "Unique identifier for the template",
+                        "example": "ff152cd9-efb6-4367-ae34-917f7c735f1d"
                       },
                       "template_name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name of the template",
+                        "example": "Default Calling Template"
                       },
                       "template_system_prompt": {
-                        "type": "string"
-                      },
-                      "tools": {
-                        "type": "object",
-                        "description": "Serialized JSON object representing tool details.",
-                        "example": {}
-                      },
-                      "tool": {
-                        "type": "array",
-                        "items": {
-                          "type": "object"
-                        },
-                        "nullable": true
+                        "type": "string",
+                        "description": "System prompt text used by the template",
+                        "example": "You are a helpful AI assistant."
                       },
                       "config": {
                         "type": "object",
-                        "description": "settings for the template.",
+                        "description": "Settings and configuration for the template",
                         "properties": {
-                          "systemPrompt": {
-                            "type": "string"
-                          },
                           "maxCallDuration": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "Maximum allowed call duration in seconds",
+                            "example": 900
                           },
                           "conversationalContext": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "Context for maintaining conversation across calls",
+                            "example": ""
                           }
                         }
                       },
-                      "knowledge_base": {
-                        "type": "array",
-                        "items": {
-                          "type": "object"
-                        },
-                        "nullable": true
-                      },
-                      "mcp": {
-                        "type": "array",
-                        "items": {
-                          "type": "object"
-                        },
-                        "nullable": true
-                      },
-                      "is_active": {
-                        "type": "boolean"
-                      },
                       "record": {
-                        "type": "boolean"
-                      },
-                      "callback_url": {
-                        "type": "string"
-                      },
-                      "callback_events": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
+                        "type": "boolean",
+                        "description": "Whether the call should be recorded",
+                        "example": true
                       },
                       "created_at": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "description": "Timestamp when the template was created",
+                        "example": "2025-12-03T10:15:30.000Z"
                       },
                       "updated_at": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "description": "Timestamp when the template was last updated",
+                        "example": "2025-12-03T12:00:00.000Z"
                       }
                     }
                   }
                 },
                 "example": [
                   {
-                    "callback_events": [
-                      "max_call_duration_timeout",
-                      "max_call_duration_warning"
-                    ],
-                    "callback_url": "",
                     "config": {
-                      "systemPrompt": "dggg",
                       "maxCallDuration": 5,
-                      "conversationalContext": "llklkl"
+                      "conversationalContext": "The following is a conversation with a user named `Lisa`."
                     },
                     "created_at": "2025-10-16T15:09:53.876051Z",
                     "id": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9",
-                    "is_active": true,
                     "knowledge_base": null,
-                    "mcp": null,
                     "record": true,
-                    "template_name": "dg",
-                    "template_system_prompt": "dggg",
-                    "tool": null,
-                    "tools": {},
+                    "template_name": "HR Assistant",
+                    "template_system_prompt": "You are a helpful AI assistant.",
                     "updated_at": "2025-10-16T15:09:53.876051Z"
                   }
                 ]
@@ -1859,8 +1824,8 @@
         }
       },
       "post": {
-        "summary": "Create a new Template details",
-        "description": "Creates a new template details for use within the Trugen AI system.",
+        "summary": "Create a new Template",
+        "description": "Creates a new template.",
         "operationId": "createTemplate",
         "requestBody": {
           "required": true,
@@ -1871,72 +1836,36 @@
                 "properties": {
                   "template_name": {
                     "type": "string",
-                    "example": "new "
+                    "description": "Name of the template",
+                    "example": "HR Assistant"
                   },
                   "template_system_prompt": {
                     "type": "string",
-                    "example": "prompt"
+                    "description": "System prompt text used by the template",
+                    "example": "You are a helpful HR AI Assistant."
                   },
                   "config": {
                     "type": "object",
+                    "description": "Settings and configuration for the template",
                     "properties": {
-                      "systemPrompt": {
-                        "type": "string",
-                        "example": "kjkjkj"
+                      "maxCallDuration": {
+                        "type": "integer",
+                        "description": "Maximum allowed call duration in seconds",
+                        "example": 5
                       },
                       "conversationalContext": {
                         "type": "string",
-                        "example": "kjkjkjkj"
-                      },
-                      "maxCallDuration": {
-                        "type": "integer",
-                        "example": 2
+                        "description": "Context for maintaining conversation across calls",
+                        "example": ""
                       }
                     }
-                  },
-                  "knowledge_base": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "15b12908-309f-4e0f-bcb0-a4e23d45169a"
-                        },
-                        "name": {
-                          "type": "string",
-                          "example": "tsrrrs"
-                        }
-                      }
-                    }
-                  },
-                  "is_active": {
-                    "type": "boolean",
-                    "example": true
                   },
                   "record": {
                     "type": "boolean",
+                    "description": "Whether the call should be recorded",
                     "example": true
-                  },
-                  "callback_url": {
-                    "type": "string",
-                    "example": ""
-                  },
-                  "callback_events": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": []
                   }
-                },
-                "required": [
-                  "template_name",
-                  "template_system_prompt",
-                  "config",
-                  "is_active"
-                ]
+                }
               }
             }
           }
@@ -1952,6 +1881,7 @@
                     "id": {
                       "type": "string",
                       "format": "uuid",
+                      "description": "Unique ID of the newly created template.",
                       "example": "d65a4f92-44b1-4fe6-b2ac-a1cb66366ddc"
                     },
                     "message": {
@@ -2056,53 +1986,52 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "description": "Unique identifier for the template",
+                      "example": "ff152cd9-efb6-4367-ae34-917f7c735f1d"
                     },
                     "template_name": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "Name of the template",
+                      "example": "Default Calling Template"
                     },
                     "template_system_prompt": {
-                      "type": "string"
-                    },
-                    "tools": {
-                      "type": "object"
+                      "type": "string",
+                      "description": "System prompt text used by the template",
+                      "example": "You are a helpful AI assistant."
                     },
                     "config": {
                       "type": "object",
+                      "description": "Settings and configuration for the template",
                       "properties": {
-                        "systemPrompt": {
-                          "type": "string"
-                        },
                         "maxCallDuration": {
-                          "type": "integer"
+                          "type": "integer",
+                          "description": "Maximum allowed call duration in seconds",
+                          "example": 900
                         },
                         "conversationalContext": {
-                          "type": "string"
+                          "type": "string",
+                          "description": "Context for maintaining conversation across calls",
+                          "example": ""
                         }
                       }
                     },
-                    "callback_events": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "callback_url": {
-                      "type": "string"
-                    },
-                    "is_active": {
-                      "type": "boolean"
-                    },
                     "record": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "description": "Whether the call should be recorded",
+                      "example": true
                     },
                     "created_at": {
                       "type": "string",
-                      "format": "date-time"
+                      "format": "date-time",
+                      "description": "Timestamp when the template was created",
+                      "example": "2025-12-03T10:15:30.000Z"
                     },
                     "updated_at": {
                       "type": "string",
-                      "format": "date-time"
+                      "format": "date-time",
+                      "description": "Timestamp when the template was last updated",
+                      "example": "2025-12-03T12:00:00.000Z"
                     }
                   }
                 }
@@ -2130,8 +2059,8 @@
         }
       },
       "put": {
-        "summary": "Update an existing Template details",
-        "description": "Updates the details of a specific template details identified by its unique ID.",
+        "summary": "Update an existing Template",
+        "description": "Updates the details of a specific by ID.",
         "operationId": "updateTemplate",
         "parameters": [
           {
@@ -2155,95 +2084,51 @@
                 "properties": {
                   "template_name": {
                     "type": "string",
-                    "example": "new "
+                    "description": "Name of the template",
+                    "example": "Default Calling Template"
                   },
                   "template_system_prompt": {
                     "type": "string",
-                    "example": "prompt"
+                    "description": "System prompt text used by the template",
+                    "example": "You are a helpful AI assistant."
                   },
                   "config": {
                     "type": "object",
+                    "description": "Settings and configuration for the template",
                     "properties": {
                       "systemPrompt": {
                         "type": "string",
-                        "example": "kjkjkj"
-                      },
-                      "conversationalContext": {
-                        "type": "string",
-                        "example": "kjkjkjkj"
+                        "description": "Prompt embedded inside config",
+                        "example": "Assist the caller professionally."
                       },
                       "maxCallDuration": {
                         "type": "integer",
-                        "example": 2
+                        "description": "Maximum allowed call duration in seconds",
+                        "example": 900
+                      },
+                      "conversationalContext": {
+                        "type": "string",
+                        "description": "Context for maintaining conversation across calls",
+                        "example": ""
                       }
                     }
-                  },
-                  "knowledge_base": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "format": "uuid",
-                          "example": "15b12908-309f-4e0f-bcb0-a4e23d45169a"
-                        },
-                        "name": {
-                          "type": "string",
-                          "example": "tsrrrs"
-                        }
-                      }
-                    }
-                  },
-                  "is_active": {
-                    "type": "boolean",
-                    "example": true
                   },
                   "record": {
                     "type": "boolean",
+                    "description": "Whether the call should be recorded",
                     "example": true
-                  },
-                  "callback_url": {
-                    "type": "string",
-                    "example": ""
-                  },
-                  "callback_events": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "example": []
                   }
-                },
-                "required": [
-                  "template_name",
-                  "template_system_prompt",
-                  "config",
-                  "is_active"
-                ]
+                }
               },
               "example": {
-                "template_name": "new ",
-                "template_system_prompt": "prompt",
-                "tools": {
-                  "id": "15b12908-309f-4e0f-bcb0-a4e23d45169a",
-                  "name": "tsrrrs"
-                },
+                "template_name": "Updated Name",
+                "template_system_prompt": "Updated system prompt",
                 "config": {
-                  "systemPrompt": "kjkjkj",
-                  "conversationalContext": "kjkjkjkj",
+                  "conversationalContext": "Updated conversational context",
                   "maxCallDuration": 2
                 },
-                "knowledge_base": [
-                  {
-                    "id": "15b12908-309f-4e0f-bcb0-a4e23d45169a",
-                    "name": "tsrrrs"
-                  }
-                ],
-                "is_active": true,
-                "record": true,
-                "callback_url": "",
-                "callback_events": []
+                "knowledge_base": null,
+                "record": true
               }
             }
           }
@@ -2259,6 +2144,7 @@
                     "id": {
                       "type": "string",
                       "format": "uuid",
+                      "description": "Unique identifier of the updated template",
                       "example": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9"
                     },
                     "message": {
@@ -2350,7 +2236,7 @@
         ]
       },
       "delete": {
-        "summary": "Delete a Template details",
+        "summary": "Delete an Template",
         "operationId": "deleteTemplate",
         "security": [
           {
@@ -2367,6 +2253,7 @@
                   "properties": {
                     "id": {
                       "type": "string",
+                      "description": "UUID of the deleted Template",
                       "format": "uuid"
                     },
                     "message": {
