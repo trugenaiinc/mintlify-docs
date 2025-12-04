@@ -29,12 +29,12 @@
                 "group": "Example Use Cases",
                 "expanded": true,
                 "pages": [
-                  "docs/examples/AI-Interviewer",
-                  "docs/examples/Customer-Support-Agent",
-                  "docs/examples/Healthcare-Intake-Assistant",
-                  "docs/examples/Career-Coach",
-                  "docs/examples/Sales-Agents",
-                  "docs/examples/Nutritionist"
+                  "docs/examples/ai-interviewer",
+                  "docs/examples/customer-support-agent",
+                  "docs/examples/healthcare-intake-assistant",
+                  "docs/examples/career-coach",
+                  "docs/examples/sales-agents",
+                  "docs/examples/nutritionist"
                 ]
               }
             ]
