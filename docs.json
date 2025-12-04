@@ -34,6 +34,21 @@
           {
             "group": "Avatars",
             "pages": ["docs/avatars/overview"]
+          },
+          {
+            "group": "Providers",
+            "pages": ["docs/providers/overview"]
+          },
+          {
+            "group": "Example Use Cases",
+            "pages": [
+              "docs/examples/AI-Interviewer",
+              "docs/examples/Customer-Support-Agent",
+              "docs/examples/Healthcare-Intake-Assistant",
+              "docs/examples/Career-Coach",
+              "docs/examples/Sales-Agents",
+              "docs/examples/Nutritionist"
+            ]
           }
         ]
       },
