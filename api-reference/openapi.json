@@ -1204,7 +1204,10 @@
                       "example": "Tool details deleted successfully"
                     }
                   },
-                  "required": ["id", "message"]
+                  "required": [
+                    "id",
+                    "message"
+                  ]
                 }
               }
             }
@@ -1469,7 +1472,10 @@
                       "example": "Tool details updated successfully"
                     }
                   },
-                  "required": ["id", "message"]
+                  "required": [
+                    "id",
+                    "message"
+                  ]
                 }
               }
             }
@@ -2554,7 +2560,9 @@
                         }
                       }
                     ],
-                    "callback_events": ["utterance_committed"],
+                    "callback_events": [
+                      "utterance_committed"
+                    ],
                     "callback_url": "https://webhook.site/agent-events",
                     "config": {
                       "maxCallDuration": 10,
@@ -2608,7 +2616,7 @@
         }
       }
     },
-    "/agent/api": {
+    "/ext/agent": {
       "post": {
         "summary": "Create an agent",
         "description": "Creates a new agent with avatar IDs, knowledge bases, and additional settings",
@@ -2624,17 +2632,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "avatar_key_id": {
-                    "type": "string",
-                    "description": "Avatar identifier key.",
-                    "example": "1e4ea106"
-                  },
-                  "name": {
+                  "agent_name": {
                     "type": "string",
                     "description": "Display name for the avatar persona.",
                     "example": "Sofia - Friendly Support"
                   },
-                  "system_prompt": {
+                  "agent_system_prompt": {
                     "type": "string",
                     "description": "Behavioral prompt for the avatar interaction style.",
                     "example": "Speak in a warm, engaging tone and provide clear answers."
@@ -2662,6 +2665,16 @@
                                   "type": "string",
                                   "description": "Provider used for LLM inference.",
                                   "example": "groq"
+                                },
+                                "fallback_model": {
+                                  "type": "string",
+                                  "description": "fallback model of the LLM model.",
+                                  "example": "gpt-4.1-nano"
+                                },
+                                "use_nltk": {
+                                  "type": "boolean",
+                                  "description": "use nltk for LLM inference.",
+                                  "example": false
                                 }
                               }
                             },
@@ -2688,6 +2701,21 @@
                                   "type": "number",
                                   "description": "Maximum endpointing delay in seconds.",
                                   "example": 0.4
+                                },
+                                "language": {
+                                  "type": "string",
+                                  "description": "language of model.",
+                                  "example": "en"
+                                },
+                                "fallback_model": {
+                                  "type": "string",
+                                  "description": "fallback model name.",
+                                  "example": "nova-2-general"
+                                },
+                                "allow_interm_results_interruption": {
+                                  "type": "boolean",
+                                  "description": "allow interm results interruption for the model",
+                                  "example": true
                                 }
                               }
                             },
@@ -2709,8 +2737,63 @@
                                   "type": "string",
                                   "description": "Voice ID used to synthesize speech.",
                                   "example": "ZUrEGyu8GFMwnHbvLhv2"
+                                },
+                                "language": {
+                                  "type": "string",
+                                  "description": "language",
+                                  "example": "a"
+                                },
+                                "effects_profile_id": {
+                                  "type": "string",
+                                  "description": "effects_profile_id",
+                                  "example": "small-bluetooth-speaker-class-device"
+                                },
+                                "encoding": {
+                                  "type": "string",
+                                  "description": "encoding",
+                                  "example": "pcm_s16le"
+                                },
+                                "gender": {
+                                  "type": "string",
+                                  "description": "gender",
+                                  "example": "female"
+                                },
+                                "fallback_voice_id": {
+                                  "type": "string",
+                                  "description": "fallback voice id",
+                                  "example": "am_puck"
+                                },
+                                "pitch": {
+                                  "type": "integer",
+                                  "description": "pitch",
+                                  "example": 0
+                                },
+                                "speaking_rate": {
+                                  "type": "integer",
+                                  "description": "speaking rate",
+                                  "example": 1
+                                },
+                                "stability": {
+                                  "type": "number",
+                                  "description": "stability",
+                                  "example": 0.5
+                                },
+                                "similarity_boost": {
+                                  "type": "number",
+                                  "description": "similarity boost",
+                                  "example": 0.75
+                                },
+                                "sample_rate": {
+                                  "type": "integer",
+                                  "description": "sample rate",
+                                  "example": 16000
                                 }
                               }
+                            },
+                            "turn_detector": {
+                              "type": "boolean",
+                              "description": "turn detector",
+                              "example": true
                             }
                           }
                         }
@@ -2784,22 +2867,19 @@
                   }
                 },
                 "required": [
-                  "avatar_ids",
-                  "name",
-                  "system_prompt",
-                  "config",
-                  "email"
+                  "avatars",
+                  "agent_name",
+                  "agent_system_prompt",
+                  "config"
                 ]
               },
               "example": {
-                "avatar_ids": ["ava_ae61c9e28b", "ava_ed3a666dc5"],
-                "name": "New Agent",
-                "system_prompt": "You are a helpful assistant",
+                "agent_name": "New Agent",
+                "agent_system_prompt": "You are a helpful assistant",
                 "email": "test@test.com",
                 "config": {
                   "timeout": 240
                 },
-                "is_active": true,
                 "knowledge_base": [
                   {
                     "id": "4a0365e4-ced5-42f0-8933-b6880a0ce044",
@@ -3640,7 +3720,7 @@
         }
       }
     },
-    "/agent/bytemplate": {
+    "/ext/agentbytemplate": {
       "post": {
         "summary": "Create a new Agent from a template",
         "operationId": "createAgentByTemplate",
@@ -3669,10 +3749,16 @@
                     "description": "ID of the template to use for creating the agent"
                   }
                 },
-                "required": ["avatar_ids", "template_id"]
+                "required": [
+                  "avatar_ids",
+                  "template_id"
+                ]
               },
               "example": {
-                "avatar_ids": ["1e4ea106", "665a1170"],
+                "avatar_ids": [
+                  "1e4ea106",
+                  "665a1170"
+                ],
                 "template_id": "76d9ff1d-b1d5-4dee-9b9a-d4c4d58c9c55"
               }
             }
@@ -4046,7 +4132,10 @@
                     "description": "As of 2025; we have increased the personal leaves to 15 per year."
                   }
                 },
-                "required": ["name", "description"]
+                "required": [
+                  "name",
+                  "description"
+                ]
               },
               "example": {
                 "name": "HR Policy",
@@ -4208,7 +4297,12 @@
                               "example": "<PUBLIC_URL>"
                             }
                           },
-                          "required": ["id", "name", "type", "preview_url"]
+                          "required": [
+                            "id",
+                            "name",
+                            "type",
+                            "preview_url"
+                          ]
                         }
                       },
                       "created_at": {
@@ -4763,7 +4857,9 @@
                     "description": "Optional file upload (e.g., .pdf, .docx)"
                   }
                 },
-                "required": ["text"]
+                "required": [
+                  "text"
+                ]
               }
             }
           }
