@@ -2794,8 +2794,248 @@
                               "type": "boolean",
                               "description": "turn detector",
                               "example": true
+                            },
+                            "protocol": {
+                              "type": "object",
+                              "description": "protocol configuration.",
+                              "properties": {
+                                "video_codec": {
+                                  "type": "string",
+                                  "description": "video_codec",
+                                  "example": "vp9"
+                                },
+                                "video_bitrate": {
+                                  "type": "number",
+                                  "description": "video_bitrate",
+                                  "example": 1000000
+                                },
+                                "simulcast": {
+                                  "type": "boolean",
+                                  "description": "simulcast",
+                                  "example": false
+                                }
+                              }
+                            },
+                            "noise_cancellation": {
+                              "type": "object",
+                              "description": "noise_cancellation configuration.",
+                              "properties": {
+                                "provider": {
+                                  "type": "string",
+                                  "description": "provider",
+                                  "example": "bvc"
+                                }
+                              }
+                            },
+                            "super_resolution": {
+                              "type": "object",
+                              "description": "protocol configuration.",
+                              "properties": {
+                                "scale": {
+                                  "type": "number",
+                                  "description": "scale",
+                                  "example": 1.5
+                                },
+                                "enabled": {
+                                  "type": "boolean",
+                                  "description": "enabled",
+                                  "example": false
+                                }
+                              }
                             }
                           }
+                        },
+                        "timeout": {
+                          "type": "integer",
+                          "description": "Maximum time to wait for the user to join the call (in seconds).",
+                          "example": 240
+                        },
+                        "avatar_key_id": {
+                          "type": "string",
+                          "description": "avatar_key_id",
+                          "example": "665a1170"
+                        },
+                        "avatar_data_source": {
+                          "type": "string",
+                          "description": "avatar_data_source",
+                          "example": "avatar-inference-data/"
+                        },
+                        "frame_rate": {
+                          "type": "number",
+                          "description": "frame_rate",
+                          "example": 25
+                        },
+                        "silence_padding": {
+                          "type": "number",
+                          "description": "silence_padding",
+                          "example": 0.05
+                        },
+                        "is_face_enhancer_enabled": {
+                          "type": "boolean",
+                          "description": "is_face_enhancer_enabled",
+                          "example": false
+                        },
+                        "persona_name": {
+                          "type": "string",
+                          "description": "persona_name",
+                          "example": "Test Agent"
+                        },
+                        "persona_prompt": {
+                          "type": "string",
+                          "description": "persona_prompt",
+                          "example": "You're a helpful ai agent. Answer all questions appropriately."
+                        },
+                        "conversational_context": {
+                          "type": "string",
+                          "description": "conversational_context",
+                          "example": "test context"
+                        },
+                        "interpolation_config": {
+                          "type": "object",
+                          "description": "interpolation configuration.",
+                          "properties": {
+                            "exp": {
+                              "type": "number",
+                              "description": "exp",
+                              "example": 2
+                            },
+                            "enabled": {
+                              "type": "boolean",
+                              "description": "enabled",
+                              "example": true
+                            }
+                          }
+                        },
+                        "idle_timeout": {
+                          "type": "object",
+                          "description": "idle_timeout configuration.",
+                          "properties": {
+                            "timeout": {
+                              "type": "number",
+                              "description": "timeout",
+                              "example": 30
+                            },
+                            "filler_phrases": {
+                              "type": "array",
+                              "description": "filler_phrases",
+                              "items": {
+                                "type": "string",
+                                "example": "Hey it's been a while since we last spoke, are we still connected?"
+                              }
+                            }
+                          }
+                        },
+                        "welcome_message": {
+                          "type": "object",
+                          "description": "welcome_message configuration.",
+                          "properties": {
+                            "wait_time": {
+                              "type": "number",
+                              "description": "wait_time",
+                              "example": 2
+                            },
+                            "messages": {
+                              "type": "array",
+                              "description": "messages",
+                              "items": {
+                                "type": "string",
+                                "example": "Hi, how are you doing today?"
+                              }
+                            }
+                          }
+                        },
+                        "warning_exit_message": {
+                          "type": "object",
+                          "description": "warning_exit_message configuration.",
+                          "properties": {
+                            "callout_before": {
+                              "type": "number",
+                              "description": "callout_before",
+                              "example": 10
+                            },
+                            "messages": {
+                              "type": "array",
+                              "description": "messages",
+                              "items": {
+                                "type": "string",
+                                "example": "We are almost at the end of our call, thank you for your time."
+                              }
+                            }
+                          }
+                        },
+                        "exit_message": {
+                          "type": "object",
+                          "description": "exit_message configuration.",
+                          "properties": {
+                            "max_call_duration": {
+                              "type": "number",
+                              "description": "max_call_duration",
+                              "example": 300
+                            },
+                            "messages": {
+                              "type": "array",
+                              "description": "messages",
+                              "items": {
+                                "type": "string",
+                                "example": "We are at the end of our call, thank you for your time."
+                              }
+                            }
+                          }
+                        },
+                        "exit_heads_up_message": {
+                          "type": "object",
+                          "description": "exit_heads_up_message configuration.",
+                          "properties": {
+                            "callout_before": {
+                              "type": "number",
+                              "description": "callout_before",
+                              "example": 10
+                            },
+                            "messages": {
+                              "type": "array",
+                              "description": "messages",
+                              "items": {
+                                "type": "string",
+                                "example": "We are almost at the end of our call, thank you for your time."
+                              }
+                            }
+                          }
+                        },
+                        "is_custom": {
+                          "type": "boolean",
+                          "description": "is_custom",
+                          "example": false
+                        },
+                        "scene_analyzer_prompt": {
+                          "type": "object",
+                          "description": "scene_analyzer_prompt configuration.",
+                          "properties": {
+                            "task_prompt": {
+                              "type": "string",
+                              "description": "task_prompt",
+                              "example": "sample prompt"
+                            },
+                            "system_prompt": {
+                              "type": "string",
+                              "description": "system_prompt",
+                              "example": "system prompt"
+                            }
+                          }
+                        },
+                        "eye_mask_replacement": {
+                          "type": "boolean",
+                          "description": "eye_mask_replacement",
+                          "example": false
+                        },
+                        "audio_features_type": {
+                          "type": "string",
+                          "description": "audio_features_type",
+                          "example": "silent_smooth"
+                        },
+                        "audio_features_window_length": {
+                          "type": "number",
+                          "description": "audio_features_window_length",
+                          "example": 5
                         }
                       }
                     }
