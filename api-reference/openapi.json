@@ -3036,6 +3036,69 @@
                           "type": "number",
                           "description": "audio_features_window_length",
                           "example": 5
+                        },
+                        "scene_context_engine": {
+                          "type": "object",
+                          "properties": {
+                            "vision_llm": {
+                              "type": "string"
+                            },
+                            "llm_prompts": {
+                              "type": "object",
+                              "properties": {
+                                "first_query": {
+                                  "type": "string"
+                                },
+                                "actions_list": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "Type": {
+                                        "type": "string"
+                                      },
+                                      "Action_Name": {
+                                        "type": "string"
+                                      },
+                                      "Analysis_Instruction": {
+                                        "type": "string"
+                                      },
+                                      "Action_Needs_To_Be_Observed": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                },
+                                "analyze_action": {
+                                  "type": "string"
+                                },
+                                "get_user_appearance": {
+                                  "type": "string"
+                                },
+                                "synthetic_user_query": {
+                                  "type": "string"
+                                },
+                                "analyze_scene_ctx_response": {
+                                  "type": "string"
+                                },
+                                "analyze_actions_system_prompt": {
+                                  "type": "string"
+                                },
+                                "user_query_analysis_system_prompt": {
+                                  "type": "string"
+                                },
+                                "add_action_recognition_synthetic_user_query": {
+                                  "type": "boolean"
+                                }
+                              }
+                            },
+                            "snapshot_scale": {
+                              "type": "number"
+                            },
+                            "on_snapshot_timeout": {
+                              "type": "number"
+                            }
+                          }
                         }
                       }
                     }
