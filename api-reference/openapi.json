@@ -1701,134 +1701,7 @@
         }
       }
     },
-    "/template": {
-      "get": {
-        "summary": "Retrieve all Template details",
-        "description": "Fetches a list of all templates.",
-        "operationId": "getAllTemplates",
-        "security": [
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of template details retrieved successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "Unique identifier for the template",
-                        "example": "ff152cd9-efb6-4367-ae34-917f7c735f1d"
-                      },
-                      "template_name": {
-                        "type": "string",
-                        "description": "Name of the template",
-                        "example": "Default Calling Template"
-                      },
-                      "template_system_prompt": {
-                        "type": "string",
-                        "description": "System prompt text used by the template",
-                        "example": "You are a helpful AI assistant."
-                      },
-                      "config": {
-                        "type": "object",
-                        "description": "Settings and configuration for the template",
-                        "properties": {
-                          "maxCallDuration": {
-                            "type": "integer",
-                            "description": "Maximum allowed call duration in seconds",
-                            "example": 900
-                          },
-                          "conversationalContext": {
-                            "type": "string",
-                            "description": "Context for maintaining conversation across calls",
-                            "example": ""
-                          }
-                        }
-                      },
-                      "record": {
-                        "type": "boolean",
-                        "description": "Whether the call should be recorded",
-                        "example": true
-                      },
-                      "created_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "Timestamp when the template was created",
-                        "example": "2025-12-03T10:15:30.000Z"
-                      },
-                      "updated_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "description": "Timestamp when the template was last updated",
-                        "example": "2025-12-03T12:00:00.000Z"
-                      }
-                    }
-                  }
-                },
-                "example": [
-                  {
-                    "config": {
-                      "maxCallDuration": 5,
-                      "conversationalContext": "The following is a conversation with a user named `Lisa`."
-                    },
-                    "created_at": "2025-10-16T15:09:53.876051Z",
-                    "id": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9",
-                    "knowledge_base": null,
-                    "record": true,
-                    "template_name": "HR Assistant",
-                    "template_system_prompt": "You are a helpful AI assistant.",
-                    "updated_at": "2025-10-16T15:09:53.876051Z"
-                  }
-                ]
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized – missing or invalid API key",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Unauthorized: not a valid authorization api key"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Failed to create template details"
-                }
-              }
-            }
-          }
-        }
-      },
+    "/ext/template": {
       "post": {
         "summary": "Create a new Template",
         "description": "Creates a new template.",
@@ -1961,7 +1834,136 @@
         ]
       }
     },
-    "/template/{id}": {
+    "/ext/templates": {
+      "get": {
+        "summary": "Retrieve all Template details",
+        "description": "Fetches a list of all templates.",
+        "operationId": "getAllTemplates",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of template details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier for the template",
+                        "example": "ff152cd9-efb6-4367-ae34-917f7c735f1d"
+                      },
+                      "template_name": {
+                        "type": "string",
+                        "description": "Name of the template",
+                        "example": "Default Calling Template"
+                      },
+                      "template_system_prompt": {
+                        "type": "string",
+                        "description": "System prompt text used by the template",
+                        "example": "You are a helpful AI assistant."
+                      },
+                      "config": {
+                        "type": "object",
+                        "description": "Settings and configuration for the template",
+                        "properties": {
+                          "maxCallDuration": {
+                            "type": "integer",
+                            "description": "Maximum allowed call duration in seconds",
+                            "example": 900
+                          },
+                          "conversationalContext": {
+                            "type": "string",
+                            "description": "Context for maintaining conversation across calls",
+                            "example": ""
+                          }
+                        }
+                      },
+                      "record": {
+                        "type": "boolean",
+                        "description": "Whether the call should be recorded",
+                        "example": true
+                      },
+                      "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the template was created",
+                        "example": "2025-12-03T10:15:30.000Z"
+                      },
+                      "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Timestamp when the template was last updated",
+                        "example": "2025-12-03T12:00:00.000Z"
+                      }
+                    }
+                  }
+                },
+                "example": [
+                  {
+                    "config": {
+                      "maxCallDuration": 5,
+                      "conversationalContext": "The following is a conversation with a user named `Lisa`."
+                    },
+                    "created_at": "2025-10-16T15:09:53.876051Z",
+                    "id": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9",
+                    "knowledge_base": null,
+                    "record": true,
+                    "template_name": "HR Assistant",
+                    "template_system_prompt": "You are a helpful AI assistant.",
+                    "updated_at": "2025-10-16T15:09:53.876051Z"
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – missing or invalid API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to create template details"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ext/template/{id}": {
       "parameters": [
         {
           "name": "id",
@@ -2313,7 +2315,7 @@
         }
       }
     },
-    "/agent": {
+    "/ext/agents": {
       "get": {
         "summary": "Retrieve all Agents",
         "description": "Fetches a list of all your agents, including associated avatars, knowledge bases, and callback settings.",
@@ -3281,7 +3283,7 @@
         }
       }
     },
-    "/agent/{id}": {
+    "/ext/agent/{id}": {
       "parameters": [
         {
           "name": "id",
@@ -4150,7 +4152,7 @@
         }
       }
     },
-    "/provider": {
+    "/ext/providers": {
       "get": {
         "summary": "Get Providers",
         "description": "Retrieve a list of all supported providers. A provider could be our external partner for STT, LLM or TTS, each entry in the provider has a `provider_type` property which would indicate what type of item is this.",
@@ -4266,7 +4268,7 @@
         }
       }
     },
-    "/public/avatar/{agentId}": {
+    "/ext/avatars/{agentId}": {
       "get": {
         "summary": "Get Public Avatar",
         "description": "Fetch a full public avatar and metadata by agent ID.",
@@ -4334,7 +4336,7 @@
         }
       }
     },
-    "/public/avatar/": {
+    "/ext/avatars": {
       "get": {
         "summary": "Get all avatars",
         "description": "Fetch a list of stock avatars that are available to be used as the face for your agents.",
@@ -4396,7 +4398,7 @@
         }
       }
     },
-    "/knowledgebase": {
+    "/ext/kb": {
       "post": {
         "summary": "Create Knowledge Base",
         "description": "Uploads a document or raw text to create a new Knowledge Base entry. Requires `x-api-key` authentication.",
@@ -4531,7 +4533,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/ext/kbs": {
       "get": {
         "summary": "Get all Knowledge Bases",
         "description": "Fetches a list of all available knowledge bases with their metadata and associated documents.",
@@ -4665,7 +4669,7 @@
         }
       }
     },
-    "/knowledgebase/{id}": {
+    "/ext/kb/{id}": {
       "get": {
         "summary": "Get Knowledge Base by ID",
         "description": "Retrieves a specific knowledge base and its associated documents using the provided Knowledge Base ID. Requires `x-api-key` authentication.",
@@ -5119,7 +5123,7 @@
         }
       }
     },
-    "/knowledgebase/{id}/doc": {
+    "/ext/kb/{id}/doc": {
       "post": {
         "summary": "Add content to an existing knowledge base",
         "description": "Uploads additional content or a document to an existing Knowledge Base. Requires `x-api-key` authentication.",
@@ -5267,7 +5271,7 @@
         }
       }
     },
-    "/knowledgebase/doc/{id}": {
+    "/ext/kb/doc/{id}": {
       "delete": {
         "summary": "Delete a Document from Knowledge Base",
         "description": "Deletes a specific document from an existing Knowledge Base using its document ID.",
