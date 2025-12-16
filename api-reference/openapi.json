@@ -2125,6 +2125,11 @@
                     "type": "boolean",
                     "description": "Whether the call should be recorded",
                     "example": true
+                  },
+                  "is_active": {
+                    "type": "boolean",
+                    "description": "Whether the record should be active or not",
+                    "example": true
                   }
                 }
               },
@@ -2136,7 +2141,8 @@
                   "maxCallDuration": 2
                 },
                 "knowledge_base": null,
-                "record": true
+                "record": true,
+                "is_active": true
               }
             }
           }
