@@ -1891,6 +1891,11 @@
                         "description": "Whether the call should be recorded",
                         "example": true
                       },
+                      "is_active": {
+                        "type": "boolean",
+                        "description": "Whether the record is be active or not",
+                        "example": true
+                      },
                       "created_at": {
                         "type": "string",
                         "format": "date-time",
@@ -2070,19 +2075,6 @@
         "summary": "Update an existing Template",
         "description": "Updates the details of a specific by ID.",
         "operationId": "updateTemplate",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "Unique identifier for the template to update",
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "example": "d22e4b02-3a47-46f2-b0cd-5420f277eaf9"
-            }
-          }
-        ],
         "requestBody": {
           "required": true,
           "content": {
