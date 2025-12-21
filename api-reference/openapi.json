@@ -3177,9 +3177,8 @@
                 ]
               },
               "example": {
-                "agent_name": "New Agent",
-                "agent_system_prompt": "You are a helpful assistant",
-                "email": "test@test.com",
+                "agent_name": "Sample AI Agent",
+                "agent_system_prompt": "You're a helpful ai agent. Answer all questions appropriately.",
                 "config": {
                   "timeout": 240
                 },
@@ -3196,6 +3195,67 @@
                   "max_call_duration_warning",
                   "max_call_duration_timeout",
                   "action_found"
+                ],
+                "is_public": true,
+                "is_active": true,
+                "email": "",
+                "type": "etev",
+                "add_on": [],
+                "avatars": [
+                  {
+                    "timeout": 300,
+                    "avatar_key_id": "665a1170",
+                    "avatar_data_source": "avatar-inference-data/",
+                    "frame_rate": 25,
+                    "silence_padding": 0.05,
+                    "is_face_enhancer_enabled": false,
+                    "persona_name": "Sample AI Agent",
+                    "persona_prompt": "You're a helpful ai agent. Answer all questions appropriately.",
+                    "conversational_context": "Sample Conversational Context",
+                    "interpolation_config": {
+                      "exp": 2,
+                      "enabled": true
+                    },
+                    "idle_timeout": {
+                      "timeout": 30,
+                      "filler_phrases": [
+                        "Hey it's been a while since we last spoke, are we still connected?",
+                        "I notice we haven't talked for a bit, is everything okay?"
+                      ]
+                    },
+                    "welcome_message": {
+                      "wait_time": 2,
+                      "messages": [
+                        "Hi, how are you doing today?",
+                        "Hello, how can I help you?"
+                      ]
+                    },
+                    "warning_exit_message": {
+                      "callout_before": 10,
+                      "messages": [
+                        "We are almost at the end of our call, thank you for your time.",
+                        "Thank you for your time. We will see you next time."
+                      ]
+                    },
+                    "exit_message": {
+                      "max_call_duration": 300,
+                      "messages": [
+                        "We are at the end of our call, thank you for your time.",
+                        "Thank you for your time today."
+                      ]
+                    },
+                    "exit_heads_up_message": {
+                      "callout_before": 10,
+                      "messages": [
+                        "We are almost at the end of our call, thank you for your time.",
+                        "Thank you for your time. We will see you next time."
+                      ]
+                    },
+                    "is_custom": false,
+                    "eye_mask_replacement": false,
+                    "audio_features_type": "silent_smooth",
+                    "audio_features_window_length": 5
+                  }
                 ]
               }
             }
