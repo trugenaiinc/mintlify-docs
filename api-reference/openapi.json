@@ -2635,12 +2635,12 @@
                   "agent_name": {
                     "type": "string",
                     "description": "Display name for the avatar persona.",
-                    "example": "Sofia - Friendly Support"
+                    "default": "Sofia - Friendly Support"
                   },
                   "agent_system_prompt": {
                     "type": "string",
                     "description": "Behavioral prompt for the avatar interaction style.",
-                    "example": "Speak in a warm, engaging tone and provide clear answers."
+                    "default": "Speak in a warm, engaging tone and provide clear answers."
                   },
                   "avatars": {
                     "type": "array",
@@ -2659,22 +2659,22 @@
                                 "model": {
                                   "type": "string",
                                   "description": "Identifier of the LLM model.",
-                                  "example": "meta-llama/llama-4-maverick-17b-128e-instruct"
+                                  "default": "meta-llama/llama-4-maverick-17b-128e-instruct"
                                 },
                                 "provider": {
                                   "type": "string",
                                   "description": "Provider used for LLM inference.",
-                                  "example": "groq"
+                                  "default": "groq"
                                 },
                                 "fallback_model": {
                                   "type": "string",
                                   "description": "fallback model of the LLM model.",
-                                  "example": "gpt-4.1-nano"
+                                  "default": "gpt-4.1-nano"
                                 },
                                 "use_nltk": {
                                   "type": "boolean",
                                   "description": "use nltk for LLM inference.",
-                                  "example": false
+                                  "default": false
                                 }
                               }
                             },
@@ -2685,37 +2685,37 @@
                                 "model": {
                                   "type": "string",
                                   "description": "Speech recognition model identifier.",
-                                  "example": "flux-general-en"
+                                  "default": "flux-general-en"
                                 },
                                 "provider": {
                                   "type": "string",
                                   "description": "STT provider service name.",
-                                  "example": "deepgram"
+                                  "default": "deepgram"
                                 },
                                 "min_endpointing_delay": {
                                   "type": "number",
                                   "description": "Minimum endpointing delay in seconds.",
-                                  "example": 0.3
+                                  "default": 0.3
                                 },
                                 "max_endpointing_delay": {
                                   "type": "number",
                                   "description": "Maximum endpointing delay in seconds.",
-                                  "example": 0.4
+                                  "default": 0.4
                                 },
                                 "language": {
                                   "type": "string",
                                   "description": "language of model.",
-                                  "example": "en"
+                                  "default": "en"
                                 },
                                 "fallback_model": {
                                   "type": "string",
                                   "description": "fallback model name.",
-                                  "example": "nova-2-general"
+                                  "default": "nova-2-general"
                                 },
                                 "allow_interm_results_interruption": {
                                   "type": "boolean",
                                   "description": "allow interm results interruption for the model",
-                                  "example": true
+                                  "default": true
                                 }
                               }
                             },
@@ -2726,74 +2726,74 @@
                                 "model_id": {
                                   "type": "string",
                                   "description": "Voice synthesis model identifier.",
-                                  "example": "eleven_turbo_v2_5"
+                                  "default": "eleven_turbo_v2_5"
                                 },
                                 "provider": {
                                   "type": "string",
                                   "description": "TTS provider service name.",
-                                  "example": "elevenlabs"
+                                  "default": "elevenlabs"
                                 },
                                 "voice_id": {
                                   "type": "string",
                                   "description": "Voice ID used to synthesize speech.",
-                                  "example": "ZUrEGyu8GFMwnHbvLhv2"
+                                  "default": "ZUrEGyu8GFMwnHbvLhv2"
                                 },
                                 "language": {
                                   "type": "string",
                                   "description": "language",
-                                  "example": "a"
+                                  "default": "a"
                                 },
                                 "effects_profile_id": {
                                   "type": "string",
                                   "description": "effects_profile_id",
-                                  "example": "small-bluetooth-speaker-class-device"
+                                  "default": "small-bluetooth-speaker-class-device"
                                 },
                                 "encoding": {
                                   "type": "string",
                                   "description": "encoding",
-                                  "example": "pcm_s16le"
+                                  "default": "pcm_s16le"
                                 },
                                 "gender": {
                                   "type": "string",
                                   "description": "gender",
-                                  "example": "female"
+                                  "default": "female"
                                 },
                                 "fallback_voice_id": {
                                   "type": "string",
                                   "description": "fallback voice id",
-                                  "example": "am_puck"
+                                  "default": "am_puck"
                                 },
                                 "pitch": {
                                   "type": "integer",
                                   "description": "pitch",
-                                  "example": 0
+                                  "default": 0
                                 },
                                 "speaking_rate": {
                                   "type": "integer",
                                   "description": "speaking rate",
-                                  "example": 1
+                                  "default": 1
                                 },
                                 "stability": {
                                   "type": "number",
                                   "description": "stability",
-                                  "example": 0.5
+                                  "default": 0.5
                                 },
                                 "similarity_boost": {
                                   "type": "number",
                                   "description": "similarity boost",
-                                  "example": 0.75
+                                  "default": 0.75
                                 },
                                 "sample_rate": {
                                   "type": "integer",
                                   "description": "sample rate",
-                                  "example": 16000
+                                  "default": 16000
                                 }
                               }
                             },
                             "turn_detector": {
                               "type": "boolean",
                               "description": "turn detector",
-                              "example": true
+                              "default": true
                             },
                             "protocol": {
                               "type": "object",
@@ -2802,17 +2802,17 @@
                                 "video_codec": {
                                   "type": "string",
                                   "description": "video_codec",
-                                  "example": "vp9"
+                                  "default": "vp9"
                                 },
                                 "video_bitrate": {
                                   "type": "number",
                                   "description": "video_bitrate",
-                                  "example": 1000000
+                                  "default": 1000000
                                 },
                                 "simulcast": {
                                   "type": "boolean",
                                   "description": "simulcast",
-                                  "example": false
+                                  "default": false
                                 }
                               }
                             },
@@ -2823,7 +2823,7 @@
                                 "provider": {
                                   "type": "string",
                                   "description": "provider",
-                                  "example": "bvc"
+                                  "default": "bvc"
                                 }
                               }
                             },
@@ -2834,12 +2834,12 @@
                                 "scale": {
                                   "type": "number",
                                   "description": "scale",
-                                  "example": 1.5
+                                  "default": 1.5
                                 },
                                 "enabled": {
                                   "type": "boolean",
                                   "description": "enabled",
-                                  "example": false
+                                  "default": false
                                 }
                               }
                             }
@@ -2848,47 +2848,47 @@
                         "timeout": {
                           "type": "integer",
                           "description": "Maximum time to wait for the user to join the call (in seconds).",
-                          "example": 240
+                          "default": 240
                         },
                         "avatar_key_id": {
                           "type": "string",
                           "description": "avatar_key_id",
-                          "example": "665a1170"
+                          "default": "665a1170"
                         },
                         "avatar_data_source": {
                           "type": "string",
                           "description": "avatar_data_source",
-                          "example": "avatar-inference-data/"
+                          "default": "avatar-inference-data/"
                         },
                         "frame_rate": {
                           "type": "number",
                           "description": "frame_rate",
-                          "example": 25
+                          "default": 25
                         },
                         "silence_padding": {
                           "type": "number",
                           "description": "silence_padding",
-                          "example": 0.05
+                          "default": 0.05
                         },
                         "is_face_enhancer_enabled": {
                           "type": "boolean",
                           "description": "is_face_enhancer_enabled",
-                          "example": false
+                          "default": false
                         },
                         "persona_name": {
                           "type": "string",
                           "description": "persona_name",
-                          "example": "Test Agent"
+                          "default": "Test Agent"
                         },
                         "persona_prompt": {
                           "type": "string",
                           "description": "persona_prompt",
-                          "example": "You're a helpful ai agent. Answer all questions appropriately."
+                          "default": "You're a helpful ai agent. Answer all questions appropriately."
                         },
                         "conversational_context": {
                           "type": "string",
                           "description": "conversational_context",
-                          "example": "test context"
+                          "default": "test context"
                         },
                         "interpolation_config": {
                           "type": "object",
@@ -2897,12 +2897,12 @@
                             "exp": {
                               "type": "number",
                               "description": "exp",
-                              "example": 2
+                              "default": 2
                             },
                             "enabled": {
                               "type": "boolean",
                               "description": "enabled",
-                              "example": true
+                              "default": true
                             }
                           }
                         },
@@ -2913,14 +2913,14 @@
                             "timeout": {
                               "type": "number",
                               "description": "timeout",
-                              "example": 30
+                              "default": 30
                             },
                             "filler_phrases": {
                               "type": "array",
                               "description": "filler_phrases",
                               "items": {
                                 "type": "string",
-                                "example": "Hey it's been a while since we last spoke, are we still connected?"
+                                "default": "Hey it's been a while since we last spoke, are we still connected?"
                               }
                             }
                           }
@@ -2932,14 +2932,14 @@
                             "wait_time": {
                               "type": "number",
                               "description": "wait_time",
-                              "example": 2
+                              "default": 2
                             },
                             "messages": {
                               "type": "array",
                               "description": "messages",
                               "items": {
                                 "type": "string",
-                                "example": "Hi, how are you doing today?"
+                                "default": "Hi, how are you doing today?"
                               }
                             }
                           }
@@ -2951,14 +2951,14 @@
                             "callout_before": {
                               "type": "number",
                               "description": "callout_before",
-                              "example": 10
+                              "default": 10
                             },
                             "messages": {
                               "type": "array",
                               "description": "messages",
                               "items": {
                                 "type": "string",
-                                "example": "We are almost at the end of our call, thank you for your time."
+                                "default": "We are almost at the end of our call, thank you for your time."
                               }
                             }
                           }
@@ -2970,14 +2970,14 @@
                             "max_call_duration": {
                               "type": "number",
                               "description": "max_call_duration",
-                              "example": 300
+                              "default": 300
                             },
                             "messages": {
                               "type": "array",
                               "description": "messages",
                               "items": {
                                 "type": "string",
-                                "example": "We are at the end of our call, thank you for your time."
+                                "default": "We are at the end of our call, thank you for your time."
                               }
                             }
                           }
@@ -2989,14 +2989,14 @@
                             "callout_before": {
                               "type": "number",
                               "description": "callout_before",
-                              "example": 10
+                              "default": 10
                             },
                             "messages": {
                               "type": "array",
                               "description": "messages",
                               "items": {
                                 "type": "string",
-                                "example": "We are almost at the end of our call, thank you for your time."
+                                "default": "We are almost at the end of our call, thank you for your time."
                               }
                             }
                           }
@@ -3004,7 +3004,7 @@
                         "is_custom": {
                           "type": "boolean",
                           "description": "is_custom",
-                          "example": false
+                          "default": false
                         },
                         "scene_analyzer_prompt": {
                           "type": "object",
@@ -3013,29 +3013,29 @@
                             "task_prompt": {
                               "type": "string",
                               "description": "task_prompt",
-                              "example": "sample prompt"
+                              "default": "sample prompt"
                             },
                             "system_prompt": {
                               "type": "string",
                               "description": "system_prompt",
-                              "example": "system prompt"
+                              "default": "system prompt"
                             }
                           }
                         },
                         "eye_mask_replacement": {
                           "type": "boolean",
                           "description": "eye_mask_replacement",
-                          "example": false
+                          "default": false
                         },
                         "audio_features_type": {
                           "type": "string",
                           "description": "audio_features_type",
-                          "example": "silent_smooth"
+                          "default": "silent_smooth"
                         },
                         "audio_features_window_length": {
                           "type": "number",
                           "description": "audio_features_window_length",
-                          "example": 5
+                          "default": 5
                         },
                         "scene_context_engine": {
                           "type": "object",
@@ -3110,7 +3110,7 @@
                       "timeout": {
                         "type": "integer",
                         "description": "Maximum time to wait for the user to join the call (in seconds).",
-                        "example": 240
+                        "default": 240
                       }
                     }
                   },
@@ -3125,17 +3125,17 @@
                           "type": "string",
                           "format": "uuid",
                           "description": "Knowledge base identifier.",
-                          "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                          "default": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
                         },
                         "name": {
                           "type": "string",
                           "description": "Name of the knowledge base.",
-                          "example": "Product Support Articles"
+                          "default": "Product Support Articles"
                         },
                         "description": {
                           "type": "string",
                           "description": "Short summary of the knowledge base content.",
-                          "example": "Contains FAQs and troubleshooting guides for product lines."
+                          "default": "Contains FAQs and troubleshooting guides for product lines."
                         }
                       }
                     }
@@ -3143,14 +3143,14 @@
                   "record": {
                     "type": "boolean",
                     "description": "Determines whether voice call recordings should be stored.",
-                    "example": true
+                    "default": true
                   },
                   "callback_events": {
                     "type": "array",
                     "description": "Webhook events that should trigger callbacks.",
                     "items": {
                       "type": "string",
-                      "example": "utterance_committed"
+                      "default": "utterance_committed"
                     },
                     "example": [
                       "participant_left",
@@ -3166,7 +3166,7 @@
                   "callback_url": {
                     "type": "string",
                     "description": "Webhook endpoint URL to send callback events to.",
-                    "example": "https://webhooks.example.com/agent-events"
+                    "default": "https://webhooks.example.com/agent-events"
                   }
                 },
                 "required": [
