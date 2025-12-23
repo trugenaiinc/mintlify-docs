@@ -3001,11 +3001,6 @@
                             }
                           }
                         },
-                        "is_custom": {
-                          "type": "boolean",
-                          "description": "is_custom",
-                          "default": false
-                        },
                         "scene_analyzer_prompt": {
                           "type": "object",
                           "description": "scene_analyzer_prompt configuration.",
@@ -3203,12 +3198,47 @@
                 "add_on": [],
                 "avatars": [
                   {
-                    "timeout": 300,
+                    "timeout": 240,
                     "avatar_key_id": "665a1170",
                     "avatar_data_source": "avatar-inference-data/",
                     "frame_rate": 25,
+                    "config": {
+                      "llm": {
+                        "model": "meta-llama/llama-4-maverick-17b-128e-instruct",
+                        "provider": "groq",
+                        "fallback_model": "gpt-4.1-nano",
+                        "use_nltk": false
+                      },
+                      "stt": {
+                        "model": "flux-general-en",
+                        "provider": "deepgram",
+                        "min_endpointing_delay": 0.3,
+                        "max_endpointing_delay": 0.4,
+                        "fallback_model":"nova-2-general",
+                        "allow_interm_results_interruption": true
+                      },
+                      "tts": {
+                        "model_id": "eleven_turbo_v2_5",
+                        "provider": "elevenlabs",
+                        "voice_id": "ZUrEGyu8GFMwnHbvLhv2",
+                        "language": "a",
+                        "effects_profile_id": "small-bluetooth-speaker-class-device",
+                        "encoding": "pcm_s16le",
+                        "gender": "female",
+                        "fallback_voice_id": "am_puck",
+                        "pitch": 0,
+                        "speaking_rate": 1,
+                        "stability": 0.5,
+                        "similarity_boost": 0.75,
+                        "sample_rate": 16000
+                      }
+                    },
                     "silence_padding": 0.05,
                     "is_face_enhancer_enabled": false,
+                    "is_custom": false,
+                    "eye_mask_replacement": false,
+                    "audio_features_type": "silent_smooth",
+                    "audio_features_window_length": 5,
                     "persona_name": "Sample AI Agent",
                     "persona_prompt": "You're a helpful ai agent. Answer all questions appropriately.",
                     "conversational_context": "Sample Conversational Context",
@@ -3250,11 +3280,7 @@
                         "We are almost at the end of our call, thank you for your time.",
                         "Thank you for your time. We will see you next time."
                       ]
-                    },
-                    "is_custom": false,
-                    "eye_mask_replacement": false,
-                    "audio_features_type": "silent_smooth",
-                    "audio_features_window_length": 5
+                    }
                   }
                 ]
               }
