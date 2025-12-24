@@ -2667,7 +2667,7 @@
                     "callback_events": [
                       "utterance_committed"
                     ],
-                    "callback_url": "https://webhook.site/agent-events",
+                    "callback_url": "",
                     "config": {
                       "maxCallDuration": 10,
                       "conversationalContext": "You are going to speak with employees from our Machine Learning Team."
@@ -3030,7 +3030,7 @@
                   }
                 ],
                 "record": true,
-                "callback_url": "https://play.svix.com/in/e_pBuXcpDaVzRzwn3L5El4xFFlKnD/",
+                "callback_url": "",
                 "callback_events": [
                   "participant_left",
                   "max_call_duration_warning",
@@ -3719,7 +3719,7 @@
                   "utterance_committed",
                   "max_call_duration_timeout"
                 ],
-                "callback_url": "https://webhooks.example.com/agent-events",
+                "callback_url": "",
                 "config": {
                   "systemPrompt": "Always respond with a concise solution first, then provide optional detail.",
                   "maxCallDuration": 1800,
