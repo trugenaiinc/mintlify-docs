@@ -1739,6 +1739,32 @@
                       }
                     }
                   },
+                  "knowledge_base": {
+                    "type": "array",
+                    "description": "List of knowledge bases attached to this agent.",
+                    "nullable": true,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Knowledge base identifier.",
+                          "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the knowledge base.",
+                          "example": "Product Support Articles"
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Short summary of the knowledge base content.",
+                          "example": "Contains FAQs and troubleshooting guides for product lines."
+                        }
+                      }
+                    }
+                  },
                   "record": {
                     "type": "boolean",
                     "description": "Whether the call should be recorded",
@@ -1883,6 +1909,32 @@
                             "type": "string",
                             "description": "Context for maintaining conversation across calls",
                             "example": ""
+                          }
+                        }
+                      },
+                      "knowledge_base": {
+                        "type": "array",
+                        "description": "List of knowledge bases attached to this agent.",
+                        "nullable": true,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "Knowledge base identifier.",
+                              "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "Name of the knowledge base.",
+                              "example": "Product Support Articles"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "Short summary of the knowledge base content.",
+                              "example": "Contains FAQs and troubleshooting guides for product lines."
+                            }
                           }
                         }
                       },
@@ -2110,6 +2162,32 @@
                         "type": "string",
                         "description": "Context for maintaining conversation across calls",
                         "example": ""
+                      }
+                    }
+                  },
+                  "knowledge_base": {
+                    "type": "array",
+                    "description": "List of knowledge bases attached to this agent.",
+                    "nullable": true,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Knowledge base identifier.",
+                          "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the knowledge base.",
+                          "example": "Product Support Articles"
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Short summary of the knowledge base content.",
+                          "example": "Contains FAQs and troubleshooting guides for product lines."
+                        }
                       }
                     }
                   },
@@ -2665,16 +2743,6 @@
                                   "type": "string",
                                   "description": "Provider used for LLM inference.",
                                   "default": "groq"
-                                },
-                                "fallback_model": {
-                                  "type": "string",
-                                  "description": "fallback model of the LLM model.",
-                                  "default": "gpt-4.1-nano"
-                                },
-                                "use_nltk": {
-                                  "type": "boolean",
-                                  "description": "use nltk for LLM inference.",
-                                  "default": false
                                 }
                               }
                             },
@@ -2701,21 +2769,6 @@
                                   "type": "number",
                                   "description": "Maximum endpointing delay in seconds.",
                                   "default": 0.4
-                                },
-                                "language": {
-                                  "type": "string",
-                                  "description": "language of model.",
-                                  "default": "en"
-                                },
-                                "fallback_model": {
-                                  "type": "string",
-                                  "description": "fallback model name.",
-                                  "default": "nova-2-general"
-                                },
-                                "allow_interm_results_interruption": {
-                                  "type": "boolean",
-                                  "description": "allow interm results interruption for the model",
-                                  "default": true
                                 }
                               }
                             },
@@ -2737,56 +2790,6 @@
                                   "type": "string",
                                   "description": "Voice ID used to synthesize speech.",
                                   "default": "ZUrEGyu8GFMwnHbvLhv2"
-                                },
-                                "language": {
-                                  "type": "string",
-                                  "description": "language",
-                                  "default": "a"
-                                },
-                                "effects_profile_id": {
-                                  "type": "string",
-                                  "description": "effects_profile_id",
-                                  "default": "small-bluetooth-speaker-class-device"
-                                },
-                                "encoding": {
-                                  "type": "string",
-                                  "description": "encoding",
-                                  "default": "pcm_s16le"
-                                },
-                                "gender": {
-                                  "type": "string",
-                                  "description": "gender",
-                                  "default": "female"
-                                },
-                                "fallback_voice_id": {
-                                  "type": "string",
-                                  "description": "fallback voice id",
-                                  "default": "am_puck"
-                                },
-                                "pitch": {
-                                  "type": "integer",
-                                  "description": "pitch",
-                                  "default": 0
-                                },
-                                "speaking_rate": {
-                                  "type": "integer",
-                                  "description": "speaking rate",
-                                  "default": 1
-                                },
-                                "stability": {
-                                  "type": "number",
-                                  "description": "stability",
-                                  "default": 0.5
-                                },
-                                "similarity_boost": {
-                                  "type": "number",
-                                  "description": "similarity boost",
-                                  "default": 0.75
-                                },
-                                "sample_rate": {
-                                  "type": "integer",
-                                  "description": "sample rate",
-                                  "default": 16000
                                 }
                               }
                             },
@@ -2794,54 +2797,6 @@
                               "type": "boolean",
                               "description": "turn detector",
                               "default": true
-                            },
-                            "protocol": {
-                              "type": "object",
-                              "description": "protocol configuration.",
-                              "properties": {
-                                "video_codec": {
-                                  "type": "string",
-                                  "description": "video_codec",
-                                  "default": "vp9"
-                                },
-                                "video_bitrate": {
-                                  "type": "number",
-                                  "description": "video_bitrate",
-                                  "default": 1000000
-                                },
-                                "simulcast": {
-                                  "type": "boolean",
-                                  "description": "simulcast",
-                                  "default": false
-                                }
-                              }
-                            },
-                            "noise_cancellation": {
-                              "type": "object",
-                              "description": "noise_cancellation configuration.",
-                              "properties": {
-                                "provider": {
-                                  "type": "string",
-                                  "description": "provider",
-                                  "default": "bvc"
-                                }
-                              }
-                            },
-                            "super_resolution": {
-                              "type": "object",
-                              "description": "protocol configuration.",
-                              "properties": {
-                                "scale": {
-                                  "type": "number",
-                                  "description": "scale",
-                                  "default": 1.5
-                                },
-                                "enabled": {
-                                  "type": "boolean",
-                                  "description": "enabled",
-                                  "default": false
-                                }
-                              }
                             }
                           }
                         },
@@ -3001,22 +2956,6 @@
                             }
                           }
                         },
-                        "scene_analyzer_prompt": {
-                          "type": "object",
-                          "description": "scene_analyzer_prompt configuration.",
-                          "properties": {
-                            "task_prompt": {
-                              "type": "string",
-                              "description": "task_prompt",
-                              "default": "sample prompt"
-                            },
-                            "system_prompt": {
-                              "type": "string",
-                              "description": "system_prompt",
-                              "default": "system prompt"
-                            }
-                          }
-                        },
                         "eye_mask_replacement": {
                           "type": "boolean",
                           "description": "eye_mask_replacement",
@@ -3031,69 +2970,6 @@
                           "type": "number",
                           "description": "audio_features_window_length",
                           "default": 5
-                        },
-                        "scene_context_engine": {
-                          "type": "object",
-                          "properties": {
-                            "vision_llm": {
-                              "type": "string"
-                            },
-                            "llm_prompts": {
-                              "type": "object",
-                              "properties": {
-                                "first_query": {
-                                  "type": "string"
-                                },
-                                "actions_list": {
-                                  "type": "array",
-                                  "items": {
-                                    "type": "object",
-                                    "properties": {
-                                      "Type": {
-                                        "type": "string"
-                                      },
-                                      "Action_Name": {
-                                        "type": "string"
-                                      },
-                                      "Analysis_Instruction": {
-                                        "type": "string"
-                                      },
-                                      "Action_Needs_To_Be_Observed": {
-                                        "type": "string"
-                                      }
-                                    }
-                                  }
-                                },
-                                "analyze_action": {
-                                  "type": "string"
-                                },
-                                "get_user_appearance": {
-                                  "type": "string"
-                                },
-                                "synthetic_user_query": {
-                                  "type": "string"
-                                },
-                                "analyze_scene_ctx_response": {
-                                  "type": "string"
-                                },
-                                "analyze_actions_system_prompt": {
-                                  "type": "string"
-                                },
-                                "user_query_analysis_system_prompt": {
-                                  "type": "string"
-                                },
-                                "add_action_recognition_synthetic_user_query": {
-                                  "type": "boolean"
-                                }
-                              }
-                            },
-                            "snapshot_scale": {
-                              "type": "number"
-                            },
-                            "on_snapshot_timeout": {
-                              "type": "number"
-                            }
-                          }
                         }
                       }
                     }
@@ -3190,12 +3066,7 @@
                   "max_call_duration_warning",
                   "max_call_duration_timeout",
                   "action_found"
-                ],
-                "is_public": true,
-                "is_active": true,
-                "email": "",
-                "type": "etev",
-                "add_on": [],
+                ],                
                 "avatars": [
                   {
                     "timeout": 240,
@@ -3205,32 +3076,18 @@
                     "config": {
                       "llm": {
                         "model": "meta-llama/llama-4-maverick-17b-128e-instruct",
-                        "provider": "groq",
-                        "fallback_model": "gpt-4.1-nano",
-                        "use_nltk": false
+                        "provider": "groq"                    
                       },
                       "stt": {
                         "model": "flux-general-en",
                         "provider": "deepgram",
                         "min_endpointing_delay": 0.3,
-                        "max_endpointing_delay": 0.4,
-                        "fallback_model":"nova-2-general",
-                        "allow_interm_results_interruption": true
+                        "max_endpointing_delay": 0.4
                       },
                       "tts": {
                         "model_id": "eleven_turbo_v2_5",
                         "provider": "elevenlabs",
-                        "voice_id": "ZUrEGyu8GFMwnHbvLhv2",
-                        "language": "a",
-                        "effects_profile_id": "small-bluetooth-speaker-class-device",
-                        "encoding": "pcm_s16le",
-                        "gender": "female",
-                        "fallback_voice_id": "am_puck",
-                        "pitch": 0,
-                        "speaking_rate": 1,
-                        "stability": 0.5,
-                        "similarity_boost": 0.75,
-                        "sample_rate": 16000
+                        "voice_id": "ZUrEGyu8GFMwnHbvLhv2"
                       }
                     },
                     "silence_padding": 0.05,
