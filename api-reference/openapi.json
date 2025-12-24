@@ -2845,22 +2845,6 @@
                           "description": "conversational_context",
                           "default": "test context"
                         },
-                        "interpolation_config": {
-                          "type": "object",
-                          "description": "interpolation configuration.",
-                          "properties": {
-                            "exp": {
-                              "type": "number",
-                              "description": "exp",
-                              "default": 2
-                            },
-                            "enabled": {
-                              "type": "boolean",
-                              "description": "enabled",
-                              "default": true
-                            }
-                          }
-                        },
                         "idle_timeout": {
                           "type": "object",
                           "description": "idle_timeout configuration.",
