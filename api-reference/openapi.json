@@ -2086,6 +2086,32 @@
                       "description": "Whether the call should be recorded",
                       "example": true
                     },
+                    "knowledge_base": {
+                      "type": "array",
+                      "description": "List of knowledge bases attached to this agent.",
+                      "nullable": true,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Knowledge base identifier.",
+                            "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the knowledge base.",
+                            "example": "Product Support Articles"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Short summary of the knowledge base content.",
+                            "example": "Contains FAQs and troubleshooting guides for product lines."
+                          }
+                        }
+                      }
+                    },
                     "created_at": {
                       "type": "string",
                       "format": "date-time",
@@ -3010,14 +3036,14 @@
                   "max_call_duration_warning",
                   "max_call_duration_timeout",
                   "action_found"
-                ],                
+                ],
                 "avatars": [
                   {
                     "avatar_key_id": "665a1170",
                     "config": {
                       "llm": {
                         "model": "meta-llama/llama-4-maverick-17b-128e-instruct",
-                        "provider": "groq"                    
+                        "provider": "groq"
                       },
                       "stt": {
                         "model": "flux-general-en",
