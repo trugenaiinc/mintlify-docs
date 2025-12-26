@@ -76,6 +76,12 @@
             ]
           },
           {
+            "group": "Conversations",
+            "pages": [
+              "api-reference/endpoint/conversationgetbyid"
+            ]
+          },
+          {
             "group": "Persona Templates",
             "pages": [
               "api-reference/endpoint/templatecreate",

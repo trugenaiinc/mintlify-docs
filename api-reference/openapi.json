@@ -2417,6 +2417,168 @@
         }
       }
     },
+    "/ext/conversation/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "Unique identifier for the conversation"
+        }
+      ],
+      "get": {
+        "summary": "Retrieve Conversation details by ID",
+        "operationId": "getAgentSessionById",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Conversation details retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Unique identifier for the conversation",
+                      "example": "6457541c-6251-40ed-a672-52d166c2c565"
+                    },
+                    "agent_id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Agent identifier",
+                      "example": "6d142a7c-a6ef-4616-90bb-0124fc83bce7"
+                    },
+                    "agent_name": {
+                      "type": "string",
+                      "description": "Name of the agent",
+                      "example": "Test Agent"
+                    },
+                    "avatar_id": {
+                      "type": "string",
+                      "description": "Avatar identifier used for the conversation",
+                      "example": "665a1170"
+                    },
+                    "user_id": {
+                      "type": "string",
+                      "description": "End user identifier",
+                      "example": "test@test.com"
+                    },
+                    "user_name": {
+                      "type": "string",
+                      "description": "End user name",
+                      "example": "Test User"
+                    },
+                    "context": {
+                      "type": "string",
+                      "description": "Serialized conversational context",
+                      "example": "{\"text\":\"\"}"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Session status",
+                      "enum": [
+                        "STARTED",
+                        "IN_PROGRESS",
+                        "ENDED"
+                      ],
+                      "example": "ENDED"
+                    },
+                    "is_recorded": {
+                      "type": "boolean",
+                      "description": "Whether the session was recorded",
+                      "example": false
+                    },
+                    "recording_url": {
+                      "type": "string",
+                      "description": "Recording playback URL",
+                      "example": ""
+                    },
+                    "transcript": {
+                      "type": "array",
+                      "description": "Conversation transcript",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "timestamp": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Message timestamp",
+                            "example": "2025-12-18T17:54:20.412417Z"
+                          },
+                          "role": {
+                            "type": "string",
+                            "description": "Message sender role",
+                            "enum": [
+                              "user",
+                              "assistant"
+                            ],
+                            "example": "assistant"
+                          },
+                          "content": {
+                            "type": "string",
+                            "description": "Message content",
+                            "example": "Hello, how can I help you?"
+                          },
+                          "conversation_id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Conversation identifier",
+                            "example": "6457541c-6251-40ed-a672-52d166c2c565"
+                          },
+                          "message_timestamp": {
+                            "type": "integer",
+                            "description": "Offset timestamp (seconds)",
+                            "example": 2
+                          }
+                        }
+                      }
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Session creation timestamp",
+                      "example": "2025-12-18T17:54:02.153319Z"
+                    },
+                    "updated_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Last update timestamp",
+                      "example": "2025-12-18T17:59:29.720601Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Conversation not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "Conversation not found"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/ext/agents": {
       "get": {
         "summary": "Retrieve all Agents",
