@@ -3164,7 +3164,7 @@
                   "callback_url": {
                     "type": "string",
                     "description": "Webhook endpoint URL to send callback events to.",
-                    "default": "https://webhooks.example.com/agent-events"
+                    "example": "https://webhooks.example.com/agent-events"
                   }
                 },
                 "required": [
