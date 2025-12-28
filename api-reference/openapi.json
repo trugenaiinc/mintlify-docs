@@ -3771,11 +3771,6 @@
                     "type": "object",
                     "description": "Agent-level configuration properties.",
                     "properties": {
-                      "systemPrompt": {
-                        "type": "string",
-                        "description": "System prompt value stored within config.",
-                        "example": "Always respond with a concise solution first, then provide optional detail."
-                      },
                       "maxCallDuration": {
                         "type": "integer",
                         "description": "Maximum call duration allowed in seconds.",
@@ -3878,7 +3873,6 @@
                 ],
                 "callback_url": "",
                 "config": {
-                  "systemPrompt": "Always respond with a concise solution first, then provide optional detail.",
                   "maxCallDuration": 1800,
                   "conversationalContext": "customer-support"
                 },
