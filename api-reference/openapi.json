@@ -2174,11 +2174,6 @@
                     "type": "object",
                     "description": "Settings and configuration for the template",
                     "properties": {
-                      "systemPrompt": {
-                        "type": "string",
-                        "description": "Prompt embedded inside config",
-                        "example": "Assist the caller professionally."
-                      },
                       "maxCallDuration": {
                         "type": "integer",
                         "description": "Maximum allowed call duration in seconds",
