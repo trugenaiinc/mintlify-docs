@@ -39,6 +39,7 @@ curl --request POST \
   "record": true,
   "callback_url": "https://yourdomain.com/webhooks/trugen",
   "callback_events": [
+    "call_ended",
     "participant_left",
     "agent.started_speaking",
     "agent.stopped_speaking",
@@ -66,9 +67,7 @@ Every webhook request uses the same base format:
   "type": "pipeline",
   "event": {
     "name": "agent.started_speaking",
-    "payload": {
-      "text": "Hi, how are you?"
-    }
+    "payload": {}
   }
 }
 ```
@@ -142,8 +141,7 @@ async def trugen_webhook(request: Request):
     })
 
     if event_name == "agent.started_speaking":
-        text = payload.get("text")
-        print(f"Agent started speaking: {text}")
+        print(f"Agent started speaking")
 
     elif event_name == "agent.stopped_speaking":
         text = payload.get("text")
@@ -187,6 +185,32 @@ async def trugen_webhook(request: Request):
 ## 3. Event Types & Payloads
 
 Below are the supported events you listed, with **descriptions** and **example webhook bodies**.
+
+---
+
+### `call_ended`
+
+Triggered when the call with the agent ends.
+
+**Use cases:**
+
+* Clean up resources (rooms, timers, state).
+* Mark the conversation as ended in your backend.
+* Trigger post-call workflows (surveys, summaries, etc.).
+
+**Example payload:**
+
+```json
+{
+  "timestamp": 1764760201.940625,
+  "conversation_id": "471f0520-cea1-487a-9bcc-37ba37717d81",
+  "type": "pipeline",
+  "event": {
+    "name": "call_ended",
+    "payload": {}
+  }
+}
+```
 
 ---
 
