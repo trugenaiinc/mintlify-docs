@@ -22,7 +22,7 @@
             "pages": ["docs/overview", "docs/quickstart"]
           },
           {
-            "group": "Agents",
+            "group": "Managed Agents",
             "pages": [
               "docs/agents/conversational-video-agents",
               "docs/agents/pipeline",
@@ -40,7 +40,8 @@
                   "docs/examples/sales-agents",
                   "docs/examples/nutritionist"
                 ]
-              }
+              },
+              "docs/agents/prompting-strategies"
             ]
           },
           {
