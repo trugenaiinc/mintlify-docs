@@ -7,12 +7,20 @@ Integrate your own documents, or knowledge to deliver grounded, brand-specific c
 Agents can dynamically reference multiple resources, ensuring accuracy, consistency, and contextual knowledge. With Knowledge Base integration, every answer is context-aware, brand-true, and rooted in your company’s knowledge-not generic guesses.
 
 We support two modes or interaction with Knowledge Base's while the agent responds,
-  1. Traditional `rag` mode; where each user query is searched against the knowledge base.
-  2. `agentic` mode; here the LLM takes a decision to search each knowledge base depending on the user query.
+  1. `agentic` mode (**Default**); here the LLM takes a decision to search each knowledge base depending on the user query.
+  2. Traditional `rag` mode; where each user query is searched against the knowledge base.
 
 # Getting Started
 
 Documents and websites are indexed and made available to agents using the Knowledge Base component, simply create a knowledge base, upload your documents and tag it with the agents.
+
+**Name** and **Description** of the knowledge base is the one of the most important component; these are the fields the agent user's to decide to use the knowledge base or not.
+
+## Example
+```
+Name: Get-HR-Policies
+Description: Use this whenever the user is asking any question about HR policies.
+```
 
 <Note>Knowledge Base creation and management can be performed using the API's or our Developer Platform.</Note>
 
