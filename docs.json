@@ -49,10 +49,6 @@
             "pages": ["docs/integrations/embed-via-iFrame"]
           },
           {
-            "group": "Voice to Video Agents",
-            "pages": ["docs/voice-to-video/livekit"]
-          },
-          {
             "group": "Avatars",
             "pages": ["docs/avatars/overview"]
           },
