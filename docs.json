@@ -41,7 +41,8 @@
                   "docs/examples/nutritionist"
                 ]
               },
-              "docs/agents/prompting-strategies"
+              "docs/agents/prompting-strategies",
+              "docs/resources/byo-llm"
             ]
           },
           {
