@@ -2826,6 +2826,8 @@
                       "conversationalContext": "You are going to speak with employees from our Machine Learning Team."
                     },
                     "knowledge_base": null,
+                    "mcp": null,
+                    "tool": null,
                     "record": true,
                     "created_at": "2025-10-17T19:05:25.557061Z",
                     "updated_at": "2025-10-17T19:05:25.557061Z"
