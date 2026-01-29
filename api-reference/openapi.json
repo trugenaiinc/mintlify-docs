@@ -14,7 +14,7 @@
     "/ext/mcp": {
       "get": {
         "summary": "Get MCP details",
-        "description": "Fetches a list of available MCP details. Requires `x-api-key` authentication.",
+        "description": "Fetches a list of available MCP configurations. Requires `x-api-key` authentication.",
         "security": [
           {
             "apiKeyAuth": []
@@ -37,27 +37,38 @@
                       },
                       "name": {
                         "type": "string",
-                        "example": "Brave MCP"
+                        "example": "Livekit Docs"
                       },
                       "description": {
                         "type": "string",
-                        "example": "Brave MCP"
+                        "example": "MCP server to get livekit info"
                       },
                       "type": {
                         "type": "string",
-                        "example": "sse"
+                        "example": "shttp/sse"
                       },
-                      "arguments": {
-                        "type": "string",
-                        "example": "{\"url\": \"http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse\"}"
-                      },
-                      "cache_tools_list": {
-                        "type": "boolean",
-                        "example": true
-                      },
-                      "event_messages": {
-                        "type": "string",
-                        "example": "{\"on_delay\": {\"delay\": 1, \"message\": \"I am still waiting for the information.\"}, \"on_error\": {\"message\": \"Failed to search the web for the information.\"}, \"on_start\": {\"message\": \"\"}, \"on_success\": {\"message\": \"\"}}"
+                      "request_config": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string",
+                            "format": "uri",
+                            "example": "http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse"
+                          },
+                          "headers": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "example": {
+                              "User-Agent": "Trugen Avatar",
+                              "Accept": "application/json"
+                            }
+                          }
+                        },
+                        "required": [
+                          "url"
+                        ]
                       },
                       "is_active": {
                         "type": "boolean",
@@ -77,10 +88,9 @@
                     "required": [
                       "id",
                       "name",
+                      "description",
                       "type",
-                      "arguments",
-                      "cache_tools_list",
-                      "event_messages",
+                      "request_config",
                       "is_active",
                       "created_at",
                       "updated_at"
@@ -121,7 +131,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve mcp details"
+                  "error": "Failed to retrieve MCP details"
                 }
               }
             }
@@ -130,7 +140,7 @@
       },
       "post": {
         "summary": "Create MCP",
-        "description": "Create a new MCP details.",
+        "description": "Create a new MCP server configuration.",
         "operationId": "createMCP",
         "security": [
           {
@@ -145,97 +155,59 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Livekit Docs"
                   },
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "MCP server to get livekit info"
                   },
                   "type": {
                     "type": "string",
-                    "example": "MCP"
+                    "example": "shttp/sse"
                   },
-                  "arguments": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "url": {
-                          "type": "string",
-                          "format": "uri"
-                        }
-                      }
-                    }
-                  },
-                  "cache_tools_list": {
-                    "type": "boolean"
-                  },
-                  "event_messages": {
+                  "request_config": {
                     "type": "object",
                     "properties": {
-                      "on_start": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        }
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://www.example.com/in"
                       },
-                      "on_delay": {
+                      "headers": {
                         "type": "object",
-                        "properties": {
-                          "delay": {
-                            "type": "integer"
-                          },
-                          "message": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "on_error": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "example": {
+                          "User-Agent": "Trugen Avatar",
+                          "Accept": "application/json"
                         }
                       }
-                    }
-                  },
-                  "is_active": {
-                    "type": "boolean"
+                    },
+                    "required": [
+                      "url"
+                    ]
                   }
                 },
                 "required": [
                   "name",
                   "description",
                   "type",
-                  "arguments",
-                  "is_active"
+                  "request_config"
                 ]
               },
               "example": {
-                "name": "MCP 5",
-                "description": "You are a helpful assistant to MCP",
-                "type": "MCP",
-                "arguments": [
-                  {
-                    "url": "http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse"
+                "name": "Livekit Docs",
+                "description": "MCP server to get livekit info",
+                "type": "shttp/sse",
+                "request_config": {
+                  "url": "https://www.example.com/in",
+                  "headers": {
+                    "User-Agent": "Trugen Avatar",
+                    "Accept": "application/json"
                   }
-                ],
-                "cache_tools_list": true,
-                "event_messages": {
-                  "on_start": {
-                    "message": "Successfully received data."
-                  },
-                  "on_delay": {
-                    "delay": 1,
-                    "message": "Waiting for stock price data..."
-                  },
-                  "on_error": {
-                    "message": "Failed to retrieve stock price data"
-                  }
-                },
-                "is_active": true
+                }
               }
             }
           }
@@ -260,9 +232,6 @@
                     },
                     "type": {
                       "type": "string"
-                    },
-                    "is_active": {
-                      "type": "boolean"
                     },
                     "created_at": {
                       "type": "string",
@@ -415,7 +384,7 @@
       },
       "put": {
         "summary": "Update MCP",
-        "description": "Updates an existing MCP details by its ID. Requires `x-api-key` authentication.",
+        "description": "Updates an existing MCP configuration by its ID. Requires `x-api-key` authentication.",
         "operationId": "updateMCP",
         "security": [
           {
@@ -427,7 +396,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Unique identifier of the MCP details",
+            "description": "Unique identifier of the MCP",
             "schema": {
               "type": "string",
               "format": "uuid",
@@ -443,94 +412,62 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "Livekit Docs1"
                   },
                   "description": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "MCP server to get livekit info1"
                   },
                   "type": {
                     "type": "string",
-                    "example": "MCP"
+                    "example": "shttp/sse"
                   },
-                  "arguments": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "url": {
-                          "type": "string",
-                          "format": "uri"
-                        }
-                      }
-                    }
-                  },
-                  "cache_tools_list": {
-                    "type": "boolean"
-                  },
-                  "event_messages": {
+                  "request_config": {
                     "type": "object",
                     "properties": {
-                      "on_start": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
-                        }
+                      "url": {
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://www.example.com/information"
                       },
-                      "on_delay": {
+                      "headers": {
                         "type": "object",
-                        "properties": {
-                          "delay": {
-                            "type": "integer"
-                          },
-                          "message": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "on_error": {
-                        "type": "object",
-                        "properties": {
-                          "message": {
-                            "type": "string"
-                          }
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "example": {
+                          "User-Agent": "Trugen Avatar",
+                          "Accept": "application/json"
                         }
                       }
-                    }
+                    },
+                    "required": [
+                      "url"
+                    ]
                   },
                   "is_active": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "example": true
                   }
                 },
                 "required": [
                   "name",
                   "description",
                   "type",
-                  "arguments",
+                  "request_config",
                   "is_active"
                 ]
               },
               "example": {
-                "name": "MCP 3 update",
-                "description": "You are a helpful assistant to MCP",
-                "type": "MCP",
-                "arguments": [
-                  {
-                    "url": "http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse"
-                  }
-                ],
-                "cache_tools_list": true,
-                "event_messages": {
-                  "on_start": {
-                    "message": "Successfully received data."
-                  },
-                  "on_delay": {
-                    "delay": 1,
-                    "message": "Waiting for stock price data..."
-                  },
-                  "on_error": {
-                    "message": "Failed to retrieve stock price data"
+                "name": "Livekit Docs1",
+                "description": "MCP server to get livekit info1",
+                "type": "shttp/sse",
+                "request_config": {
+                  "url": "https://www.example.com/information",
+                  "headers": {
+                    "User-Agent": "Trugen Avatar",
+                    "Accept": "application/json"
                   }
                 },
                 "is_active": true
@@ -548,43 +485,43 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "format": "uuid"
+                      "format": "uuid",
+                      "example": "dcf04568-6bf5-40cf-bd6f-d68e4cb5b216"
                     },
                     "name": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "Livekit Docs1"
                     },
                     "description": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "MCP server to get livekit info1"
                     },
                     "type": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "shttp/sse"
                     },
-                    "arguments": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "url": {
-                            "type": "string",
-                            "format": "uri"
-                          }
-                        }
-                      }
-                    },
-                    "cache_tools_list": {
-                      "type": "boolean"
-                    },
-                    "event_messages": {
+                    "request_config": {
                       "type": "object"
                     },
                     "is_active": {
-                      "type": "boolean"
+                      "type": "boolean",
+                      "example": true
                     },
                     "updated_at": {
                       "type": "string",
-                      "format": "date-time"
+                      "format": "date-time",
+                      "example": "2025-10-05T12:30:45.123Z"
                     }
-                  }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "type",
+                    "request_config",
+                    "is_active",
+                    "updated_at"
+                  ]
                 }
               }
             }
@@ -638,7 +575,7 @@
                   }
                 },
                 "example": {
-                  "message": "MCP not found"
+                  "error": "MCP not found"
                 }
               }
             }
@@ -656,7 +593,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve mcp details"
+                  "error": "Failed to update MCP details"
                 }
               }
             }
@@ -665,7 +602,7 @@
       },
       "get": {
         "summary": "Get MCP by ID",
-        "description": "Fetch a single MCP details by its unique ID. Requires `x-api-key` authentication.",
+        "description": "Fetch a single MCP configuration by its unique ID. Requires `x-api-key` authentication.",
         "operationId": "getMCPById",
         "security": [
           {
@@ -677,7 +614,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Unique identifier of the MCP details",
+            "description": "Unique identifier of the MCP",
             "schema": {
               "type": "string",
               "format": "uuid",
@@ -700,27 +637,38 @@
                     },
                     "name": {
                       "type": "string",
-                      "example": "MCP 5"
+                      "example": "Livekit Docs"
                     },
                     "description": {
                       "type": "string",
-                      "example": "You are a helpful assistant to MCP"
+                      "example": "MCP server to get livekit info"
                     },
                     "type": {
                       "type": "string",
-                      "example": "MCP"
+                      "example": "shttp/sse"
                     },
-                    "arguments": {
-                      "type": "string",
-                      "example": "[{\"url\": \"http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse\"}]"
-                    },
-                    "cache_tools_list": {
-                      "type": "boolean",
-                      "example": true
-                    },
-                    "event_messages": {
-                      "type": "string",
-                      "example": "{\"on_delay\": {\"delay\": 1, \"message\": \"Waiting for stock price data...\"}, \"on_error\": {\"message\": \"Failed to retrieve stock price data\"}, \"on_start\": {\"message\": \"Successfully received data.\"}}"
+                    "request_config": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "format": "uri",
+                          "example": "http://ec2-18-216-51-35.us-east-2.compute.amazonaws.com:8080/sse"
+                        },
+                        "headers": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "example": {
+                            "User-Agent": "Trugen Avatar",
+                            "Accept": "application/json"
+                          }
+                        }
+                      },
+                      "required": [
+                        "url"
+                      ]
                     },
                     "is_active": {
                       "type": "boolean",
@@ -742,9 +690,7 @@
                     "name",
                     "description",
                     "type",
-                    "arguments",
-                    "cache_tools_list",
-                    "event_messages",
+                    "request_config",
                     "is_active",
                     "created_at",
                     "updated_at"
@@ -784,7 +730,7 @@
                   }
                 },
                 "example": {
-                  "message": "MCP not found"
+                  "error": "MCP not found"
                 }
               }
             }
@@ -802,7 +748,7 @@
                   }
                 },
                 "example": {
-                  "error": "Failed to retrieve mcp details"
+                  "error": "Failed to retrieve MCP details"
                 }
               }
             }
@@ -834,29 +780,119 @@
                         "format": "uuid",
                         "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
                       },
-                      "name": {
-                        "type": "string",
-                        "example": "New Tool 4"
-                      },
-                      "description": {
-                        "type": "string",
-                        "example": "You are a helpful assistant to Tool"
-                      },
                       "type": {
                         "type": "string",
                         "example": "tool.api"
                       },
-                      "arguments": {
-                        "type": "string",
-                        "example": "[{\"name\": \"ticker\", \"type\": \"str\", \"description\": \"The ticker of the stock to get the price for\"}]"
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "function"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "start_cloud_browser_session"
+                          },
+                          "description": {
+                            "type": "string",
+                            "example": "Starts the dashboard page with logged in session."
+                          },
+                          "parameters": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "example": "object"
+                              },
+                              "properties": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "example": "string"
+                                    },
+                                    "description": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              },
+                              "required": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
                       },
                       "request_config": {
-                        "type": "string",
-                        "example": "{\"url\": \"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6\", \"method\": \"GET\", \"headers\": {\"Accept\": \"application/json\", \"User-Agent\": \"Trugen Avatar\"}}"
+                        "type": "object",
+                        "properties": {
+                          "method": {
+                            "type": "string",
+                            "example": "GET"
+                          },
+                          "url": {
+                            "type": "string",
+                            "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min"
+                          },
+                          "headers": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "example": {
+                              "Accept": "application/json",
+                              "User-Agent": "Trugen Avatar"
+                            }
+                          }
+                        }
                       },
                       "event_messages": {
-                        "type": "string",
-                        "example": "{\"on_delay\": {\"delay\": 1, \"message\": \"Waiting for stock price data...\"}, \"on_error\": {\"message\": \"Failed to retrieve stock price data\"}, \"on_start\": {\"message\": \"Successfully received data.\"}}"
+                        "type": "object",
+                        "properties": {
+                          "on_start": {
+                            "type": "object",
+                            "properties": {
+                              "message": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "on_success": {
+                            "type": "object",
+                            "properties": {
+                              "message": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "on_delay": {
+                            "type": "object",
+                            "properties": {
+                              "delay": {
+                                "type": "integer"
+                              },
+                              "message": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "on_error": {
+                            "type": "object",
+                            "properties": {
+                              "message": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
                       },
                       "is_active": {
                         "type": "boolean",
@@ -875,10 +911,8 @@
                     },
                     "required": [
                       "id",
-                      "name",
-                      "description",
                       "type",
-                      "arguments",
+                      "schema",
                       "request_config",
                       "event_messages",
                       "is_active",
@@ -901,9 +935,6 @@
                       "type": "string"
                     }
                   }
-                },
-                "example": {
-                  "error": "Unauthorized: not a valid authorization api key"
                 }
               }
             }
@@ -919,9 +950,6 @@
                       "type": "string"
                     }
                   }
-                },
-                "example": {
-                  "error": "Failed to retrieve tool details"
                 }
               }
             }
@@ -950,27 +978,56 @@
                   },
                   "schema": {
                     "type": "object",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string",
-                          "example": "ticker"
-                        },
-                        "type": {
-                          "type": "string",
-                          "example": "str"
-                        },
-                        "description": {
-                          "type": "string",
-                          "example": "The ticker of the stock to get the price for"
-                        },
-                        "parameters": {
-                          "type": "string",
-                          "example": "Sample Parameters"
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "example": "function"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "start_cloud_browser_session"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Starts the dashboard page with logged in session."
+                      },
+                      "parameters": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "object"
+                          },
+                          "properties": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "example": "string"
+                                },
+                                "description": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "required": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
                         }
                       }
-                    }
+                    },
+                    "required": [
+                      "type",
+                      "name",
+                      "description",
+                      "parameters"
+                    ]
                   },
                   "request_config": {
                     "type": "object",
@@ -981,19 +1038,19 @@
                       },
                       "url": {
                         "type": "string",
-                        "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6"
+                        "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min"
                       },
                       "headers": {
                         "type": "object",
                         "additionalProperties": {
                           "type": "string"
-                        },
-                        "example": {
-                          "User-Agent": "Trugen Avatar",
-                          "Accept": "application/json"
                         }
                       }
-                    }
+                    },
+                    "required": [
+                      "method",
+                      "url"
+                    ]
                   },
                   "event_messages": {
                     "type": "object",
@@ -1002,8 +1059,7 @@
                         "type": "object",
                         "properties": {
                           "message": {
-                            "type": "string",
-                            "example": "Successfully received data."
+                            "type": "string"
                           }
                         }
                       },
@@ -1011,8 +1067,7 @@
                         "type": "object",
                         "properties": {
                           "message": {
-                            "type": "string",
-                            "example": "Successfully completed."
+                            "type": "string"
                           }
                         }
                       },
@@ -1020,12 +1075,10 @@
                         "type": "object",
                         "properties": {
                           "delay": {
-                            "type": "integer",
-                            "example": 1
+                            "type": "integer"
                           },
                           "message": {
-                            "type": "string",
-                            "example": "Waiting for stock price data..."
+                            "type": "string"
                           }
                         }
                       },
@@ -1033,8 +1086,7 @@
                         "type": "object",
                         "properties": {
                           "message": {
-                            "type": "string",
-                            "example": "Failed to retrieve stock price data"
+                            "type": "string"
                           }
                         }
                       }
@@ -1047,128 +1099,22 @@
                   "request_config",
                   "event_messages"
                 ]
-              },
-              "example": {
-                "type": "tool.api",
-                "schema": {
-                  "type": "function",
-                  "name": "start_cloud_browser_session",
-                  "description": "Starts the dashboard page with logged in session.",
-                  "parameters": {
-                    "type": "object",
-                    "properties": {
-                      "url": {
-                        "type": "string",
-                        "description": "URL to navigate to"
-                      }
-                    },
-                    "required": [
-                      "url"
-                    ]
-                  }
-                },
-                "request_config": {
-                  "method": "GET",
-                  "url": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6",
-                  "headers": {
-                    "User-Agent": "Trugen Avatar",
-                    "Accept": "application/json"
-                  }
-                },
-                "event_messages": {
-                  "on_start": {
-                    "message": "Successfully received data."
-                  },
-                  "on_success": {
-                    "message": "Successfully completed."
-                  },
-                  "on_delay": {
-                    "delay": 1,
-                    "message": "Waiting for stock price data..."
-                  },
-                  "on_error": {
-                    "message": "Failed to retrieve stock price data"
-                  }
-                }
               }
             }
           }
         },
         "responses": {
           "201": {
-            "description": "Tool details created successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Tools created successfully"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Tool details created successfully"
           },
           "400": {
-            "description": "Invalid request body",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Invalid request body"
-                }
-              }
-            }
+            "description": "Invalid request body"
           },
           "401": {
-            "description": "Unauthorized – missing or invalid API key",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Unauthorized: not a valid authorization api key"
-                }
-              }
-            }
+            "description": "Unauthorized – missing or invalid API key"
           },
           "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Failed to retrieve tool details"
-                }
-              }
-            }
+            "description": "Internal server error"
           }
         }
       }
@@ -1280,7 +1226,7 @@
       },
       "put": {
         "summary": "Update Tool details",
-        "description": "Updates an existing tool details using its unique ID.",
+        "description": "Updates an existing client-side tool using its unique ID.",
         "operationId": "updateToolById",
         "parameters": [
           {
@@ -1307,40 +1253,60 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "New Tool 3 update"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "You are a helpful assistant to Tool"
-                  },
                   "type": {
                     "type": "string",
-                    "example": "tool.api"
+                    "example": "tool.client"
                   },
-                  "arguments": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "name": {
-                          "type": "string"
-                        },
-                        "type": {
-                          "type": "string"
-                        },
-                        "description": {
-                          "type": "string"
+                  "schema": {
+                    "type": "object",
+                    "description": "Client-side function schema",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "example": "function"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "start_cloud_browser_session1"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "Starts the dashboard page with logged in session1."
+                      },
+                      "parameters": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "example": "object"
+                          },
+                          "properties": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "required": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
                         }
                       }
                     },
-                    "example": [
-                      {
-                        "name": "ticker",
-                        "type": "str",
-                        "description": "The ticker of the stock to get the price for"
-                      }
+                    "required": [
+                      "type",
+                      "name",
+                      "parameters"
                     ]
                   },
                   "request_config": {
@@ -1356,13 +1322,8 @@
                       },
                       "headers": {
                         "type": "object",
-                        "properties": {
-                          "User-Agent": {
-                            "type": "string"
-                          },
-                          "Accept": {
-                            "type": "string"
-                          }
+                        "additionalProperties": {
+                          "type": "string"
                         },
                         "example": {
                           "User-Agent": "Trugen Avatar",
@@ -1380,9 +1341,14 @@
                           "message": {
                             "type": "string"
                           }
-                        },
-                        "example": {
-                          "message": "Successfully received data."
+                        }
+                      },
+                      "on_success": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string"
+                          }
                         }
                       },
                       "on_delay": {
@@ -1394,10 +1360,6 @@
                           "message": {
                             "type": "string"
                           }
-                        },
-                        "example": {
-                          "delay": 1,
-                          "message": "Waiting for stock price data..."
                         }
                       },
                       "on_error": {
@@ -1406,9 +1368,6 @@
                           "message": {
                             "type": "string"
                           }
-                        },
-                        "example": {
-                          "message": "Failed to retrieve stock price data"
                         }
                       }
                     }
@@ -1419,26 +1378,32 @@
                   }
                 },
                 "required": [
-                  "name",
-                  "description",
                   "type",
-                  "arguments",
+                  "schema",
                   "request_config",
                   "event_messages",
                   "is_active"
                 ]
               },
               "example": {
-                "name": "New Tool 3 update",
-                "description": "You are a helpful assistant to Tool",
-                "type": "tool.api",
-                "arguments": [
-                  {
-                    "name": "ticker",
-                    "type": "str",
-                    "description": "The ticker of the stock to get the price for"
+                "type": "tool.client",
+                "schema": {
+                  "type": "function",
+                  "name": "start_cloud_browser_session1",
+                  "description": "Starts the dashboard page with logged in session1.",
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "description": "URL to navigate to"
+                      }
+                    },
+                    "required": [
+                      "url"
+                    ]
                   }
-                ],
+                },
                 "request_config": {
                   "method": "GET",
                   "url": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6",
@@ -1449,6 +1414,9 @@
                 },
                 "event_messages": {
                   "on_start": {
+                    "message": "Getting stock price data..."
+                  },
+                  "on_success": {
                     "message": "Successfully received data."
                   },
                   "on_delay": {
@@ -1466,101 +1434,19 @@
         },
         "responses": {
           "200": {
-            "description": "Tool details updated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "example": "611eaabb-0884-440f-a4f1-a04b9ad8a597"
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Tool details updated successfully"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "message"
-                  ]
-                }
-              }
-            }
+            "description": "Tool details updated successfully"
           },
           "400": {
-            "description": "Invalid input data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Invalid request body"
-                }
-              }
-            }
+            "description": "Invalid input data"
           },
           "401": {
-            "description": "Unauthorized – invalid or missing API key",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Unauthorized: not a valid authorization api key"
-                }
-              }
-            }
+            "description": "Unauthorized"
           },
           "404": {
-            "description": "Tool not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "message": "Tool not found"
-                }
-              }
-            }
+            "description": "Tool not found"
           },
           "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Failed to retrieve tool details"
-                }
-              }
-            }
+            "description": "Internal server error"
           }
         }
       },
@@ -1599,29 +1485,124 @@
                       "format": "uuid",
                       "example": "0ea1fa09-4681-4068-8437-84ae6907b900"
                     },
-                    "name": {
-                      "type": "string",
-                      "example": "New Tool 2"
-                    },
-                    "description": {
-                      "type": "string",
-                      "example": "You are a helpful assistant to Tool"
-                    },
                     "type": {
                       "type": "string",
-                      "example": "tool.api"
+                      "example": "tool.client"
                     },
-                    "arguments": {
-                      "type": "string",
-                      "example": "[{\"name\": \"ticker\", \"type\": \"str\", \"description\": \"The ticker of the stock to get the price for\"}]"
+                    "schema": {
+                      "type": "object",
+                      "description": "Function schema definition",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "example": "function"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "start_cloud_browser_session1"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Starts the dashboard page with logged in session1."
+                        },
+                        "parameters": {
+                          "type": "object",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "example": "object"
+                            },
+                            "properties": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "description": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            },
+                            "required": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "name",
+                        "parameters"
+                      ]
                     },
                     "request_config": {
-                      "type": "string",
-                      "example": "{\"url\": \"https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6\", \"method\": \"GET\", \"headers\": {\"Accept\": \"application/json\", \"User-Agent\": \"Trugen Avatar\"}}"
+                      "type": "object",
+                      "properties": {
+                        "method": {
+                          "type": "string",
+                          "example": "GET"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6"
+                        },
+                        "headers": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          },
+                          "example": {
+                            "User-Agent": "Trugen Avatar",
+                            "Accept": "application/json"
+                          }
+                        }
+                      }
                     },
                     "event_messages": {
-                      "type": "string",
-                      "example": "{\"on_delay\": {\"delay\": 1, \"message\": \"Waiting for stock price data...\"}, \"on_error\": {\"message\": \"Failed to retrieve stock price data\"}, \"on_start\": {\"message\": \"Successfully received data.\"}}"
+                      "type": "object",
+                      "properties": {
+                        "on_start": {
+                          "type": "object",
+                          "properties": {
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "on_success": {
+                          "type": "object",
+                          "properties": {
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "on_delay": {
+                          "type": "object",
+                          "properties": {
+                            "delay": {
+                              "type": "integer"
+                            },
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "on_error": {
+                          "type": "object",
+                          "properties": {
+                            "message": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
                     },
                     "is_active": {
                       "type": "boolean",
@@ -1640,10 +1621,8 @@
                   },
                   "required": [
                     "id",
-                    "name",
-                    "description",
                     "type",
-                    "arguments",
+                    "schema",
                     "request_config",
                     "event_messages",
                     "is_active",
@@ -1655,58 +1634,13 @@
             }
           },
           "401": {
-            "description": "Unauthorized – invalid or missing API key",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Unauthorized: not a valid authorization api key"
-                }
-              }
-            }
+            "description": "Unauthorized – invalid or missing API key"
           },
           "404": {
-            "description": "Tool not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "message": "Tool not found"
-                }
-              }
-            }
+            "description": "Tool not found"
           },
           "500": {
-            "description": "Internal server error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "error": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "error": "Failed to retrieve tool details"
-                }
-              }
-            }
+            "description": "Internal server error"
           }
         }
       }
@@ -2783,6 +2717,58 @@
                           }
                         }
                       },
+                      "tool": {
+                        "type": "array",
+                        "description": "List of tools attached to this agent.",
+                        "nullable": true,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "Tool identifier.",
+                              "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "Name of the tool.",
+                              "example": "Product Support Articles"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "Short summary of the tool's functionality.",
+                              "example": "Tool for accessing employee directory."
+                            }
+                          }
+                        }
+                      },
+                      "mcp": {
+                        "type": "array",
+                        "description": "List of MCP attached to this agent.",
+                        "nullable": true,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "format": "uuid",
+                              "description": "MCP identifier.",
+                              "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "Name of the MCP.",
+                              "example": "Product Support Articles"
+                            },
+                            "description": {
+                              "type": "string",
+                              "description": "Short summary of the MCP's functionality.",
+                              "example": "MCP for accessing employee directory."
+                            }
+                          }
+                        }
+                      },
                       "record": {
                         "type": "boolean",
                         "description": "Determines whether voice call recordings should be stored.",
@@ -3139,6 +3125,48 @@
                           "type": "string",
                           "description": "Short summary of the knowledge base content.",
                           "default": "Contains FAQs and troubleshooting guides for product lines."
+                        }
+                      }
+                    }
+                  },
+                  "tool": {
+                    "type": "array",
+                    "description": "List of tools attached to this agent.",
+                    "nullable": true,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Tool identifier.",
+                          "default": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the tool.",
+                          "default": "Product Support Articles"
+                        }
+                      }
+                    }
+                  },
+                  "mcp": {
+                    "type": "array",
+                    "description": "List of MCPs attached to this agent.",
+                    "nullable": true,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "MCP identifier.",
+                          "default": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the MCP .",
+                          "default": "Product Support Articles"
                         }
                       }
                     }
@@ -3552,6 +3580,58 @@
                         }
                       }
                     },
+                    "tool": {
+                      "type": "array",
+                      "description": "List of tools attached to this agent.",
+                      "nullable": true,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "Tool identifier.",
+                            "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the tool.",
+                            "example": "Product Support Articles"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Short summary of the tool's functionality.",
+                            "example": "Tool for accessing employee directory."
+                          }
+                        }
+                      }
+                    },
+                    "mcp": {
+                      "type": "array",
+                      "description": "List of MCP attached to this agent.",
+                      "nullable": true,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "description": "MCP identifier.",
+                            "example": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the MCP.",
+                            "example": "Product Support Articles"
+                          },
+                          "description": {
+                            "type": "string",
+                            "description": "Short summary of the MCP's functionality.",
+                            "example": "MCP for accessing employee directory."
+                          }
+                        }
+                      }
+                    },
                     "record": {
                       "type": "boolean",
                       "description": "Determines whether voice call recordings should be stored.",
@@ -3820,6 +3900,48 @@
                           "type": "string",
                           "description": "Short summary of the knowledge base content.",
                           "example": "Contains FAQs and troubleshooting guides for product lines."
+                        }
+                      }
+                    }
+                  },
+                  "tool": {
+                    "type": "array",
+                    "description": "List of tools attached to this agent.",
+                    "nullable": true,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "Tool identifier.",
+                          "default": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the tool.",
+                          "default": "Product Support Articles"
+                        }
+                      }
+                    }
+                  },
+                  "mcp": {
+                    "type": "array",
+                    "description": "List of MCPs attached to this agent.",
+                    "nullable": true,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "description": "MCP identifier.",
+                          "default": "ac79226e-73e1-41fe-8cde-469ae4e244fa"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the MCP .",
+                          "default": "Product Support Articles"
                         }
                       }
                     }
