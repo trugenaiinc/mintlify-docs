@@ -840,7 +840,7 @@
                           },
                           "url": {
                             "type": "string",
-                            "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min"
+                            "example": "https://www.example.com/information"
                           },
                           "headers": {
                             "type": "object",
@@ -1038,7 +1038,7 @@
                       },
                       "url": {
                         "type": "string",
-                        "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min"
+                        "example": "https://www.example.com/information"
                       },
                       "headers": {
                         "type": "object",
@@ -1318,7 +1318,7 @@
                       },
                       "url": {
                         "type": "string",
-                        "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6"
+                        "example": "https://www.example.com/information"
                       },
                       "headers": {
                         "type": "object",
@@ -1406,7 +1406,7 @@
                 },
                 "request_config": {
                   "method": "GET",
-                  "url": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6",
+                  "url": "https://www.example.com/information",
                   "headers": {
                     "User-Agent": "Trugen Avatar",
                     "Accept": "application/json"
@@ -1550,7 +1550,7 @@
                         },
                         "url": {
                           "type": "string",
-                          "example": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6"
+                          "example": "https://www.example.com/information"
                         },
                         "headers": {
                           "type": "object",
