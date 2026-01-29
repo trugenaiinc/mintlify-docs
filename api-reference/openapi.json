@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/mcp": {
+    "/ext/mcp": {
       "get": {
         "summary": "Get MCP details",
         "description": "Fetches a list of available MCP details. Requires `x-api-key` authentication.",
@@ -312,7 +312,7 @@
         }
       }
     },
-    "/mcp/{id}": {
+    "/ext/mcp/{id}": {
       "delete": {
         "summary": "Delete MCP",
         "description": "Deletes an MCP details by its ID. Requires `x-api-key` authentication.",
@@ -810,7 +810,7 @@
         }
       }
     },
-    "/tool": {
+    "/ext/tool": {
       "get": {
         "summary": "Get all Tool details",
         "description": "Fetches all tool details available in the system. Requires `x-api-key` authentication.",
@@ -944,20 +944,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string",
-                    "example": "New Tool 4"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "You are a helpful assistant to Tool"
-                  },
                   "type": {
                     "type": "string",
                     "example": "tool.api"
                   },
-                  "arguments": {
-                    "type": "array",
+                  "schema": {
+                    "type": "object",
                     "items": {
                       "type": "object",
                       "properties": {
@@ -972,6 +964,10 @@
                         "description": {
                           "type": "string",
                           "example": "The ticker of the stock to get the price for"
+                        },
+                        "parameters": {
+                          "type": "string",
+                          "example": "Sample Parameters"
                         }
                       }
                     }
@@ -1011,6 +1007,15 @@
                           }
                         }
                       },
+                      "on_success": {
+                        "type": "object",
+                        "properties": {
+                          "message": {
+                            "type": "string",
+                            "example": "Successfully completed."
+                          }
+                        }
+                      },
                       "on_delay": {
                         "type": "object",
                         "properties": {
@@ -1034,31 +1039,34 @@
                         }
                       }
                     }
-                  },
-                  "is_active": {
-                    "type": "boolean",
-                    "example": true
                   }
                 },
                 "required": [
-                  "name",
-                  "description",
                   "type",
+                  "schema",
                   "request_config",
-                  "is_active"
+                  "event_messages"
                 ]
               },
               "example": {
-                "name": "New Tool 4",
-                "description": "You are a helpful assistant to Tool",
                 "type": "tool.api",
-                "arguments": [
-                  {
-                    "name": "ticker",
-                    "type": "str",
-                    "description": "The ticker of the stock to get the price for"
+                "schema": {
+                  "type": "function",
+                  "name": "start_cloud_browser_session",
+                  "description": "Starts the dashboard page with logged in session.",
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string",
+                        "description": "URL to navigate to"
+                      }
+                    },
+                    "required": [
+                      "url"
+                    ]
                   }
-                ],
+                },
                 "request_config": {
                   "method": "GET",
                   "url": "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol={ticker}&interval=5min&apikey=OIIK6KTNL0WPUJC6",
@@ -1071,6 +1079,9 @@
                   "on_start": {
                     "message": "Successfully received data."
                   },
+                  "on_success": {
+                    "message": "Successfully completed."
+                  },
                   "on_delay": {
                     "delay": 1,
                     "message": "Waiting for stock price data..."
@@ -1078,8 +1089,7 @@
                   "on_error": {
                     "message": "Failed to retrieve stock price data"
                   }
-                },
-                "is_active": true
+                }
               }
             }
           }
@@ -1163,7 +1173,7 @@
         }
       }
     },
-    "/tool/{id}": {
+    "/ext/tool/{id}": {
       "delete": {
         "summary": "Delete Tool details",
         "description": "Deletes a tool details by its unique ID.",

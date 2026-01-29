@@ -104,6 +104,26 @@
             ]
           },
           {
+            "group": "Tools",
+            "pages": [
+              "api-reference/endpoint/toolcreate",
+              "api-reference/endpoint/toolgetbyid",
+              "api-reference/endpoint/toolget",
+              "api-reference/endpoint/toolupdate",
+              "api-reference/endpoint/tooldelete"
+            ]
+          },
+          {
+            "group": "MCPs",
+            "pages": [
+              "api-reference/endpoint/mcpcreate",
+              "api-reference/endpoint/mcpgetbyid",
+              "api-reference/endpoint/mcpget",
+              "api-reference/endpoint/mcpupdate",
+              "api-reference/endpoint/mcpdelete"
+            ]
+          },
+          {
             "group": "Providers",
             "pages": ["api-reference/endpoint/providerget"]
           },
