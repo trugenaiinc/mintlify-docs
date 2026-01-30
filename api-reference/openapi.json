@@ -70,10 +70,6 @@
                           "url"
                         ]
                       },
-                      "is_active": {
-                        "type": "boolean",
-                        "example": true
-                      },
                       "created_at": {
                         "type": "string",
                         "format": "date-time",
@@ -445,18 +441,13 @@
                     "required": [
                       "url"
                     ]
-                  },
-                  "is_active": {
-                    "type": "boolean",
-                    "example": true
                   }
                 },
                 "required": [
                   "name",
                   "description",
                   "type",
-                  "request_config",
-                  "is_active"
+                  "request_config"
                 ]
               },
               "example": {
@@ -469,8 +460,7 @@
                     "User-Agent": "Trugen Avatar",
                     "Accept": "application/json"
                   }
-                },
-                "is_active": true
+                }
               }
             }
           }
@@ -503,10 +493,6 @@
                     "request_config": {
                       "type": "object"
                     },
-                    "is_active": {
-                      "type": "boolean",
-                      "example": true
-                    },
                     "updated_at": {
                       "type": "string",
                       "format": "date-time",
@@ -519,7 +505,6 @@
                     "description",
                     "type",
                     "request_config",
-                    "is_active",
                     "updated_at"
                   ]
                 }
@@ -670,10 +655,6 @@
                         "url"
                       ]
                     },
-                    "is_active": {
-                      "type": "boolean",
-                      "example": true
-                    },
                     "created_at": {
                       "type": "string",
                       "format": "date-time",
@@ -691,7 +672,6 @@
                     "description",
                     "type",
                     "request_config",
-                    "is_active",
                     "created_at",
                     "updated_at"
                   ]
@@ -894,10 +874,6 @@
                           }
                         }
                       },
-                      "is_active": {
-                        "type": "boolean",
-                        "example": true
-                      },
                       "created_at": {
                         "type": "string",
                         "format": "date-time",
@@ -915,7 +891,6 @@
                       "schema",
                       "request_config",
                       "event_messages",
-                      "is_active",
                       "created_at",
                       "updated_at"
                     ]
@@ -1371,18 +1346,13 @@
                         }
                       }
                     }
-                  },
-                  "is_active": {
-                    "type": "boolean",
-                    "example": true
                   }
                 },
                 "required": [
                   "type",
                   "schema",
                   "request_config",
-                  "event_messages",
-                  "is_active"
+                  "event_messages"
                 ]
               },
               "example": {
@@ -1426,8 +1396,7 @@
                   "on_error": {
                     "message": "Failed to retrieve stock price data"
                   }
-                },
-                "is_active": true
+                }
               }
             }
           }
@@ -1604,10 +1573,6 @@
                         }
                       }
                     },
-                    "is_active": {
-                      "type": "boolean",
-                      "example": true
-                    },
                     "created_at": {
                       "type": "string",
                       "format": "date-time",
@@ -1625,7 +1590,6 @@
                     "schema",
                     "request_config",
                     "event_messages",
-                    "is_active",
                     "created_at",
                     "updated_at"
                   ]
