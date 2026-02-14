@@ -1,0 +1,30 @@
+Give a face to your Livekit agents with our TruGen Avatars, using our official Livekit Agents plugin.
+
+```bash
+uv add livekit-agents[trugen]~=1.3
+```
+
+## Example
+- Step 1: Simply instantiate TruGen Avatar Session with your preferred Avatar ID.
+```python
+trugen_avatar = trugen.AvatarSession(avatar_id=avatar_id)
+```
+
+- Step 2: Define your agent as usual, and pass the agent session while starting the avatar session.
+```python
+await trugen_avatar.start(session, room=ctx.room)
+```
+
+
+More Resourcess
+
+<CardGroup cols={2}>
+
+<Card title="Our Examples" icon="github" href="https://github.com/trugenai/trugen-examples/tree/main/voice-to-video/livekit">
+    Explore our official Github Repo for more examples
+</Card>
+<Card title="Livekit Plugin Examples" icon="robot" href="https://github.com/livekit/agents/tree/main/examples/avatar_agents">
+    Explore Livekit Agent plugin examples.
+</Card>
+
+</CardGroup>
