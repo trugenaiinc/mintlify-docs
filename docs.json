@@ -42,6 +42,7 @@
                 ]
               },
               "docs/agents/prompting-strategies",
+              "docs/agents/multilingual-support",
               "docs/resources/byo-llm"
             ]
           },
