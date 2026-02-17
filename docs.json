@@ -47,12 +47,11 @@
             ]
           },
           {
-            "group": "Bring your own Agent",
-            "pages": ["docs/voice-to-video/livekit"]
-          },
-          {
             "group": "Integrations",
-            "pages": ["docs/integrations/embed-via-iFrame"]
+            "pages": [
+              "docs/voice-to-video/livekit",
+              "docs/integrations/embed-via-iFrame"
+            ]
           },
           {
             "group": "Avatars",
