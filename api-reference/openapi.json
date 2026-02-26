@@ -3066,6 +3066,22 @@
                         "type": "integer",
                         "description": "Maximum time to wait for the user to join the call (in seconds).",
                         "default": 240
+                      },
+                      "memory": {
+                        "type": "object",
+                        "description": "Memory configuration for the agent.",
+                        "properties": {
+                          "isEnabled": {
+                            "type": "boolean",
+                            "description": "Whether memory is enabled for the agent.",
+                            "default": false
+                          },
+                          "instruction": {
+                            "type": "string",
+                            "description": "Instruction for how the agent should utilize memory.",
+                            "default": "Sample instruction for the agent to utilize memory effectively in conversations."
+                          }
+                        }
                       }
                     }
                   },
@@ -3177,7 +3193,11 @@
                 "agent_name": "Sample AI Agent",
                 "agent_system_prompt": "You're a helpful ai agent. Answer all questions appropriately.",
                 "config": {
-                  "timeout": 240
+                  "timeout": 240,
+                  "memory": {
+                    "isEnabled": false,
+                    "instruction": "sample memory instruction for the agent"
+                  }
                 },
                 "knowledge_base": [
                   {
@@ -3841,6 +3861,22 @@
                         "type": "string",
                         "description": "Context label used to maintain continuity across sessions.",
                         "example": "customer-support"
+                      },
+                      "memory": {
+                        "type": "object",
+                        "description": "Memory configuration for the agent.",
+                        "properties": {
+                          "isEnabled": {
+                            "type": "boolean",
+                            "description": "Whether memory is enabled for the agent.",
+                            "example": false
+                          },
+                          "instruction": {
+                            "type": "string",
+                            "description": "Instruction for how the agent should utilize memory.",
+                            "example": "Sample instruction for the agent to utilize memory effectively in conversations."
+                          }
+                        }
                       }
                     }
                   },
@@ -3977,7 +4013,11 @@
                 "callback_url": "",
                 "config": {
                   "maxCallDuration": 1800,
-                  "conversationalContext": "customer-support"
+                  "conversationalContext": "customer-support",
+                  "memory": {
+                    "isEnabled": false,
+                    "instruction": "sample memory instruction for the agent"
+                  }
                 },
                 "knowledge_base": [
                   {
