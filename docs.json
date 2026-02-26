@@ -50,7 +50,8 @@
             "group": "Integrations",
             "pages": [
               "docs/voice-to-video/livekit",
-              "docs/integrations/embed-via-iFrame"
+              "docs/integrations/embed-via-iFrame",
+              "docs/integrations/widget-integration"
             ]
           },
           {
