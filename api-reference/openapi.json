@@ -2059,7 +2059,7 @@
       },
       "put": {
         "summary": "Update an existing Template",
-        "description": "Updates the details of a specific by ID.",
+        "description": "Updates the details of a specific template by ID.",
         "operationId": "updateTemplate",
         "requestBody": {
           "required": true,
@@ -2249,7 +2249,7 @@
         ]
       },
       "delete": {
-        "summary": "Delete an Template",
+        "summary": "Delete a Template",
         "operationId": "deleteTemplate",
         "security": [
           {
@@ -4600,7 +4600,7 @@
                   "name": {
                     "type": "string",
                     "example": "HR Policy",
-                    "description": "Human reabable name of the knowledge base."
+                    "description": "Human readable name of the knowledge base."
                   },
                   "description": {
                     "type": "string",
