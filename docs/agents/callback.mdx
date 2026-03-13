@@ -1,6 +1,6 @@
 TruGen supports webhooks so you can receive **real-time event hooks** from active conversations and use them to drive your UI, analytics, and business logic.
 
-Whenever something important happens in a conversation (like the user starting to speak, the agent starting or stopping speech, or a call timing out), Trugen sends an HTTP `POST` request to your configured `callback_url`.
+Whenever something important happens in a conversation (like the user starting to speak, the agent starting or stopping speech, or a call timing out), TruGen sends an HTTP `POST` request to your configured `callback_url`.
 
 ---
 
@@ -81,7 +81,7 @@ Every webhook request uses the same base format:
 * `event.payload` - Event-specific data payload.
 
 ### Handling Webhooks (Example in Node/Express)
-Below are examples of how to receive and handle Trugen webhook events in **Node.js** and **Python**.
+Below are examples of how to receive and handle TruGen webhook events in **Node.js** and **Python**.
 
 <CodeGroup>
 ```ts Node.js
@@ -114,7 +114,7 @@ app.post("/webhooks/trugen", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Listening for Trugen webhooks on port 3000");
+  console.log("Listening for TruGen webhooks on port 3000");
 });
 ```
 
