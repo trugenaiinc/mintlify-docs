@@ -1,20 +1,43 @@
 ---
-title: Knowlege Base
+title: Knowledge Base
 ---
+Knowledge Bases define the ground truth knowledge your agents rely on by centralizing your company’s documents, sites, and internal content so they can answer consistently and accurately, while also acting as reusable knowledge layers that multiple agents and templates can attach to—making it easier to keep information updated, enforce brand and policy alignment, and roll out new use cases without duplicating content.
 
 Integrate your own documents, or knowledge to deliver grounded, brand-specific conversations.
 
 Agents can dynamically reference multiple resources, ensuring accuracy, consistency, and contextual knowledge. With Knowledge Base integration, every answer is context-aware, brand-true, and rooted in your company’s knowledge-not generic guesses.
 
-We support two modes or interaction with Knowledge Base's while the agent responds,
-  1. `agentic` mode (**Default**); here the LLM takes a decision to search each knowledge base depending on the user query.
-  2. Traditional `rag` mode; where each user query is searched against the knowledge base.
+We support two modes of interaction with Knowledge Bases while the agent responds:
+  1. **Agentic RAG** – The LLM decides when and which knowledge bases or collections to search based on the user’s query and conversation context.
+  2. **Traditional RAG** – Every user query is always searched against the configured knowledge bases, and the retrieved context is passed to the LLM.
 
 # Getting Started
 
-Documents and websites are indexed and made available to agents using the Knowledge Base component, simply create a knowledge base, upload your documents and tag it with the agents.
+Documents and websites are indexed and made available to agents using the Knowledge Base component.
 
-**Name** and **Description** of the knowledge base is the one of the most important component; these are the fields the agent user's to decide to use the knowledge base or not.
+**Step 1 – Open Knowledge Base in the dashboard**  
+Go to `https://app.trugen.ai/dashboard` and in the left panel, under **Configure**, click on **Knowledge Base**.
+
+**Step 2 – Create a new Knowledge Base**  
+Click **Create New**, give your Knowledge Base a clear **Name** and **Description** so agents know when to use it.
+
+**Step 3 – Add your content**  
+Use one of the three options: **Add files**, **Add text**, or **Add URL**. Upload your documents or paste/enter content, then click **Save & Create**.
+
+**Step 4 – Wait for indexing**  
+The system will extract, clean, chunk, and index your content. Once processing is complete, you can select this Knowledge Base when creating or updating an agent.
+
+**Name** and **Description** of the knowledge base is one of the most important components; these are the fields the agent uses to decide whether to use that knowledge base or not.
+
+### Architecture
+
+When you create or update a Knowledge Base, the system follows this ingestion flow:
+
+1. **Create adds collections** - A Knowledge Base is organized into **collections** that can include **files**, **text**, and **URLs**.
+2. **Store sources in S3** - Uploaded files, raw text, and URL content are stored in an **S3 bucket**.
+3. **Queue processing via SQS** - A message is published to **SQS** to trigger asynchronous processing.
+4. **Lambda pipeline** - A **Lambda** function runs to **extract**, **clean**, and **chunk** the content.
+5. **Embeddings & ingestion** - The Lambda generates **embeddings** for chunks, sends them to the server, and ingests them into the **vector database** for retrieval during conversations.
 
 ## Example
 ```
