@@ -15,29 +15,22 @@ We support two modes of interaction with Knowledge Bases while the agent respond
 
 Documents and websites are indexed and made available to agents using the Knowledge Base component.
 
-**Step 1 – Open Knowledge Base in the dashboard**  
-Go to `https://app.trugen.ai/dashboard` and in the left panel, under **Configure**, click on **Knowledge Base**.
-
-**Step 2 – Create a new Knowledge Base**  
-Click **Create New**, give your Knowledge Base a clear **Name** and **Description** so agents know when to use it.
-
-**Step 3 – Add your content**  
-Use one of the three options: **Add files**, **Add text**, or **Add URL**. Upload your documents or paste/enter content, then click **Save & Create**.
-
-**Step 4 – Wait for indexing**  
-The system will extract, clean, chunk, and index your content. Once processing is complete, you can select this Knowledge Base when creating or updating an agent.
+<Steps>
+  <Step title="Step 1 - Open Knowledge Base in the dashboard">
+    Go to [https://app.trugen.ai](https://app.trugen.ai) and in the left panel, under **Configure**, click on **Knowledge Base**.
+  </Step>
+  <Step title="Step 2 - Create a new Knowledge Base">
+    Click **Create New**, give your Knowledge Base a clear **Name** and **Description** so agents know when to use it.
+  </Step>
+  <Step title="Step 3 - Add your content">
+    Use one of the three options: **Add files**, **Add text**, or **Add URL**. Upload your documents or paste/enter content, then click **Save & Create**.
+  </Step>
+  <Step title="Step 4 - Wait for indexing">
+    The system will extract, clean, chunk, and index your content. Once processing is complete, you can select this Knowledge Base when creating or updating an agent.
+  </Step>
+</Steps>
 
 **Name** and **Description** of the knowledge base is one of the most important components; these are the fields the agent uses to decide whether to use that knowledge base or not.
-
-### Architecture
-
-When you create or update a Knowledge Base, the system follows this ingestion flow:
-
-1. **Create adds collections** - A Knowledge Base is organized into **collections** that can include **files**, **text**, and **URLs**.
-2. **Store sources in S3** - Uploaded files, raw text, and URL content are stored in an **S3 bucket**.
-3. **Queue processing via SQS** - A message is published to **SQS** to trigger asynchronous processing.
-4. **Lambda pipeline** - A **Lambda** function runs to **extract**, **clean**, and **chunk** the content.
-5. **Embeddings & ingestion** - The Lambda generates **embeddings** for chunks, sends them to the server, and ingests them into the **vector database** for retrieval during conversations.
 
 ## Example
 ```

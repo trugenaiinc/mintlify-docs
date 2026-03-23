@@ -2,42 +2,39 @@
 title: Memory
 ---
 
-Memory helps agents save important user details **across multiple conversations**. **Custom Instructions** help the agent with guidelines to what needs to be remembered, and the amount of detail depends on the configured **memory depth** (`surface`, `detailed`, or `deep`).
+Memory helps agents save important user details **across multiple conversations**. **Custom Instructions** help the agent with guidelines to what needs to be remembered, and the amount of detail depends on the configured **memory depth**.
 
 # Getting Started
 
-**Step 1 – Open the dashboard**  
-Go to `https://app.trugen.ai`.
-
-**Step 2 – Create a new agent**  
-Click **Create New Agent** and fill in the basic agent details.
-
-**Step 3 – Configure Memory (Custom Instruction)**  
-Open the **Memory** tab and enable the **Custom Instruction** toggle. Update the instruction to specify what details should be saved (and the memory depth: `surface`, `detailed`, or `deep`).
-
-**Step 4 – Start conversations**  
-Talk to the agent. It will save memory entries based on your instruction and use them in future conversations with the same user.
+<Steps>
+  <Step title="Step 1 - Open the Developer Platform">
+    Go to [app.trugen.ai](https://app.trugen.ai).
+  </Step>
+  <Step title="Step 2 - Create a new agent">
+    Click **Create New Agent** and fill in the basic agent details.
+  </Step>
+  <Step title="Step 3 - Configure Memory (Custom Instruction)">
+    Open the **Memory** tab and enable the **Custom Instruction** toggle. Update the instruction to specify what details should be saved.
+  </Step>
+  <Step title="Step 4 - Start conversations">
+    Talk to the agent. It will save memory entries based on your instruction and use them in future conversations with the same user.
+  </Step>
+</Steps>
 
 ### How Memory Works
 
-**Supported memory items**
-1. Personal identity and relationships
-2. Significant memories and experiences
-3. Emotional state and well-being
-4. Daily activities and routines
-5. Preferences and interests
-6. Plans, events, and goals
-7. Communication and social preferences
+1. Agent is called.
+2. Previous chat history for that user is loaded.
+3. Relevant context is added to the current session.
+4. Updated conversation is available for the next call by the same user.
 
 <Note>Ensure privacy settings and user consent before storing sensitive details.</Note>
 
 ## Example
 ```
 Name: Sales-Agent-Memory
-Description: Remember key user details and preferences that help personalize future sales conversations.
-```
 
-**Example Custom Instruction (Memory prompt)**
+Example Custom Instruction (Memory prompt)
 
 1. Personal Profile  
 
@@ -87,23 +84,17 @@ Description: Remember key user details and preferences that help personalize fut
 
    • Include frequency, duration, and user satisfaction levels to spot improvements or challenges.
 
+
 Implementation Guidelines  
 
 • Timestamp every entry and note the context in which information was shared.  
 • Update or archive entries as details evolve; avoid duplication by merging overlapping data.  
 • Enable retrieval by keyword, category, date range, and emotional tag to support personalized, context-aware interactions.
+```
+```
+Name: Educational Mentor
 
-### Example Input → Stored Memory Items
-
-**Input**
-
-I talked to my sister Anna today. It's her birthday next week, and we're planning a small dinner. I've been feeling a bit anxious lately, so I’ve started journaling again. Also, I’ve been getting back into painting—it really helps me relax. I'm thinking of visiting my parents next weekend.
-
-**Output**
-
-['Talked to sister Anna today.', 'Anna’s birthday is next week.', 'Planning a small dinner.', 'Feeling a bit anxious lately.', 'Started journaling again.', 'Getting back into painting.', 'Thinking of visiting parents next weekend.']
-
-**Example 2 Custom Instruction (Memory prompt)**
+Example 2 Custom Instruction (Memory prompt)
 
 Types of Information to Remember:
 
@@ -132,14 +123,4 @@ Types of Information to Remember:
    • Opinions on classes or instructors, preferred teaching materials, motivational triggers or obstacles  
 
 Memory Depth Guidance: Retain detailed context for the most recent three interactions; summarize older details as needed to preserve relevance and continuity.
-
-### Example 2 Input → Stored Memory Items
-
-**Input**
-
-I'm a second-year psychology major at Stanford, and I’m really interested in behavioral neuroscience. I’ve got a research paper due next Friday on cognitive bias, and honestly, I’m struggling to stay motivated lately. I usually learn best with visual materials, like diagrams and charts, and prefer studying alone in quiet spaces.
-
-**Output**
-
-['Second-year psychology major at Stanford.', 'Interested in behavioral neuroscience.', 'Has a research paper due next Friday on cognitive bias.', 'Struggling to stay motivated.', 'Prefers visual learning materials like diagrams and charts.', 'Prefers studying alone in quiet spaces.']
-
+```
