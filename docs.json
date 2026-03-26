@@ -28,6 +28,7 @@
               "docs/agents/pipeline",
               "docs/agents/templates",
               "docs/agents/knowledge-base",
+              "docs/agents/memory",
               "docs/agents/callback",
               {
                 "group": "Example Use Cases",
@@ -155,6 +156,11 @@
           "anchor": "Changelog",
           "href": "https://docs.trugen.ai/docs/changelog",
           "icon": "code-branch"
+        },
+        {
+          "anchor": "PlayBook",
+          "href": "https://playbook.trugen.ai/",
+          "icon": "book"
         }
       ]
     }
