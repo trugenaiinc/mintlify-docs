@@ -156,6 +156,11 @@
           "anchor": "Changelog",
           "href": "https://docs.trugen.ai/docs/changelog",
           "icon": "code-branch"
+        },
+        {
+          "anchor": "PlayBook",
+          "href": "https://playbook.trugen.ai/",
+          "icon": "book"
         }
       ]
     }
