@@ -29,6 +29,7 @@
               "docs/agents/templates",
               "docs/agents/knowledge-base",
               "docs/agents/memory",
+              "docs/agents/n8n",
               "docs/agents/callback",
               {
                 "group": "Example Use Cases",
