@@ -66,9 +66,7 @@
                             }
                           }
                         },
-                        "required": [
-                          "url"
-                        ]
+                        "required": ["url"]
                       },
                       "created_at": {
                         "type": "string",
@@ -181,17 +179,10 @@
                         }
                       }
                     },
-                    "required": [
-                      "url"
-                    ]
+                    "required": ["url"]
                   }
                 },
-                "required": [
-                  "name",
-                  "description",
-                  "type",
-                  "request_config"
-                ]
+                "required": ["name", "description", "type", "request_config"]
               },
               "example": {
                 "name": "Livekit Docs",
@@ -438,17 +429,10 @@
                         }
                       }
                     },
-                    "required": [
-                      "url"
-                    ]
+                    "required": ["url"]
                   }
                 },
-                "required": [
-                  "name",
-                  "description",
-                  "type",
-                  "request_config"
-                ]
+                "required": ["name", "description", "type", "request_config"]
               },
               "example": {
                 "name": "Livekit Docs1",
@@ -651,9 +635,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "url"
-                      ]
+                      "required": ["url"]
                     },
                     "created_at": {
                       "type": "string",
@@ -997,12 +979,7 @@
                         }
                       }
                     },
-                    "required": [
-                      "type",
-                      "name",
-                      "description",
-                      "parameters"
-                    ]
+                    "required": ["type", "name", "description", "parameters"]
                   },
                   "request_config": {
                     "type": "object",
@@ -1022,10 +999,7 @@
                         }
                       }
                     },
-                    "required": [
-                      "method",
-                      "url"
-                    ]
+                    "required": ["method", "url"]
                   },
                   "event_messages": {
                     "type": "object",
@@ -1135,10 +1109,7 @@
                       "example": "Tool details deleted successfully"
                     }
                   },
-                  "required": [
-                    "id",
-                    "message"
-                  ]
+                  "required": ["id", "message"]
                 }
               }
             }
@@ -1278,11 +1249,7 @@
                         }
                       }
                     },
-                    "required": [
-                      "type",
-                      "name",
-                      "parameters"
-                    ]
+                    "required": ["type", "name", "parameters"]
                   },
                   "request_config": {
                     "type": "object",
@@ -1369,9 +1336,7 @@
                         "description": "URL to navigate to"
                       }
                     },
-                    "required": [
-                      "url"
-                    ]
+                    "required": ["url"]
                   }
                 },
                 "request_config": {
@@ -1504,11 +1469,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "type",
-                        "name",
-                        "parameters"
-                      ]
+                      "required": ["type", "name", "parameters"]
                     },
                     "request_config": {
                       "type": "object",
@@ -2389,11 +2350,7 @@
                     "status": {
                       "type": "string",
                       "description": "Session status",
-                      "enum": [
-                        "STARTED",
-                        "IN_PROGRESS",
-                        "ENDED"
-                      ],
+                      "enum": ["STARTED", "IN_PROGRESS", "ENDED"],
                       "example": "ENDED"
                     },
                     "is_recorded": {
@@ -2421,10 +2378,7 @@
                           "role": {
                             "type": "string",
                             "description": "Message sender role",
-                            "enum": [
-                              "user",
-                              "assistant"
-                            ],
+                            "enum": ["user", "assistant"],
                             "example": "assistant"
                           },
                           "content": {
@@ -2781,9 +2735,7 @@
                         }
                       }
                     ],
-                    "callback_events": [
-                      "utterance_committed"
-                    ],
+                    "callback_events": ["utterance_committed"],
                     "callback_url": "",
                     "config": {
                       "maxCallDuration": 10,
@@ -4252,16 +4204,10 @@
                     "description": "ID of the template to use for creating the agent"
                   }
                 },
-                "required": [
-                  "avatar_ids",
-                  "template_id"
-                ]
+                "required": ["avatar_ids", "template_id"]
               },
               "example": {
-                "avatar_ids": [
-                  "1e4ea106",
-                  "665a1170"
-                ],
+                "avatar_ids": ["1e4ea106", "665a1170"],
                 "template_id": "76d9ff1d-b1d5-4dee-9b9a-d4c4d58c9c55"
               }
             }
@@ -4619,10 +4565,7 @@
                     "description": "As of 2025; we have increased the personal leaves to 15 per year."
                   }
                 },
-                "required": [
-                  "name",
-                  "description"
-                ]
+                "required": ["name", "description"]
               },
               "example": {
                 "name": "HR Policy",
@@ -4786,12 +4729,7 @@
                               "example": "<PUBLIC_URL>"
                             }
                           },
-                          "required": [
-                            "id",
-                            "name",
-                            "type",
-                            "preview_url"
-                          ]
+                          "required": ["id", "name", "type", "preview_url"]
                         }
                       },
                       "created_at": {
@@ -5351,9 +5289,7 @@
                     "description": "Optional file upload (e.g., .pdf, .docx)"
                   }
                 },
-                "required": [
-                  "text"
-                ]
+                "required": ["text"]
               }
             }
           }
@@ -5558,6 +5494,543 @@
                 },
                 "example": {
                   "error": "Failed to retrieve knowledge base"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/conversation/{conversation_id}/speak": {
+      "put": {
+        "summary": "Speak",
+        "description": "Send a text message to an active conversation and the agent will speak it aloud.",
+        "operationId": "conversationSpeak",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "conversation_id",
+            "in": "path",
+            "required": true,
+            "description": "The unique identifier of the active conversation.",
+            "schema": {
+              "type": "string",
+              "example": "conv_abc123"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "The text the agent should speak in the conversation.",
+                    "example": "Hello, Hi from team trugen."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The agent has spoken the provided text.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Agent is speaking the provided text."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Conversation not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Conversation not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to process speak request"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/conversation/{conversation_id}": {
+      "delete": {
+        "summary": "Delete Conversation",
+        "description": "End an ongoing conversation session.",
+        "operationId": "deleteConversation",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "conversation_id",
+            "in": "path",
+            "required": true,
+            "description": "The unique identifier of the conversation to end.",
+            "schema": {
+              "type": "string",
+              "example": "conv_abc123"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Conversation ended and deleted successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "agent_identity": {
+                      "type": "string",
+                      "description": "The identity of the agent associated with the conversation.",
+                      "example": "agent-AJ_jMvkNX2n8PsG"
+                    },
+                    "conversation_id": {
+                      "type": "string",
+                      "description": "The unique identifier of the conversation that was ended.",
+                      "example": "f3418b93-b1ce-496e-aa45-ae2e455c0c75"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Confirmation message.",
+                      "example": "Conversation ended successfully"
+                    }
+                  }
+                },
+                "example": {
+                  "agent_identity": "agent-AJ_jMvkNX2n8PsG",
+                  "conversation_id": "f3418b93-b1ce-496e-aa45-ae2e455c0c75",
+                  "message": "Conversation ended successfully"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Conversation not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Conversation not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to end conversation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/script-to-video/genStatus/{generation_id}": {
+      "get": {
+        "summary": "Get Generation Status",
+        "description": "Retrieve the current status and details of a video generation job using its `generation_id`.",
+        "operationId": "getGenStatus",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "generation_id",
+            "in": "path",
+            "required": true,
+            "description": "The unique identifier of the video generation job.",
+            "schema": {
+              "type": "string",
+              "example": "529fb61c-da5d-4b2d-9d49-b612deede60f"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Generation job details retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "actual_time": {
+                      "type": "number",
+                      "description": "The actual time taken to generate the video in seconds.",
+                      "example": 0
+                    },
+                    "avatar_id": {
+                      "type": "string",
+                      "description": "The ID of the avatar used for video generation.",
+                      "example": "c5b563de"
+                    },
+                    "callback_url": {
+                      "type": "string",
+                      "description": "The callback URL provided when the generation was initiated.",
+                      "example": "https://your-app.com/webhook/video-status"
+                    },
+                    "created_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the generation job was created.",
+                      "example": "2026-04-20T15:50:48.501917Z"
+                    },
+                    "estimated_time": {
+                      "type": "number",
+                      "description": "Estimated duration of the video in seconds.",
+                      "example": 2.09
+                    },
+                    "generation_id": {
+                      "type": "string",
+                      "description": "The unique identifier of this generation job.",
+                      "example": "529fb61c-da5d-4b2d-9d49-b612deede60f"
+                    },
+                    "model_name": {
+                      "type": "string",
+                      "description": "The TTS model used for audio synthesis.",
+                      "example": "eleven_turbo_v2_5"
+                    },
+                    "modified_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the generation job was last updated.",
+                      "example": "2026-04-20T15:51:47.429158Z"
+                    },
+                    "provider_name": {
+                      "type": "string",
+                      "description": "The TTS provider used for audio synthesis.",
+                      "example": "elevenlabs"
+                    },
+                    "script": {
+                      "type": "string",
+                      "description": "The text script used to generate the video.",
+                      "example": "Hello, This is team trugen"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Current status of the generation job. Possible values: `processing`, `completed`, `failed`.",
+                      "example": "failed"
+                    },
+                    "video_name": {
+                      "type": "string",
+                      "description": "The name of the generated video file. Empty if not yet completed.",
+                      "example": ""
+                    },
+                    "video_url": {
+                      "type": "string",
+                      "description": "The URL of the generated video. Empty if not yet completed.",
+                      "example": ""
+                    },
+                    "voice_id": {
+                      "type": "string",
+                      "description": "The voice ID used for audio narration.",
+                      "example": "FGY2WhTYpPnrIDTdsKH5"
+                    }
+                  }
+                },
+                "example": {
+                  "actual_time": 0,
+                  "avatar_id": "c5b563de",
+                  "callback_url": "https://your-app.com/webhook/video-status",
+                  "created_at": "2026-04-20T15:50:48.501917Z",
+                  "estimated_time": 2.09,
+                  "generation_id": "529fb61c-da5d-4b2d-9d49-b612deede60f",
+                  "model_name": "eleven_turbo_v2_5",
+                  "modified_at": "2026-04-20T15:51:47.429158Z",
+                  "provider_name": "elevenlabs",
+                  "script": "Hello, This is team trugen",
+                  "status": "failed",
+                  "video_name": "",
+                  "video_url": "",
+                  "voice_id": "FGY2WhTYpPnrIDTdsKH5"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Generation job not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Generation not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to retrieve generation status"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/script-to-video/createVideo": {
+      "post": {
+        "summary": "Text To Video Generator",
+        "description": "Generate a real life avatar video from text. Provide a script along with an avatar, voice, and provider configuration to produce a rendered video. The response returns a `generation_id` which can be used to track the status of the video generation.",
+        "operationId": "createTextToVideo",
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "avatar_id",
+                  "voice_id",
+                  "provider_name",
+                  "model_name",
+                  "script"
+                ],
+                "properties": {
+                  "avatar_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the avatar to use for video generation.",
+                    "example": "avatar_abc123"
+                  },
+                  "voice_id": {
+                    "type": "string",
+                    "description": "The unique identifier of the voice to use for the audio narration.",
+                    "example": "ZUrEGyu8GFMwnHbvLhv2"
+                  },
+                  "provider_name": {
+                    "type": "string",
+                    "description": "The name of the TTS provider to use for audio synthesis.",
+                    "example": "elevenlabs"
+                  },
+                  "model_name": {
+                    "type": "string",
+                    "description": "The model name within the provider to use for audio synthesis.",
+                    "example": "eleven_multilingual_v2"
+                  },
+                  "script": {
+                    "type": "string",
+                    "description": "The text script that the avatar will speak in the generated video.",
+                    "example": "Welcome to Trugen AI. This is a demonstration of our text to video generation capability."
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "description": "An optional URL that will receive a POST request when the video generation is complete.",
+                    "example": "https://your-app.com/webhook/video-ready"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Video generation successfully initiated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "estimated_duration": {
+                      "type": "number",
+                      "description": "Estimated duration of the generated video in seconds.",
+                      "example": 2.09
+                    },
+                    "generation_id": {
+                      "type": "string",
+                      "description": "Unique identifier for this video generation job. Use this to track or retrieve the result.",
+                      "example": "529fb61c-da5d-4b2d-9d49-b612deede60f"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Current status of the video generation job.",
+                      "example": "processing"
+                    }
+                  }
+                },
+                "example": {
+                  "estimated_duration": 2.09,
+                  "generation_id": "529fb61c-da5d-4b2d-9d49-b612deede60f",
+                  "status": "processing"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized – invalid or missing API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Unauthorized: not a valid authorization api key"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "error": "Failed to initiate video generation"
                 }
               }
             }
