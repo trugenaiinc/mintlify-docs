@@ -5727,7 +5727,7 @@
         }
       }
     },
-    "/v1/script-to-video/genStatus/{generation_id}": {
+    "/script-to-video/genStatus/{generation_id}": {
       "get": {
         "summary": "Get Generation Status",
         "description": "Retrieve the current status and details of a video generation job using its `generation_id`.",
@@ -5907,7 +5907,7 @@
         }
       }
     },
-    "/v1/script-to-video/createVideo": {
+    "/script-to-video/createVideo": {
       "post": {
         "summary": "Text To Video Generator",
         "description": "Generate a real life avatar video from text. Provide a script along with an avatar, voice, and provider configuration to produce a rendered video. The response returns a `generation_id` which can be used to track the status of the video generation.",

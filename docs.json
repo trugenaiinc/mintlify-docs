@@ -136,13 +136,6 @@
             "pages": ["api-reference/endpoint/providerget"]
           },
           {
-            "group": "Text to Video Generation",
-            "pages": [
-              "api-reference/endpoint/texttovideo",
-              "api-reference/endpoint/texttovideostatus"
-            ]
-          },
-          {
             "group": "Tools",
             "pages": [
               "api-reference/endpoint/toolcreate",
@@ -150,6 +143,13 @@
               "api-reference/endpoint/toolget",
               "api-reference/endpoint/toolupdate",
               "api-reference/endpoint/tooldelete"
+            ]
+          },
+          {
+            "group": "Text to Video Generation",
+            "pages": [
+              "api-reference/endpoint/texttovideo",
+              "api-reference/endpoint/texttovideostatus"
             ]
           }
         ]
