@@ -44,9 +44,12 @@
               "docs/agents/multilingual-support",
               "docs/agents/pipeline",
               "docs/agents/prompting-strategies",
-              "docs/agents/templates",
-              "docs/agents/text_to_video"
+              "docs/agents/templates"
             ]
+          },
+          {
+            "group": "Video Generation",
+            "pages": ["docs/agents/text_to_video"]
           },
           {
             "group": "Integrations",
@@ -133,7 +136,7 @@
             "pages": ["api-reference/endpoint/providerget"]
           },
           {
-            "group": "TextToVideo",
+            "group": "Text to Video Generation",
             "pages": [
               "api-reference/endpoint/texttovideo",
               "api-reference/endpoint/texttovideostatus"
