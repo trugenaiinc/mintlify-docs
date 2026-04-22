@@ -24,27 +24,28 @@
           {
             "group": "Managed Agents",
             "pages": [
-              "docs/agents/conversational-video-agents",
-              "docs/agents/pipeline",
-              "docs/agents/templates",
-              "docs/agents/knowledge-base",
-              "docs/agents/memory",
+              "docs/resources/byo-llm",
               "docs/agents/callback",
+              "docs/agents/conversational-video-agents",
               {
                 "group": "Example Use Cases",
                 "expanded": true,
                 "pages": [
                   "docs/examples/ai-interviewer",
+                  "docs/examples/career-coach",
                   "docs/examples/customer-support-agent",
                   "docs/examples/healthcare-intake-assistant",
-                  "docs/examples/career-coach",
-                  "docs/examples/sales-agents",
-                  "docs/examples/nutritionist"
+                  "docs/examples/nutritionist",
+                  "docs/examples/sales-agents"
                 ]
               },
-              "docs/agents/prompting-strategies",
+              "docs/agents/knowledge-base",
+              "docs/agents/memory",
               "docs/agents/multilingual-support",
-              "docs/resources/byo-llm"
+              "docs/agents/pipeline",
+              "docs/agents/prompting-strategies",
+              "docs/agents/templates",
+              "docs/agents/text_to_video"
             ]
           },
           {
@@ -84,17 +85,15 @@
             ]
           },
           {
-            "group": "Conversations",
-            "pages": ["api-reference/endpoint/conversationgetbyid"]
+            "group": "Avatars",
+            "pages": ["api-reference/endpoint/avatarget"]
           },
           {
-            "group": "Persona Templates",
+            "group": "Conversations",
             "pages": [
-              "api-reference/endpoint/templatecreate",
-              "api-reference/endpoint/templategetbyid",
-              "api-reference/endpoint/templateget",
-              "api-reference/endpoint/templateupdate",
-              "api-reference/endpoint/templatedelete"
+              "api-reference/endpoint/conversationgetbyid",
+              "api-reference/endpoint/conversationspeak",
+              "api-reference/endpoint/conversationdelete"
             ]
           },
           {
@@ -110,16 +109,6 @@
             ]
           },
           {
-            "group": "Tools",
-            "pages": [
-              "api-reference/endpoint/toolcreate",
-              "api-reference/endpoint/toolgetbyid",
-              "api-reference/endpoint/toolget",
-              "api-reference/endpoint/toolupdate",
-              "api-reference/endpoint/tooldelete"
-            ]
-          },
-          {
             "group": "MCPs",
             "pages": [
               "api-reference/endpoint/mcpcreate",
@@ -130,12 +119,35 @@
             ]
           },
           {
+            "group": "Persona Templates",
+            "pages": [
+              "api-reference/endpoint/templatecreate",
+              "api-reference/endpoint/templategetbyid",
+              "api-reference/endpoint/templateget",
+              "api-reference/endpoint/templateupdate",
+              "api-reference/endpoint/templatedelete"
+            ]
+          },
+          {
             "group": "Providers",
             "pages": ["api-reference/endpoint/providerget"]
           },
           {
-            "group": "Avatars",
-            "pages": ["api-reference/endpoint/avatarget"]
+            "group": "TextToVideo",
+            "pages": [
+              "api-reference/endpoint/texttovideo",
+              "api-reference/endpoint/texttovideostatus"
+            ]
+          },
+          {
+            "group": "Tools",
+            "pages": [
+              "api-reference/endpoint/toolcreate",
+              "api-reference/endpoint/toolgetbyid",
+              "api-reference/endpoint/toolget",
+              "api-reference/endpoint/toolupdate",
+              "api-reference/endpoint/tooldelete"
+            ]
           }
         ]
       }
